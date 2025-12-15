@@ -97,9 +97,11 @@ class FavoritesManager {
   }
 
   getAllFavorites() {
-    // Удаляем дубликаты перед возвратом
+    // Всегда перечитываем из localStorage, чтобы учесть изменения
+    // от других экземпляров FavoritesManager (например, на странице маршрутов)
+    const stored = localStorage.getItem(this.storageKey);
+    this.favorites = stored ? JSON.parse(stored) : { routes: [], attractions: [] };
     this.removeDuplicates(this.favorites);
-    // Сохраняем очищенные данные (без обновления счетчика, чтобы не было лишних обновлений)
     localStorage.setItem(this.storageKey, JSON.stringify(this.favorites));
     return this.favorites;
   }
