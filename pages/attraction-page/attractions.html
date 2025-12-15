@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../style.css">
+        <link rel="stylesheet" href="style_attractions.css">
+        <link rel="stylesheet" href="../../blocks/header/header.css">
+        <link rel="stylesheet" href="../../blocks/footer/footer.css">
+        <link rel="stylesheet" href="../../blocks/modal/modal-favorutes/modal-favorites.css">
+        <script src="../../blocks/favorites/favorites.js"></script>
+        <script src="attractions-filters.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <script src="map-attractions.js"></script>
+      </head>
+
+      <body>
+    <header class="header">
+    <div class="header__container">
+        <div class="logo">
+          <h1 class="logo__title">EcoTravel<br>Приднестровье</h1>
+        </div>
+   
+        <nav class="nav">
+          <div class="burger-menu" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <ul class="nav__list">
+            <li class="nav__item"><a href="../../index.html#hero" class="nav__link">Главная</a></li>
+            <li class="nav__item"><a href="../routes.html" class="nav__link">Маршруты</a></li>
+            <li class="nav__item"><a href="../region__map/region-map.html" class="nav__link">Карта региона</a></li>
+            <li class="nav__item"><a href="attractions.html" class="nav__link">Достопримечательности</a></li>
+            <li class="nav__item"><a href="../tips.html" class="nav__link">Советы путешественникам</a></li>
+            <li class="nav__item"><a href="../../index.html#about" class="nav__link">О нас</a></li>
+            <li class="nav__item"><a href="../../index.html#contact" class="nav__link">Контакты</a></li>
+            <li class="nav__item">
+              <a href="#" class="nav__link favorites-link" id="favoritesLink">
+                <i class="fas fa-heart"></i>
+                <span class="favorites-count" style="display: none;">0</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+        <!-- БЛОК-ГЕРОЙ НА СТРАНИЦЕ МАРШРУТОВ -->
+        <section id="attractions-hero" class="attractions-hero">
+            <h1 class="attractions-hero__title">
+              ДОСТОПРИМЕЧАТЕЛЬНОСТИ
+            </h1>
+          </section>
+
+          <section class="attractions-catalog">
+            <div class="container">
+          
+              <!-- Цитата -->
+              <p class="catalog__quote">
+                “Необычные места рядом — просто посмотри вокруг”
+              </p>
+
+
+              <div class="catalog__toolbar">
+                <div class="toolbar__inner">
+                  <div class="toolbar__sort">
+                    <span class="sort__label">Сортировать по:</span>
+                    <select class="sort__select">
+                      <option>Популярности</option>
+                      <option>Новизне</option>
+                    </select>
+                    <select class="sort__select">
+                        <option>Регион: все</option>
+                        <option>Каменка</option>
+                        <option>Рыбница</option>
+                        <option>Дубоссары</option>
+                        <option>Григориополь</option>
+                        <option>Тирасполь</option>
+                        <option>Бендеры</option>
+                        <option>Слободзея</option>
+                        <option>Днестровск</option>
+                      </select>
+                  </div>
+              
+                  <button class="toolbar__show-btn">Показать</button>
+                </div>
+              </div>
+              </div>
+          </section>
+
+
+          <!-- ИНТЕРАКТИВНАЯ КАРТА + СЛАЙДЕР КАРТОЧЕК (точно как в статье) -->
+          <section class="map-with-slider">
+            <div id="map"></div>
+            <div class="slider-container">
+              <!-- СТРЕЛКА ВЛЕВО — накладывается на первую карточку -->
+              <button class="slider-btn prev">
+                <img src="../../assets/images/back.png" alt="Назад">
+              </button>
+          
+              <!-- Трек с карточками — от края до края -->
+              <div class="slider-track">
+                <div class="slider-card" data-lat="46.66522420746238" data-lng="29.76521532850261" data-url="pages/attraction-page/turunchuk/turunchuk.html">
+                  <button class="favorite-btn-attraction" data-attraction-id="turunchuk" data-attraction-title="Турунчук" data-attraction-desc="Экологический маршрут по берегам реки Турунчук" data-attraction-image="images/Turunchuk.png">
+                    <i class="far fa-heart"></i>
+                  </button>
+                  <img src="../../assets/images/Turunchuk.png" alt="" class="slider-card__img">
+                  <div class="slider-card__title"><a href="turunchuk/turunchuk.html" class="slider-card__title-click">Турунчук →</a></div>
+                </div>
+                <div class="slider-card" data-lat="47.888404694427315" data-lng="28.93094615257723" data-url="pages/attraction-page/vinogradny_teras/vinogradny.html">
+                  <button class="favorite-btn-attraction" data-attraction-id="vineyards" data-attraction-title="Виноградные террасы" data-attraction-desc="Путешествие по виноградным террасам Каменки" data-attraction-image="images/grape_tiras.jpg">
+                    <i class="far fa-heart"></i>
+                  </button>
+                  <img src="../../assets/images/grape_tiras.jpg" alt="" class="slider-card__img">
+                  <div class="slider-card__title"><a href="vinogradny_teras/vinogradny.html" class="slider-card__title-click">Виноградные террасы →</a></div>
+                </div>
+                <div class="slider-card" data-lat="46.681825978866044" data-lng="29.75625396784774" data-url="pages/attraction-page/park-rodina/park.html">
+                  <button class="favorite-btn-attraction" data-attraction-id="rodina" data-attraction-title="Парк имени Д.К. Родина" data-attraction-desc="Один из старейших парков региона" data-attraction-image="images/DnesterBender.png">
+                    <i class="far fa-heart"></i>
+                  </button>
+                  <img src="../../assets/images/DnesterBender.png" alt="" class="slider-card__img">
+                  <div class="slider-card__title"><a href="park-rodina/park.html" class="slider-card__title-click">Парк имени Д.К. Родина →</a></div>
+                </div>
+
+
+                <div class="slider-card" data-lat="48.034925950662476" data-lng="28.685385825597784" data-url="pages/attraction-page/park-vingsteina/parkV.html">
+                  <button class="favorite-btn-attraction" data-attraction-id="wittgenstein" data-attraction-title="Парк Витгенштейна" data-attraction-desc="Романтичный парк в Каменке" data-attraction-image="images/vingtshtein.png">
+                    <i class="far fa-heart"></i>
+                  </button>
+                  <img src="../../assets/images/vingtshtein.png" alt="" class="slider-card__img">
+                  <div class="slider-card__title"><a href="park-vingsteina/parkV.html" class="slider-card__title-click">Парк Витгенштейна →</a></div>
+                </div>
+
+                <div class="slider-card" data-lat="46.83087801409848" data-lng="29.642474210185817" data-url="pages/attraction-page/botanic-garden/botanic.html">
+                  <button class="favorite-btn-attraction" data-attraction-id="botanic" data-attraction-title="Ботанический сад" data-attraction-desc="Уникальная коллекция растений" data-attraction-image="images/botanic.png">
+                    <i class="far fa-heart"></i>
+                  </button>
+                  <img src="../../assets/images/botanic.png" alt="" class="slider-card__img">
+                  <div class="slider-card__title"><a href="botanic-garden/botanic.html" class="slider-card__title-click">Ботанический сад →</a></div>
+                </div>
+
+                <div class="slider-card" data-lat="46.817612" data-lng="29.593596" data-url="pages/attraction-page/kitskanski-forest/kitskanski-forest.html">
+                  <button class="favorite-btn-attraction" data-attraction-id="kitskansky-forest" data-attraction-title="Кицканский лес" data-attraction-desc="Большой природный массив возле Кицкан" data-attraction-image="images/Turunchuk.png">
+                    <i class="far fa-heart"></i>
+                  </button>
+                  <img src="../attraction-page/kitskanski-forest/images/kitsk1.jpg" alt="" class="slider-card__img">
+                  <div class="slider-card__title"><a href="kitskanski-forest/kitskanski-forest.html" class="slider-card__title-click">Кицканский лес →</a></div>
+                </div>
+
+                <div class="slider-card" data-lat="46.620997" data-lng="29.940673" data-url="pages/attraction-page/kuchurgan-liman/kuchurgan.html">
+                  <button class="favorite-btn-attraction" data-attraction-id="kuchurgan-liman" data-attraction-title="Кучурганский лиман" data-attraction-desc="Крупный природный водоём, насыщенная фауна" data-attraction-image="images/DnesterBender.png">
+                    <i class="far fa-heart"></i>
+                  </button>
+                  <img src="../attraction-page/kuchurgan-liman/images/liman.jpeg" alt="" class="slider-card__img">
+                  <div class="slider-card__title"><a href="kuchurgan-liman/kuchurgan.html" class="slider-card__title-click">Кучурганский лиман →</a></div>
+                </div>
+
+             <div class="slider-card" data-lat="47.346515728364565" data-lng="29.17485049815293" data-url="pages/attraction-page/lavandovoe-pole/lavandovoe-pole.html">
+                  <button class="favorite-btn-attraction" data-attraction-id="lavender-field" data-attraction-title="Лавандовое поле (близ села Гояны)" data-attraction-desc="Большие лавандовые плантации, популярная натур-локация" data-attraction-image="images/grape_tiras.jpg">
+                    <i class="far fa-heart"></i>
+                  </button>
+                  <img src="../attraction-page/lavandovoe-pole/images/lavanda.jpg" alt="" class="slider-card__img">
+                  <div class="slider-card__title"><a href="lavandovoe-pole/lavandovoe-pole.html" class="slider-card__title-click">Лавандовое поле (близ села Гояны) →</a></div>
+                </div>
+
+                <div class="slider-card" data-lat="47.672593" data-lng="28.998488" data-url="pages/attraction-page/yagorlyk/yagorlyk.html">
+                  <button class="favorite-btn-attraction" data-attraction-id="vykhvatintsy-caves" data-attraction-title="Заповедник Ягорлык: прогулка в сердце дикой природы" data-attraction-image="images/DnesterBender.png">
+                    <i class="far fa-heart"></i>
+                  </button>
+                  <img src="../attraction-page/yagorlyk/images/yag.jpg" alt="" class="slider-card__img">
+                  <div class="slider-card__title"><a href="yagorlyk/yagorlyk.html" class="slider-card__title-click">Заповедник Ягорлык: прогулка в сердце дикой природы →</a></div>
+                </div>
+
+
+              </div>
+          
+              <!-- СТРЕЛКА ВПРАВО — накладывается на последнюю карточку -->
+              <button class="slider-btn next">
+                <img src="../../assets/images/next.png" alt="Вперёд">
+              </button>
+
+            </div>
+
+            <div class="routespage__header-outer">
+              <div class="routespage__header">
+                <h2 class="routespage__title">Приднестровье - это край, где плещется Днестр и молчат древние холмы</h2>
+              </div>
+            </div>
+          </section>
+
+          
+          <footer id="footer" class="footer">
+            <div class="footer__container">
+              
+              <!-- Колонка 1: Логотип -->
+              <div class="footer__column-logo">
+                <div class="footer__logo">EcoTravel</div>
+              </div>
+
+              <!-- Колонка 2: Навигация -->
+              <div class="footer__column-nav">
+                <h3 class="footer__nav-title">НАВИГАЦИЯ</h3>
+                <nav class="footer__nav">
+                  <a href="../../index.html" class="footer__link">Главная</a>
+                  <a href="../routes.html" class="footer__link">Маршруты</a>
+                  <a href="../region__map/region-map.html" class="footer__link">Карта региона</a>
+                  <a href="attractions.html" class="footer__link">Достопримечательности</a>
+                  <a href="../tips.html" class="footer__link">Советы путешественникам</a>
+                  <a href="../../index.html#about" class="footer__link">О нас</a>
+                  <a href="../../index.html#contact" class="footer__link">Контакты</a>
+                </nav>
+              </div>
+
+              <!-- Колонка 3: Контакты (адрес и режим работы) -->
+              <div class="footer__column-contacts">
+                <h3 class="footer__contacts-title">КОНТАКТЫ</h3>
+                <div class="footer__address-block">
+                  <p class="footer__address-label">Наш адрес</p>
+                  <p class="footer__address-text">Приднестровье, г. Тирасполь</p>
+                </div>
+                <div class="footer__hours-block">
+                  <p class="footer__hours-label">Режим работы</p>
+                  <p class="footer__hours-item">ПН-ВС: 09:00-18:00</p>
+                </div>
+              </div>
+
+              <!-- Колонка 4: Телефон + Почта + Соцсети -->
+              <div class="footer__column-right">
+                <div class="footer__phone-block">
+                  <p class="footer__phone">77993307</p>
+                  <a href="mailto:ecotravel_forever228@mail.ru" class="footer__email">ecotravel_forever228@mail.ru</a>
+                </div>
+                <div>
+                  <p class="footer__socials-label">Мы в соц сетях</p>
+                  <div class="footer__socials">
+                    <a href="#"><img src="../../assets/images/vk.png" alt="VK" class="footer__icon"></a>
+                    <a href="#"><img src="../../assets/images/inst.png" alt="Instagram" class="footer__icon"></a>
+                    <a href="#"><img src="../../assets/images/facebook.png" alt="Facebook" class="footer__icon"></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+
+<!-- Модальное окно избранного -->
+<div id="modal-favorites" class="modal">
+  <div class="modal__content modal__content--favorites">
+    <span class="modal__close">&times;</span>
+    <h2 class="modal__title">Мои избранные</h2>
+    <div id="favorites-content" class="favorites-content">
+      <p class="favorites-empty">У вас пока нет избранных элементов</p>
+    </div>
+  </div>
+</div>
+
+<!-- Модальное окно для просмотра больших изображений -->
+<div id="modal-image-viewer" class="modal modal-image-viewer">
+  <div class="modal__content modal__content--image">
+    <span class="modal__close">&times;</span>
+    <img id="modal-image-viewer-img" src="" alt="" class="modal-image-viewer__img">
+  </div>
+</div>
+
+<script src="../../blocks/favorites/favorites-modal.js"></script>
+<script src="../../blocks/image-viewer/image-viewer.js"></script>
+<script>
+function toggleMenu() {
+    document.querySelector('.burger-menu').classList.toggle('active');
+    document.querySelector('.nav__list').classList.toggle('active');
+}
+document.querySelectorAll('.nav__link').forEach(link => {
+    link.addEventListener('click', () => {
+        document.querySelector('.burger-menu').classList.remove('active');
+        document.querySelector('.nav__list').classList.remove('active');
+    });
+});
+</script>
+ 
+</body> 
+</html>

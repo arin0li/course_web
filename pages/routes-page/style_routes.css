@@ -1,0 +1,1595 @@
+@font-face {
+    font-family: 'MrKindlyJasmine';
+    src: url('fonts/mr_kindlyjasmineg.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+/* ============================================
+   АНИМАЦИИ
+   ============================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px) translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(25px);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-y: auto;              /* оставляем только один скролл у html */
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    font-family: 'Open Sans', sans-serif; /* Основной текст */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather', serif;
+  }
+  
+  body {
+      margin: 0;
+      background-color: #F5F5DC;
+      overflow: hidden !important;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .routes-hero {
+        position: relative;
+        width: 100%;
+        height: 288px;
+        min-height: 288px;
+        max-height: 288px;
+        background-image: url('../../assets/images/hero-routes.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: center;
+        animation: fadeIn 0.8s ease-out;
+        padding-left: 73px;
+        overflow: hidden;
+    }
+    
+    .routes-hero__title {
+        font-family: 'Rubik', sans-serif;
+        font-weight: 800;
+        font-size: 64px;
+        line-height: 1.2;
+        margin: 0;
+        white-space: normal;
+        letter-spacing: -1px;
+        word-wrap: break-word;
+        padding: 0 20px;
+    
+        background: linear-gradient(90deg, #FFFFFF, #87CEEB);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        transform: translateY(25px) translateX(0);
+        animation: slideInLeft 1s ease-out forwards;
+    }
+    
+    .routes-hero__line1,
+    .routes-hero__line2 {
+        display: block;
+        line-height: 1.2;
+    }
+    
+
+.routes-catalog {
+        margin-top: 37px;                  
+      }
+      
+.catalog__quote {
+        margin: 0 auto 0px;      
+        text-align: center;
+        font-family: 'MrKindlyJasmine', cursive;
+        white-space: nowrap;
+        font-size: 40px;
+        line-height: 1;
+        color: #2D5016;
+        width: 100%;
+        max-width: none;
+  font-size: clamp(32px, 4.2vw, 40px);
+        animation: fadeIn 0.8s ease-out;
+      }
+  
+      /* Поиск первым после баннера */
+      .catalog__search-bar {
+        max-width: 1200px;
+        margin: 30px auto 20px;
+        padding: 0 20px 0 30px;
+        position: relative;
+      }
+
+      .catalog__search-bar .search__input {
+        width: 100%;
+        padding: 12px 45px 12px 15px;
+        border: 1px solid #E5E5E5;
+        border-radius: 12px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+        box-sizing: border-box;
+      }
+
+      .catalog__search-bar .search__icon {
+        position: absolute;
+        right: 35px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #999;
+      }
+
+      /* Фильтры горизонтально */
+      .catalog__filters-bar {
+        max-width: 1200px;
+        margin: 0 auto 30px;
+        padding: 15px 20px;
+        background: #FFFFFF;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        position: relative;
+      }
+
+      .filters-bar__sort {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .filters-bar__buttons {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        padding: 8px 16px;
+        background: #F5F5DC;
+        border: 1px solid #E5E5E5;
+        border-radius: 8px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 13px;
+        color: #333;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .filter-btn:hover {
+        background: #DBDBBC;
+        border-color: #4B99B2;
+      }
+
+      .filter-popup {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        padding: 20px;
+        margin-top: 10px;
+        z-index: 10;
+      }
+
+      .filter-popup__option {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 0;
+        cursor: pointer;
+      }
+
+      .filter-popup__option input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+      }
+
+      .filter-popup__option span {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        color: #333;
+      }
+
+      .catalog__toolbar {
+        display: none;
+      }
+      
+      .toolbar__inner {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .toolbar__search {
+        position: relative;
+        flex: 1;
+        min-width: 200px;
+      }
+
+      .search__input {
+        width: 100%;
+        padding: 10px 40px 10px 15px;
+        border: 1px solid #E5E5E5;
+        border-radius: 12px;
+        font-family: 'Open Sans', sans-serif;
+        font-size: 14px;
+      }
+
+      .search__input:focus {
+        outline: none;
+        border-color: #4B99B2;
+      }
+
+      .search__icon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #999;
+      }
+      
+      /* Сортировка */
+      .toolbar__sort {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      
+      .sort__label {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        color: #333333;
+        white-space: nowrap;
+      }
+      
+      .sort__select {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+        padding: 8px 16px;
+        border: 1px solid #E5E5E5;
+        border-radius: 12px;
+        background: white;
+        min-width: 140px;
+        cursor: pointer;
+      }
+      
+      /* Кнопка Показать */
+      .toolbar__show-btn {
+        padding: 12px 40px;
+        background: linear-gradient(135deg, #4B99B2, #6ADB90);
+        color: white;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 12px;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(75, 153, 178, 0.35);
+        transition: all 0.3s ease;
+      }
+
+       .toolbar__show-btn:hover {
+         transform: translateY(-2px);
+         box-shadow: 0 6px 20px rgba(75, 153, 178, 0.5);
+       }
+
+  .catalog__content {
+    display: flex;
+    gap: 40px;
+  }
+  
+/* === БЛОК ФИЛЬТРОВ — БЕЛЫЙ, С ТЕНЬЮ, КАК В СТАТЬЕ === */
+.filters-panel {
+    width: 295px;
+    height: 1100px;
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 32px 28px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    box-sizing: border-box;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .filters-panel__title {
+    margin: 0 0 28px 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #0499DD;
+  }
+  
+  /* СВЕРТЫВАЕМЫЕ СЕКЦИИ */
+  .filter-accordion {
+    border-bottom: 1px solid #E8E8E8;
+    padding: 18px 0;
+  }
+  
+  .filter-accordion:last-of-type {
+    border-bottom: none;
+  }
+  
+  .filter-accordion__header {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    user-select: none;
+    position: relative;
+    padding-right: 30px;
+  }
+  
+  .filter-accordion__header::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background: url('images/chevron-down.svg') center/contain no-repeat;
+    transition: transform 0.3s;
+  }
+  
+  .filter-accordion[open] .filter-accordion__header::after {
+    transform: rotate(180deg);
+  }
+  
+  /* Голубая полоска справа при наведении */
+  .filter-accordion__header:hover {
+    color: #0499DD;
+  }
+  
+  .filter-accordion__header:hover::before {
+    content: '';
+    position: absolute;
+    right: -28px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #0499DD;
+    border-radius: 2px;
+  }
+  
+  .filter-accordion__content {
+    margin-top: 16px;
+    display: grid;
+    gap: 2px;
+  }
+  
+.custom-checkbox,
+.custom-radio {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: #333;
+  cursor: pointer;
+  user-select: none;
+  padding: 5px 0;
+}
+
+.custom-checkbox input,
+.custom-radio input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkmark,
+.radiomark {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #B0B0B0;
+  border-radius: 50%;
+  background: white;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+
+
+.custom-checkbox input:checked ~ .checkmark,
+.custom-radio input:checked ~ .radiomark {
+  border-color: #0499DD;
+  background: white;
+}
+
+.custom-checkbox input:checked ~ .checkmark::after,
+.custom-radio input:checked ~ .radiomark::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background: #0499DD;
+  border-radius: 50%;
+}
+
+/* Фокус (для клавиатуры) */
+.custom-checkbox input:focus-visible ~ .checkmark,
+.custom-radio input:focus-visible ~ .radiomark {
+  box-shadow: 0 0 0 3px rgba(4, 153, 221, 0.3);
+}
+  
+  /* Кнопка сброса */
+  .filters-panel__reset {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid #0499DD;
+    color: #0499DD;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  
+  .filters__show-btn{
+    padding: 12px 70px;
+    background: linear-gradient(135deg, #4B99B2, #6ADB90);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(75, 153, 178, 0.35);
+    align-self: center;
+    margin: 20px 20px 20px 20px;
+     transition: all 0.3s ease;
+   }
+
+   .filters__show-btn:hover {
+     transform: translateY(-2px);
+     box-shadow: 0 6px 20px rgba(75, 153, 178, 0.5);
+  }
+ 
+  
+  .filters-panel__reset:hover {
+    background: #0499DD;
+    color: white;
+     transform: translateY(-2px);
+  }
+  
+  .routes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(780px, 1fr));  /* ← ИЗМЕНИЛ auto-fit → auto-fill И УБРАЛ min(780px, 100%) */
+    gap: 11px;                     /* ← твой оригинальный gap, не трогаю */
+    justify-content: center !important;   /* центрируем весь грид */
+    align-content: start;          /* чтобы не растягивалось по высоте */
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20px;               /* небольшая защита от краёв экрана */
+  }
+  
+  .route-card {
+    width: 100%;
+    max-width: 780px;
+    height: 312px;
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    display: flex;
+    box-sizing: border-box;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .route-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  }
+  
+  .route-card__img {
+    width: 238px;
+    height: 303px;
+    object-fit: cover;
+    margin: 4.5px 0 4.5px 4.5px;
+    border-radius: 16px;
+  }
+  
+  .route-card__content {
+    padding: 32px 32px 32px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .route-card__title {
+    font-family: 'Merriweather', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #8B4513;
+    margin: 0 0 15px 0;
+    line-height: 1.3;
+  }
+  
+  .route-card__region {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    color: #2D5016;
+    margin: 0;
+    font-weight: 600;
+  }
+  
+  .route-card__desc {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 16px;
+  }
+  
+  .route-card__tags {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .tag {
+    padding: 6px 14px;
+    background: #E8F5E8;
+    color: #2D5016;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  /* Теги сложности маршрутов */
+  .tag--difficulty {
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  .tag--easy {
+    background: #D4EDDA;
+    color: #155724;
+    border: 1px solid #C3E6CB;
+  }
+
+  .tag--medium {
+    background: #FFF3CD;
+    color: #856404;
+    border: 1px solid #FFEAA7;
+  }
+
+  .tag--hard {
+    background: #F8D7DA;
+    color: #721C24;
+    border: 1px solid #F5C6CB;
+  }
+  
+  .route-card__btn {
+    align-self: flex-start;
+    padding: 10px 24px;
+    background: linear-gradient(135deg, #4B99B2, #6ADB90);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    transition: all 0.3s ease;
+  }
+
+  .route-card__btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(75, 153, 178, 0.4);
+  }
+
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 30px 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.pagination__numbers {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pagination__arrow,
+.pagination__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* Активная страница */
+.pagination__number--active {
+    color: #0499DD;
+    font-weight: 700;
+}
+
+/* Ховер эффекты */
+.pagination__arrow:hover,
+.pagination__number:hover:not(.pagination__number--active) {
+    color: #666666;
+}
+
+/* Многоточие */
+.pagination__dots {
+    padding: 8px 4px;
+    color: #666666;
+}
+
+/* Стрелки */
+.pagination__arrow {
+    font-size: 16px;
+    font-weight: 400;
+}
+    
+.routespage__header-outer {
+  margin-top: 50px;               
+  background: #DBDBBC;                
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.routespage__header {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 78px;            
+  padding: 0 20px;
+  box-sizing: border-box; 
+}
+
+.routespage__title {
+  margin: 0;
+  font-family: 'MrKindlyJasmine', cursive;
+  font-weight: 400;
+  font-size: 30px;
+  color: #2D5016;
+  letter-spacing: 0.02em;
+  text-align: center;
+  width: 100%;
+   line-height: 1.4;
+   padding: 20px;
+   box-sizing: border-box;
+   animation: fadeIn 0.8s ease-out;
+}
+
+
+
+/* Стили для избранного */
+.favorites-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 5px 0;
+}
+
+.favorites-count {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  background: #ff4444;
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 0 6px;
+}
+
+.route-card {
+  position: relative;
+}
+
+.favorite-btn-route {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.favorite-btn-route:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+}
+
+.favorite-btn-route.active {
+  background: rgba(255, 68, 68, 0.9);
+  color: white;
+}
+
+.favorite-btn-route.active i {
+  color: white;
+}
+
+.favorite-btn-route i {
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+/* Модальные окна */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+.modal[style*="block"] {
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+.modal-image-viewer {
+  overflow: hidden !important;
+  padding: 0 !important;
+}
+
+.modal {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+.modal__content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 0;
+  border-radius: 24px;
+  width: 90%;
+  animation: scaleIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  max-width: 800px;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.modal__content--favorites {
+  max-width: 900px;
+}
+
+.modal__close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 1001;
+  color: #fff;
+  font-size: 45px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  border: 3px solid #fff;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  line-height: 1;
+}
+
+.modal__close:hover {
+  background: rgba(255, 0, 0, 0.9);
+  border-color: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(255, 0, 0, 0.4);
+}
+
+.modal__image {
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 24px 24px 0 0;
+}
+
+.modal__body {
+  padding: 40px;
+}
+
+.modal__title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #2D5016;
+  margin: 0 0 20px 0;
+  line-height: 1.3;
+}
+
+.modal__info {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.modal__info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: #666;
+  font-weight: 600;
+}
+
+.modal__info-item i {
+  color: #4B99B2;
+}
+
+.modal__text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.modal__text:last-child {
+  margin-bottom: 0;
+}
+
+/* Стили для модального окна избранного */
+.favorites-content {
+  padding: 20px 40px 40px;
+}
+
+.favorites-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: #999;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+}
+
+.favorite-item {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.favorite-item:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.favorite-item__image {
+  width: 150px;
+  height: 150px;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+}
+
+.favorite-item__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.favorite-item__title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #2D5016;
+  margin: 0 0 10px 0;
+}
+
+.favorite-item__desc {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  flex: 1;
+}
+
+.favorite-item__remove {
+  align-self: flex-start;
+  padding: 8px 16px;
+  background: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.favorite-item__remove:hover {
+  background: #cc0000;
+  transform: scale(1.05);
+}
+
+.favorite-item__remove i {
+  font-size: 12px;
+}
+
+/* ============================================
+   АДАПТИВНОСТЬ (MOBILE-FIRST)
+   ============================================ */
+
+/* Mobile (320px+) - базовые стили */
+
+
+/* ======================================================
+   ПРОМЕЖУТОЧНЫЙ 1080-1279px: ФИЛЬТР СЛЕВА + КАРТОЧКИ СПРАВА ГОРИЗОНТАЛЬНО
+   ====================================================== */
+@media (min-width: 1080px) and (max-width: 1279px) {
+  .catalog__content {
+    gap: 40px !important;
+    align-items: start !important;
+    flex-direction: row !important;
+  }
+
+  .filters-panel {
+    width: 300px !important;
+    min-width: 300px !important;
+    flex-shrink: 0 !important;
+  }
+
+  .routes-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+    flex: 1 !important;
+    min-width: 0 !important;
+  }
+
+  .route-card {
+    width: 100% !important;
+    max-width: 800px !important;
+    height: auto !important;
+    min-height: 340px !important;
+    flex-direction: row !important;
+  }
+  
+  .route-card__img {
+    width: 260px !important;
+    min-height: 340px !important;
+    border-radius: 24px 0 0 24px !important;
+  }
+
+  .route-card__content {
+    padding: 32px 32px 32px 24px !important;
+  }
+
+  .route-card__tags {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+}
+
+/* Desktop (1280px+) */
+@media (min-width: 1280px) {
+  .routes-grid {
+    grid-template-columns: repeat(auto-fit, minmax(780px, 1fr));
+    gap: 11px;
+  }
+  
+  .route-card {
+    width: 780px;
+    max-width: 779px;
+    height: 312px;
+  }
+  
+  .route-card__img {
+    width: 238px;
+    height: 303px;
+  }
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 767px) {
+  .routes-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px;
+    padding: 0 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .route-card {
+    width: 90vw !important;
+    max-width: 100% !important;
+    height: auto;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+  
+  .route-card__img {
+    width: 100%;
+    height: 200px;
+    margin: 0;
+    border-radius: 24px 24px 0 0;
+  }
+  
+  .route-card__content {
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .route-card__title {
+    font-size: 18px;
+  }
+
+  .route-card__desc {
+    font-size: 14px;
+  }
+
+  .route-card__region {
+    font-size: 12px;
+  }
+
+  .route-card__tags {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    margin-bottom: 15px !important;
+    width: 100% !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .tag {
+    font-size: 11px !important;
+    padding: 4px 10px !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    line-height: 1.4 !important;
+  }
+
+  .route-card__btn {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+  
+  .filters-panel {
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .filters-panel__title {
+    font-size: 18px;
+  }
+
+  .filter-accordion__header {
+    font-size: 14px;
+  }
+
+  .custom-checkbox,
+  .custom-radio {
+    font-size: 12px;
+  }
+  
+  .catalog__toolbar {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 10px;
+  }
+
+  .toolbar__sort {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .sort__label {
+    font-size: 14px;
+  }
+
+  .sort__select {
+    font-size: 14px;
+  }
+
+  .filters__show-btn {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+  
+  .pagination {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 10px;
+  }
+
+  .pagination__number {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+
+  .routes-hero__title {
+    font-size: 24px !important;
+    padding: 0 15px !important;
+    white-space: normal !important;
+    letter-spacing: normal !important;
+    word-wrap: break-word !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0 !important;
+  }
+  
+  .routes-hero__line1,
+  .routes-hero__line2 {
+    display: block !important;
+    line-height: 1.2 !important;
+  }
+
+  .catalog__quote {
+    font-size: 18px !important;
+    padding: 0 15px !important;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    line-height: 1.4 !important;
+    margin: 20px auto !important;
+  }
+
+  .catalog__content {
+    flex-direction: column !important;
+    gap: 20px !important;
+    padding: 0 15px !important;
+  }
+
+  .filters-panel {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    order: 1 !important;
+    position: relative !important;
+    z-index: 1 !important;
+    margin-bottom: 20px !important;
+  }
+
+  .catalog__toolbar {
+    order: 2 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 20px auto !important;
+    height: auto !important;
+  }
+
+  .routes-grid {
+    order: 3 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    grid-template-columns: 1fr !important;
+  }
+
+
+  .routespage__title {
+    font-size: 20px !important;
+    padding: 20px 15px;
+    line-height: 1.4;
+  }
+
+  .routespage__header {
+    height: auto;
+    min-height: 60px;
+    padding: 15px 10px;
+  }
+
+  .routespage__header-outer {
+    margin-top: 30px;
+  }
+
+  .routes-hero__title {
+    font-size: 24px;
+    padding: 0 15px;
+    white-space: normal;
+    letter-spacing: normal;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  
+  .routes-hero__line1,
+  .routes-hero__line2 {
+    display: block;
+    line-height: 1.2;
+  }
+  
+ 
+  .catalog__quote {
+    font-size: 16px;
+    padding: 0 20px;
+  }
+}
+
+/* Tablet (768px+) - точно как на главной странице */
+@media (min-width: 768px) {
+  .routes-hero__title {
+    font-size: 36px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+  }
+  
+  .routes-hero__line1,
+  .routes-hero__line2 {
+    display: block;
+    line-height: 1.2;
+  }
+  
+}
+
+/* ДЕСКТОП 1280px+ */
+@media (min-width: 1280px) {
+  .routes-hero,
+  .attractions-hero,
+  .tips-hero,
+  .hero {
+    margin-top: 70px !important;
+    padding-left: 73px !important;
+    justify-content: flex-start !important;
+  }
+
+  .routes-hero__title,
+  .attractions-hero__title,
+  .tips-hero__title {
+    font-size: 64px !important;
+    white-space: nowrap !important;
+    padding: 0 !important;
+    text-align: left !important;
+    letter-spacing: -1px !important;
+  }
+}
+
+/* ======================================================
+   ОТСТУП ПОД ШАПКУ — минимальные значения
+   ====================================================== */
+@media (max-width: 767px) {
+  .hero,
+  .routes-hero,
+  .attractions-hero,
+  .tips-hero {
+    margin-top: 60px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .hero,
+  .routes-hero,
+  .attractions-hero,
+  .tips-hero {
+    margin-top: 70px !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero,
+  .routes-hero,
+  .attractions-hero,
+  .tips-hero {
+    margin-top: 70px !important;
+  }
+}
+
+/* ======================================================
+   ПЛАНШЕТ 768-1079px: ФИЛЬТР СВЕРХУ + КАРТОЧКИ ВЕРТИКАЛЬНО
+   ====================================================== */
+@media (min-width: 768px) and (max-width: 1079px) {
+
+  /* Контейнер — колонка: фильтр сверху, карточки снизу */
+  .catalog__content {
+      flex-direction: column !important;
+      gap: 50px !important;
+      padding: 0 30px !important;
+      max-width: 1000px !important;
+      margin: 0 auto !important;
+  }
+
+  /* Фильтр — широкий, по центру */
+  .filters-panel {
+      width: 100% !important;
+      max-width: 800px !important;
+      margin: 0 auto !important;
+      order: -1 !important;
+      border-radius: 32px !important;
+      padding: 40px 35px !important;
+      box-shadow: 0 15px 45px rgba(0,0,0,0.12) !important;
+  }
+
+  /* Карточки — по одной, как на мобилке */
+  .routes-grid,
+  .attractions__grid {
+      grid-template-columns: 1fr !important;
+      gap: 40px !important;
+      justify-content: center !important;
+  }
+
+  /* Карточка — точно как на мобильной версии */
+  .route-card,
+  .attraction-card {
+      width: 100% !important;
+      max-width: 800px !important;
+      margin: 0 auto !important;
+      height: auto !important;
+      min-height: 420px !important;
+      border-radius: 32px !important;
+      overflow: hidden !important;
+      box-shadow: 0 15px 45px rgba(0,0,0,0.14) !important;
+      flex-direction: column !important;   /* ← ГЛАВНОЕ: как на мобилке */
+  }
+
+  .route-card__img,
+  .attraction-card__img {
+      width: 100% !important;
+      height: 300px !important;
+      object-fit: cover !important;
+      border-radius: 32px 32px 0 0 !important;
+      flex-shrink: 0 !important;
+  }
+
+  .route-card__content,
+  .attraction-card__content {
+      padding: 35px 40px !important;
+      flex-grow: 1 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+  }
+
+  .route-card__title,
+  .attraction-card__title {
+      font-size: 26px !important;
+      margin-bottom: 16px !important;
+      line-height: 1.3 !important;
+  }
+
+  .route-card__desc,
+  .attraction-card__desc {
+      font-size: 16px !important;
+      line-height: 1.7 !important;
+      margin-bottom: 20px !important;
+  }
+
+  .route-card__region {
+      font-size: 15px !important;
+      margin-bottom: 12px !important;
+  }
+
+  .route-card__btn {
+    align-self: flex-start !important;
+    padding: 14px 34px !important;
+    font-size: 16px !important;
+    border-radius: 50px !important;
+  }
+}
+
+/* ======================================================
+   АДАПТИВ — БЕЗ СКАЧКОВ, БЕЗ КОНФЛИКТОВ (2025)
+   УДАЛИТЬ ВСЕ СТАРЫЕ media 768-1279, 1080-1279 и т.д.!
+   ====================================================== */
+
+/* 1. Мобильные ≤ 779px — фильтр сверху, карточки снизу */
+@media (max-width: 779px) {
+  .catalog__content {
+    flex-direction: column !important;
+    padding: 0 15px !important;
+    gap: 40px !important;
+  }
+
+  .filters-panel {
+    width: 100% !important;
+    max-width: 100% !important;
+    order: -1 !important;
+  }
+
+  .routes-grid {
+    gap: 30px !important;
+  }
+
+  .route-card {
+    flex-direction: column !important;
+    min-height: 420px !important;
+  }
+
+  .route-card__img {
+    width: 100% !important;
+    height: 240px !important;
+    border-radius: 24px 24px 0 0 !important;
+  }
+}
+
+/* 2. Планшет 780–1079px — ФИЛЬТР СВЕРХУ + КРУПНЫЕ КАРТОЧКИ СНИЗУ */
+@media (min-width: 780px) and (max-width: 1079px) {
+  .catalog__content {
+    flex-direction: column !important;
+    gap: 50px !important;
+    padding: 0 30px !important;
+    max-width: 1000px !important;
+    margin: 0 auto !important;
+  }
+
+  .filters-panel {
+    width: 100% !important;
+    max-width: 840px !important;
+    margin: 0 auto !important;
+    order: -1 !important;
+    padding: 40px 35px !important;
+    border-radius: 32px !important;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.12) !important;
+  }
+
+  .routes-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  .route-card,
+  .attraction-card {
+    width: 100% !important;
+    max-width: 840px !important;
+    margin: 0 auto !important;
+    min-height: 480px !important;
+    border-radius: 32px !important;
+    overflow: hidden !important;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.14) !important;
+    flex-direction: column !important;
+  }
+
+  .route-card__img,
+  .attraction-card__img {
+    width: 100% !important;
+    height: 360px !important;
+    object-fit: cover !important;
+    border-radius: 32px 32px 0 0 !important;
+  }
+
+  .route-card__content,
+  .attraction-card__content {
+    padding: 40px !important;
+  }
+
+  .route-card__title,
+  .attraction-card__title {
+    font-size: 28px !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .routes-grid {
+    max-width: 1600px !important;   /* ограничиваем ширину грида */
+    margin: 0 auto !important;      /* центрируем грид внутри страницы */
+    padding: 0 !important;
+  }
+}

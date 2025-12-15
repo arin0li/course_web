@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карта региона - EcoTravel Приднестровье</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../routes-page/style_routes.css">
+    <link rel="stylesheet" href="region-map.css">
+    <link rel="stylesheet" href="../../blocks/header/header.css">
+    <link rel="stylesheet" href="../../blocks/footer/footer.css">
+    <link rel="stylesheet" href="../../blocks/modal/modal-favorutes/modal-favorites.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="logo">
+                <h1 class="logo__title">EcoTravel<br>Приднестровье</h1>
+            </div>
+            <nav class="nav">
+                <div class="burger-menu" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="../../index.html" class="nav__link">Главная</a></li>
+                    <li class="nav__item"><a href="../routes.html" class="nav__link">Маршруты</a></li>
+                    <li class="nav__item"><a href="region-map.html" class="nav__link">Карта региона</a></li>
+                    <li class="nav__item"><a href="../attraction-page/attractions.html" class="nav__link">Достопримечательности</a></li>
+                    <li class="nav__item"><a href="../tips.html" class="nav__link">Советы путешественникам</a></li>
+                    <li class="nav__item"><a href="../../index.html#about" class="nav__link">О нас</a></li>
+                    <li class="nav__item"><a href="../../index.html#contact" class="nav__link">Контакты</a></li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link favorites-link" id="favoritesLink">
+                            <i class="fas fa-heart"></i>
+                            <span class="favorites-count" style="display: none;">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- БЛОК-ГЕРОЙ НА СТРАНИЦЕ КАРТЫ РЕГИОНА -->
+    <section class="region-map-hero" id="region-map-hero">
+        <h1 class="region-map-hero__title">Карта региона с маршрутами</h1>
+        <p class="region-map-hero__subtitle">Интерактивная карта всех туристических маршрутов Приднестровья</p>
+    </section>
+
+    <section class="region-map-container">
+        <div class="region-map-wrapper">
+            <div id="regionMap"></div>
+            <div class="map-legend">
+                <h3 class="map-legend__title">Легенда</h3>
+                <div class="map-legend__items">
+                    <div class="legend-item">
+                        <div class="legend-color legend-color--easy"></div>
+                        <span class="legend-text">Лёгкие маршруты</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-color--medium"></div>
+                        <span class="legend-text">Средние маршруты</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color legend-color--hard"></div>
+                        <span class="legend-text">Сложные маршруты</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer" class="footer">
+        <div class="footer__container">
+            
+            <!-- Колонка 1: Логотип -->
+            <div class="footer__column-logo">
+                <div class="footer__logo">EcoTravel</div>
+            </div>
+
+            <!-- Колонка 2: Навигация -->
+            <div class="footer__column-nav">
+                <h3 class="footer__nav-title">НАВИГАЦИЯ</h3>
+                <nav class="footer__nav">
+                    <a href="../../index.html" class="footer__link">Главная</a>
+                    <a href="../routes.html" class="footer__link">Маршруты</a>
+                    <a href="region-map.html" class="footer__link">Карта региона</a>
+                    <a href="../attraction-page/attractions.html" class="footer__link">Достопримечательности</a>
+                    <a href="../tips.html" class="footer__link">Советы путешественникам</a>
+                    <a href="../../index.html#about" class="footer__link">О нас</a>
+                    <a href="../../index.html#contact" class="footer__link">Контакты</a>
+                </nav>
+            </div>
+
+            <!-- Колонка 3: Контакты (адрес и режим работы) -->
+            <div class="footer__column-contacts">
+                <h3 class="footer__contacts-title">КОНТАКТЫ</h3>
+                <div class="footer__address-block">
+                    <p class="footer__address-label">Наш адрес</p>
+                    <p class="footer__address-text">Приднестровье, г. Тирасполь</p>
+                </div>
+                <div class="footer__hours-block">
+                    <p class="footer__hours-label">Режим работы</p>
+                    <p class="footer__hours-item">ПН-ВС: 09:00-18:00</p>
+                </div>
+            </div>
+
+            <!-- Колонка 4: Телефон + Почта + Соцсети -->
+            <div class="footer__column-right">
+                <div class="footer__phone-block">
+                    <p class="footer__phone">77993307</p>
+                    <a href="mailto:ecotravel_forever228@mail.ru" class="footer__email">ecotravel_forever228@mail.ru</a>
+                </div>
+                <div>
+                    <p class="footer__socials-label">Мы в соц сетях</p>
+                    <div class="footer__socials">
+                        <a href="#"><img src="../../assets/images/vk.png" alt="VK" class="footer__icon"></a>
+                        <a href="#"><img src="../../assets/images/inst.png" alt="Instagram" class="footer__icon"></a>
+                        <a href="#"><img src="../../assets/images/facebook.png" alt="Facebook" class="footer__icon"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Модальное окно избранного -->
+    <div id="modal-favorites" class="modal">
+        <div class="modal__content modal__content--favorites">
+            <span class="modal__close">&times;</span>
+            <h2 class="modal__title">Мои избранные</h2>
+            <div id="favorites-content" class="favorites-content">
+                <p class="favorites-empty">У вас пока нет избранных элементов</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../blocks/favorites/favorites.js"></script>
+    <script src="../../blocks/favorites/favorites-modal.js"></script>
+    <script src="region-map.js"></script>
+    <script>
+    function toggleMenu() {
+        document.querySelector('.burger-menu').classList.toggle('active');
+        document.querySelector('.nav__list').classList.toggle('active');
+    }
+    document.querySelectorAll('.nav__link').forEach(link => {
+        link.addEventListener('click', () => {
+            document.querySelector('.burger-menu').classList.remove('active');
+            document.querySelector('.nav__list').classList.remove('active');
+        });
+    });
+    </script>
+</body>
+</html>
+

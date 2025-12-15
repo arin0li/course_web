@@ -1,0 +1,2001 @@
+@font-face {
+    font-family: 'MrKindlyJasmine';
+    src: url('../../../assets/fonts/mr_kindlyjasmineg.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+/* ============================================
+   АНИМАЦИИ
+   ============================================ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-y: auto;             
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+      margin: 0;
+      background-color: #F5F5DC;
+    }
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 75px auto;
+      }
+      
+    
+.pulse-hero {
+    position: relative;
+    width: 100%;
+    height: 288px;
+    background-image: url('images/hero.jpg');
+    background-size: cover;
+    animation: fadeIn 0.8s ease-out;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    padding-left: 73px;
+}
+
+.pulse-hero__title {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 1;
+    margin-top: 60px;
+    animation: slideInLeft 1s ease-out;
+    color: #FFFFFF;
+    z-index: 10;
+}
+
+.pulse-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+      rgba(0,0,0,0)     0%,
+      rgba(0,0,0,0.3)  40%,
+      rgba(0,0,0,0.8)  80%,
+      rgba(0,0,0,1)    100%
+    );
+    z-index: 1;
+    opacity: 0.7;
+  }
+  .hero-map-btn {
+    position: absolute;        
+    z-index: 10;              
+    left: 69px;                
+    bottom: 45px;              
+    display: block;
+    width: 271px;
+    height: 40px;
+    background: linear-gradient(to right, #4B99B2, #6ADB90); 
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 40px;         /* вертикальное центрирование */
+    text-align: center;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.hero-map-btn:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(to right, #5ab3d0, #78e89a);
+}
+
+
+.route-section {
+    display: flex;
+    justify-content: center; /* центрируем весь блок */
+    align-items: flex-start; /* выравниваем по верху */
+    gap: 50px; /* расстояние между блоками */
+    margin-top: 66px;
+    margin-bottom: 50px;
+    padding: 0 20px; /* минимальные отступы от краев окна */
+    flex-wrap: wrap; /* чтобы на маленьких экранах не ломалось */
+}
+.gallery-container, .route-info {
+    flex: 0 0 auto; /* фиксированная ширина */
+}
+
+.route-info {
+    width: 293px;
+    height: 498px;
+}
+
+.gallery-container {
+    width: 877px;
+    height: 498px;
+    position: relative;
+}
+
+.gallery {
+    width: 100%;
+    height: 100%;
+    background: #DBDBBC;
+    position: relative;
+    overflow: hidden;
+}
+
+.gallery-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease-in-out;
+}
+
+.gallery-image {
+    min-width: 100%;
+    height: 100%;
+}
+
+  .gallery-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .gallery-image img:hover {
+    transform: scale(1.05);
+  }
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 85px;
+    height: 85px;
+    background: #4B99B2;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 30;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.prev { left: 15px; }
+.next { right: 15px; }
+
+.nav-btn:hover {
+    background: #6BBDE0;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* ----- Характеристики ----- */
+.route-info {
+    font-family: 'Montserrat', sans-serif;
+    width: 293px;
+    height: 498px;
+    background: #DBDBBC;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.route-info h3 {
+    font-size: 18px;
+    margin-bottom: 25px;
+    color: #8A5C2E;
+    text-align: center;
+    font-weight: 700;
+}
+
+.route-info ul {
+    padding-left: 20px;
+}
+
+.route-info li {
+    margin-bottom: 14px;
+    line-height: 1.4;
+    font-size: 16px;
+}
+
+.rectangle {
+    width: 100%;
+    height: 100px;
+    background-color: #A6E0F8;
+
+    display: flex;               /* включаем flex */
+    justify-content: center;     /* центр по горизонтали */
+    align-items: center;         /* центр по вертикали */
+}
+
+.rectangle-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    color: #2D5016;
+    text-align: center;          /* центр текста внутри блока */
+    margin: 0;                   /* убираем отступы h1 */
+}
+
+#pulse-map-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    margin-bottom: 100px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#pulseMap {
+    width: 1287px;
+    height: 558px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25); /* Тень */
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+
+.route-description {
+    display: flex;
+    background-color: #DBDBBC;
+    max-width: 100%;   /* вместо фиксированной ширины */
+    height: 824px;
+    padding: 40px;
+    box-sizing: border-box;
+    gap: 76px;
+    margin: 0 auto;    /* центрируем по горизонтали */
+  }
+  
+  
+  .route-description__content {
+    width: 1000px; /* оставляем место для правого блока */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: #000;
+  }
+  
+  .route-description__title,
+  .route-description__subtitle {
+    font-weight: 700;
+    font-size: 24px;
+    color: #8B4513;
+    margin-bottom: 20px;
+  }
+  
+  .route-description__subtitle {
+    margin-top: 25px;
+  }
+  
+  .route-description__text {
+    margin-bottom: 30px;
+  }
+  
+  .route-description__sidebar {
+    width: 402px;
+    height: 735px;
+    background-color: #F5F5DC;
+    padding: 33px;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidebar-title {
+    font-weight: 700;
+    font-size: 16px;
+    color: #8B4513;
+    margin-bottom: 5px;
+  }
+  
+  .sidebar-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 5px;
+  }
+  
+  .sidebar-list li {
+    margin-bottom: 15px;
+  }
+  
+  .sidebar-link {
+    color: #2D5016;
+    font-weight: 700;
+    text-decoration: none;
+    margin-top: auto;
+  }
+  
+
+
+  /* === КАЛЬКУЛЯТОР — как на скриншоте === */
+.calculator-section {
+    margin: 100px auto 150px;
+    font-family: 'Montserrat', sans-serif;
+    background: #F5F5DC;
+  }
+  
+  .calc-title {
+    font-size: 24px;
+    font-weight: 500;
+    color: #2D5016;
+    text-align: center;
+    margin: 0 0 99px 0;
+    line-height: 1.4;
+  }
+  
+  .calc-subtitle {
+    font-size: 18px;
+    display: block;
+    margin-top: 8px;
+    font-weight: 400;
+  }
+  
+  .calc-wrapper {
+    display: flex;
+    gap: 80px;
+    align-items: flex-start;
+  }
+  
+  .calc-form {
+    width: 266px;
+    background: white;
+    padding: 35px 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    margin-right: 15px;
+    box-sizing: border-box;
+  }
+  
+  .form-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2D5016;
+    margin: 25px 0 15px 0;
+  }
+
+ /* Отступы между блоками радиокнопок — как в научной статье (ровно, аккуратно) */
+.radio-block {
+    margin-bottom: 36px;
+  }
+  .radio-block:last-of-type { margin-bottom: 44px; }
+  
+  /* Твой старый стиль радиокнопок — активируем */
+  .custom-radio {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    padding: 9px 0;
+    transition: color 0.2s;
+  }
+  
+  .radiomark {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #B0B0B0;
+    border-radius: 50%;
+    background: white;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+  }
+  
+  .custom-radio input:checked ~ .radiomark {
+    border-color: #0499DD;
+  }
+  
+  .custom-radio input:checked ~ .radiomark::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background: #0499DD;
+    border-radius: 50%;
+  }
+  
+  .custom-radio:hover .radiomark {
+    border-color: #0499DD;
+    box-shadow: 0 0 0 5px rgba(4, 153, 221, 0.15);
+  }
+
+  .custom-radio input {
+    display: none; /* скрываем стандартную радиокнопку */
+  }
+  /* Ползунок группы */
+  .range-wrapper {
+    margin: 20px 0;
+  }
+  
+  .range-values {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+  }
+  
+  .range-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: #ddd;
+    outline: none;
+  }
+  
+  .range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #5ab3d0;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(75,153,178,0.4);
+  }
+  
+  #groupValue {
+    font-weight: 700;
+    color: #2D5016;
+    font-size: 18px;
+  }
+  
+  /* Кнопка */
+  .calc-btn {
+    width: 100%;
+    height: 48px;
+    background: linear-gradient(to right, #4B99B2, #6ADB90);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+    margin-top: 40px;
+    transition: all 0.3s;
+  }
+  
+  .calc-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(75,153,178,0.35);
+  }
+  
+  /* Результат */
+  .calc-result {
+    background: white;
+    padding: 35px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    min-height: 350px;
+    width: 660px;
+    margin-right: 15px;
+    box-sizing: border-box;
+  }
+  
+  .result-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2D5016;
+    margin-bottom: 20px;
+  }
+  
+  .result-content {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+  }
+
+
+  .route-map-section {
+    width: 600px;
+    height: 420px;
+    margin: 40px auto; /* центрируем секцию по горизонтали */
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  #routeMap {
+    width: 100%;           /* ← 100% от родителя */
+    height: 380px;         /* ← чуть меньше, чтобы не вылезало */
+    border-radius: 16px;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.22);
+    overflow: hidden;
+    border: 3px solid #4B99B2;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+
+  /* Стили для избранного */
+  .favorites-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 5px 0;
+  }
+
+  .favorites-count {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    background: #ff4444;
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 0 6px;
+  }
+
+  /* Модальное окно избранного */
+  .modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+    box-sizing: border-box;
+    overflow: auto;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(6px);
+    animation: modalFadeIn 0.3s ease-out;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .modal[style*="block"] {
+    display: flex;
+    animation: modalFadeIn 0.3s ease-out;
+  }
+
+  .modal-image-viewer {
+    overflow: hidden !important;
+    padding: 0 !important;
+  }
+
+  .modal__content {
+    background-color: #fff;
+    margin: 5% auto 0 auto;
+    padding: 0;
+    border-radius: 24px;
+    width: 90%;
+    animation: scaleIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    max-width: 800px;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  }
+
+  .modal__content--favorites {
+    max-width: 900px;
+  }
+
+  .modal__content--favorites .modal__title {
+    padding-left: 20px;
+  }
+
+  .modal__close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 1001;
+    color: #fff;
+    font-size: 45px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.85);
+    border: 3px solid #fff;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    line-height: 1;
+  }
+
+  .modal__close:hover {
+    background: rgba(255, 0, 0, 0.9);
+    border-color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(255, 0, 0, 0.4);
+  }
+
+  .modal__title {
+    font-family: 'Merriweather', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #2D5016;
+    margin: 0 0 40px 0;
+    line-height: 1.3;
+  }
+
+  .favorites-content {
+    padding: 20px 40px 40px 60px;
+    max-height: 600px;
+    overflow-y: auto;
+  }
+
+  .favorites-empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+  }
+
+  /* Модальное окно для просмотра изображений */
+  .modal__content--image {
+    max-width: 95%;
+    max-height: 95vh;
+    margin: 2.5vh auto;
+    padding: 0;
+    background: transparent;
+    overflow: hidden;
+    box-shadow: none;
+  }
+
+  .modal-image-viewer__img {
+    width: 100%;
+    height: auto;
+    max-height: 95vh;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  /* ============================================
+     АДАПТИВНОСТЬ (MOBILE-FIRST)
+     ============================================ */
+
+  /* 1. Мобильный ≤795px */
+  @media (max-width: 795px) {
+    html, body {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+    }
+
+    .container {
+      width: 95%;
+      margin: 60px auto;
+      padding: 0 15px;
+      box-sizing: border-box;
+    }
+
+    .pulse-hero {
+      height: 280px !important;
+      min-height: 280px !important;
+      padding: 0 20px !important;
+      margin-top: 1055px !important;
+      justify-content: flex-start !important;
+      align-items: center !important;
+    }
+
+    .pulse-hero__title {
+      font-size: 24px !important;
+      margin-top: 15px !important;
+      padding: 0 10px !important;
+      text-align: center !important;
+      width: 90% !important;
+      line-height: 1.2 !important;
+    }
+
+    .hero-map-btn {
+      left: 45% !important;
+      transform: translateX(-50%) !important;
+      bottom: 25px !important;
+      width: 200px !important;
+      font-size: 10px !important;
+      height: 35px !important;
+      line-height: 35px !important;
+    }
+
+    .route-section {
+      flex-direction: column !important;
+      gap: 30px !important;
+      padding: 0 15px !important;
+      margin-top: 40px !important;
+    }
+
+    .gallery-container {
+      width: 100% !important;
+      max-width: 100% !important;
+      height: 300px !important;
+    }
+
+    .route-info {
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      min-height: 300px !important;
+      padding: 25px 20px !important;
+    }
+
+    .route-info h3 {
+      font-size: 16px !important;
+    }
+
+    .route-info li {
+      font-size: 14px !important;
+    }
+
+    .route-description {
+      flex-direction: column !important;
+      height: auto !important;
+      padding: 30px 20px !important;
+      gap: 40px !important;
+    }
+
+    .route-description__content,
+    .route-description__sidebar {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .route-description__sidebar {
+      height: auto !important;
+      min-height: 300px !important;
+    }
+
+    .calculator-section {
+      margin: 80px auto !important;
+      padding: 0 15px !important;
+    }
+
+    .calc-wrapper {
+      flex-direction: column !important;
+      gap: 40px !important;
+    }
+
+    .calc-form,
+    .calc-result {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin-right: 15px !important;
+      box-sizing: border-box !important;
+    }
+
+    .calc-result {
+      min-height: auto !important;
+      padding: 30px 20px !important;
+    }
+
+    #pulse-map-section {
+      padding: 0 20px !important;
+      box-sizing: border-box !important;
+    }
+
+    #pulseMap {
+      width: 100% !important;
+      max-width: 100% !important;
+      height: 400px !important;
+      box-sizing: border-box !important;
+    }
+
+    .route-map-section {
+      width: 100% !important;
+      padding: 0 15px !important;
+      box-sizing: border-box !important;
+      margin: 40px auto !important;
+    }
+
+    #routeMap {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 auto !important;
+      box-sizing: border-box !important;
+    }
+
+    .modal[style*="block"] {
+      display: flex !important;
+      align-items: flex-start !important;
+      justify-content: center !important;
+      padding: 10px 20px 20px 20px !important;
+    }
+
+    .modal__content {
+      width: 95% !important;
+      max-width: 95% !important;
+      margin: 5% auto !important;
+      padding: 0 !important;
+      max-height: 90vh !important;
+    }
+
+    .modal__content--favorites .modal__title {
+      padding: 20px 20px 0 20px !important;
+    }
+
+    .favorites-content {
+      padding: 20px !important;
+    }
+
+    .modal__close {
+      right: 15px !important;
+      top: 15px !important;
+      width: 45px !important;
+      height: 45px !important;
+      font-size: 35px !important;
+      border: 2px solid #fff !important;
+      background: rgba(0, 0, 0, 0.85) !important;
+    }
+
+    .modal__title {
+      font-size: 22px !important;
+    }
+  }
+
+  /* 2. Планшет 768–900px - единый стиль, без скачков */
+  @media (min-width: 768px) and (max-width: 900px) {
+    .container {
+      width: 95%;
+      margin: 75px auto;
+      padding: 0 25px;
+    }
+
+    .pulse-hero {
+      height: 360px !important;
+      margin-top: 125px !important;
+      padding-left: 35px !important;
+      padding-right: 35px !important;
+    }
+
+    .pulse-hero__title {
+      font-size: 40px !important;
+      margin-top: 45px !important;
+    }
+
+    .hero-map-btn {
+      left: 35px !important;
+      bottom: 32px !important;
+      width: 230px !important;
+      font-size: 11px !important;
+    }
+
+    .route-section {
+      flex-direction: column !important;
+      gap: 40px !important;
+      padding: 0 25px !important;
+      margin-top: 55px !important;
+    }
+
+    .gallery-container {
+      width: 100% !important;
+      max-width: 100% !important;
+      height: 420px !important;
+    }
+
+    .route-info {
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      min-height: 380px !important;
+    }
+
+    .route-info h3 {
+      font-size: 17px !important;
+    }
+
+    .route-info li {
+      font-size: 15px !important;
+    }
+
+    .route-description {
+      flex-direction: column !important;
+      padding: 35px 30px !important;
+      gap: 40px !important;
+      height: auto !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      margin: 0 auto !important;
+    }
+
+    .route-description__content {
+      width: 100% !important;
+      max-width: 100% !important;
+      font-size: 14px !important;
+      line-height: 1.5 !important;
+      box-sizing: border-box !important;
+    }
+
+    .route-description__title,
+    .route-description__subtitle {
+      font-size: 20px !important;
+      margin-bottom: 15px !important;
+    }
+
+    .route-description__text {
+      margin-bottom: 18px !important;
+    }
+
+    .route-description__sidebar {
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      min-height: auto !important;
+      padding: 25px !important;
+      font-size: 14px !important;
+      box-sizing: border-box !important;
+    }
+
+    .sidebar-title {
+      font-size: 15px !important;
+    }
+
+    .sidebar-list li {
+      margin-bottom: 12px !important;
+      font-size: 14px !important;
+    }
+
+    .calculator-section {
+      margin: 75px auto 90px !important;
+      padding: 0 25px !important;
+    }
+
+    .calc-title {
+      font-size: 22px !important;
+      margin-bottom: 50px !important;
+    }
+
+    .calc-subtitle {
+      font-size: 16px !important;
+    }
+
+    .calc-wrapper {
+      flex-direction: column !important;
+      gap: 35px !important;
+    }
+
+    .calc-form {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 30px 25px !important;
+      margin-right: 15px !important;
+      box-sizing: border-box !important;
+    }
+
+    .form-title {
+      font-size: 15px !important;
+      margin: 20px 0 12px 0 !important;
+    }
+
+    .custom-radio {
+      font-size: 14px !important;
+      padding: 8px 0 !important;
+    }
+
+    .calc-result {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 30px 25px !important;
+      margin-right: 15px !important;
+      box-sizing: border-box !important;
+    }
+
+    .result-title {
+      font-size: 15px !important;
+    }
+
+    .result-content {
+      font-size: 14px !important;
+    }
+
+    #pulse-map-section {
+      padding: 0 25px !important;
+      box-sizing: border-box !important;
+    }
+
+    #pulseMap {
+      width: 100% !important;
+      max-width: 100% !important;
+      height: 400px !important;
+      box-sizing: border-box !important;
+    }
+
+    .route-map-section {
+      width: 100% !important;
+      padding: 0 25px !important;
+      box-sizing: border-box !important;
+      margin: 40px auto !important;
+    }
+
+    #routeMap {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 auto !important;
+      box-sizing: border-box !important;
+    }
+
+    .modal[style*="block"] {
+      padding: 24px 24px 24px 24px !important;
+      align-items: flex-start !important;
+    }
+
+    .modal__content {
+      margin: 5% auto 0 auto !important;
+    }
+  }
+
+  /* 2.2. Планшет 901–1023px - горизонтальная компоновка */
+  @media (min-width: 901px) and (max-width: 1023px) {
+    .container {
+      width: 95%;
+      margin: 75px auto;
+      padding: 0 30px;
+    }
+
+    .pulse-hero {
+      height: 380px !important;
+      margin-top: 70px !important;
+      padding-left: 45px !important;
+      padding-right: 45px !important;
+    }
+
+    .pulse-hero__title {
+      font-size: 42px !important;
+      margin-top: 50px !important;
+    }
+
+    .hero-map-btn {
+      left: 45px !important;
+      bottom: 35px !important;
+      width: 240px !important;
+      font-size: 11px !important;
+    }
+
+    .route-section {
+      flex-direction: row !important;
+      gap: 40px !important;
+      padding: 0 30px !important;
+      margin-top: 60px !important;
+    }
+
+    .gallery-container {
+      width: 60% !important;
+      max-width: 60% !important;
+      height: 450px !important;
+    }
+
+    .route-info {
+      width: 38% !important;
+      max-width: 38% !important;
+      height: 450px !important;
+    }
+
+    .route-info h3 {
+      font-size: 17px !important;
+    }
+
+    .route-info li {
+      font-size: 15px !important;
+    }
+
+    .route-description {
+      padding: 38px 32px !important;
+      gap: 45px !important;
+      height: auto !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    .route-description__content {
+      width: 58% !important;
+      max-width: 58% !important;
+      font-size: 14px !important;
+      line-height: 1.5 !important;
+      box-sizing: border-box !important;
+    }
+
+    .route-description__title,
+    .route-description__subtitle {
+      font-size: 21px !important;
+      margin-bottom: 16px !important;
+    }
+
+    .route-description__text {
+      margin-bottom: 18px !important;
+    }
+
+    .route-description__sidebar {
+      width: 40% !important;
+      max-width: 40% !important;
+      height: auto !important;
+      padding: 26px !important;
+      font-size: 14px !important;
+      box-sizing: border-box !important;
+    }
+
+    .sidebar-title {
+      font-size: 15px !important;
+    }
+
+    .sidebar-list li {
+      margin-bottom: 12px !important;
+      font-size: 14px !important;
+    }
+
+    .calculator-section {
+      margin: 75px auto 100px !important;
+      padding: 0 30px !important;
+    }
+
+    .calc-title {
+      font-size: 23px !important;
+      margin-bottom: 60px !important;
+    }
+
+    .calc-subtitle {
+      font-size: 17px !important;
+    }
+
+    .calc-wrapper {
+      gap: 50px !important;
+    }
+
+    .calc-form {
+      width: 280px !important;
+      max-width: 280px !important;
+      flex-shrink: 0 !important;
+      padding: 32px 28px !important;
+      margin-right: 15px !important;
+      box-sizing: border-box !important;
+    }
+
+    .form-title {
+      font-size: 15px !important;
+      margin: 22px 0 13px 0 !important;
+    }
+
+    .custom-radio {
+      font-size: 15px !important;
+      padding: 8px 0 !important;
+    }
+
+    .calc-result {
+      width: 580px !important;
+      max-width: 580px !important;
+      flex: 1 !important;
+      min-width: 0 !important;
+      padding: 32px !important;
+      margin-right: 15px !important;
+      box-sizing: border-box !important;
+    }
+
+    .result-title {
+      font-size: 15px !important;
+    }
+
+    .result-content {
+      font-size: 15px !important;
+    }
+
+    #pulse-map-section {
+      padding: 0 20px !important;
+      box-sizing: border-box !important;
+    }
+
+    #pulseMap {
+      width: 100% !important;
+      max-width: 950px !important;
+      height: 450px !important;
+      box-sizing: border-box !important;
+    }
+
+    .route-map-section {
+      width: 100% !important;
+      padding: 0 20px !important;
+      box-sizing: border-box !important;
+      margin: 40px auto !important;
+    }
+
+    #routeMap {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 auto !important;
+      box-sizing: border-box !important;
+    }
+
+    .modal[style*="block"] {
+      padding: 24px 24px 24px 24px !important;
+      align-items: flex-start !important;
+    }
+
+    .modal__content {
+      margin: 5% auto 0 auto !important;
+    }
+  }
+
+  /* 2.5. Исправление для карт в диапазоне 915-1295px */
+  @media (min-width: 915px) and (max-width: 1295px) {
+    #pulse-map-section {
+      padding: 0 20px !important;
+      box-sizing: border-box !important;
+    }
+
+    #pulseMap {
+      width: 100% !important;
+      max-width: calc(100% - 40px) !important;
+      height: 558px !important;
+      box-sizing: border-box !important;
+    }
+
+    .route-map-section {
+      width: 100% !important;
+      padding: 0 20px !important;
+      box-sizing: border-box !important;
+      margin: 40px auto !important;
+    }
+
+    #routeMap {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 auto !important;
+      box-sizing: border-box !important;
+    }
+  }
+
+  /* 3. Промежуточный 1024–1036px */
+  @media (min-width: 1024px) and (max-width: 1036px) {
+    .container {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 40px;
+    }
+
+    .pulse-hero {
+      height: 350px !important;
+      margin-top: 110px !important;
+      padding-left: 60px !important;
+    }
+
+    .pulse-hero__title {
+      font-size: 46px !important;
+      margin-top: 55px !important;
+    }
+
+    .hero-map-btn {
+      left: 60px !important;
+      bottom: 40px !important;
+      width: 260px !important;
+    }
+
+    .route-section {
+      gap: 50px !important;
+      padding: 0 40px !important;
+      margin-top: 60px !important;
+    }
+
+    .gallery-container {
+      width: 750px !important;
+      max-width: 750px !important;
+      height: 500px !important;
+    }
+
+    .route-info {
+      width: 310px !important;
+      max-width: 310px !important;
+      height: 500px !important;
+    }
+
+    .route-info h3 {
+      font-size: 17px !important;
+    }
+
+    .route-info li {
+      font-size: 15px !important;
+    }
+
+    .route-description {
+      padding: 42px 38px !important;
+      gap: 50px !important;
+      height: auto !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    .route-description__content {
+      width: 60% !important;
+      max-width: 60% !important;
+      font-size: 14px !important;
+      line-height: 1.5 !important;
+      box-sizing: border-box !important;
+    }
+
+    .route-description__title,
+    .route-description__subtitle {
+      font-size: 21px !important;
+      margin-bottom: 16px !important;
+    }
+
+    .route-description__text {
+      margin-bottom: 18px !important;
+    }
+
+    .route-description__sidebar {
+      width: 38% !important;
+      max-width: 38% !important;
+      height: auto !important;
+      padding: 28px !important;
+      font-size: 14px !important;
+      box-sizing: border-box !important;
+    }
+
+    .sidebar-title {
+      font-size: 15px !important;
+    }
+
+    .sidebar-list li {
+      margin-bottom: 12px !important;
+      font-size: 14px !important;
+    }
+
+    .calculator-section {
+      margin: 80px auto 120px !important;
+      padding: 0 40px !important;
+    }
+
+    .calc-title {
+      font-size: 23px !important;
+      margin-bottom: 70px !important;
+    }
+
+    .calc-subtitle {
+      font-size: 17px !important;
+    }
+
+    .calc-wrapper {
+      gap: 60px !important;
+    }
+
+    .calc-form {
+      width: 280px !important;
+      max-width: 280px !important;
+      flex-shrink: 0 !important;
+      padding: 33px 30px !important;
+      margin-right: 15px !important;
+      box-sizing: border-box !important;
+    }
+
+    .form-title {
+      font-size: 15px !important;
+      margin: 23px 0 14px 0 !important;
+    }
+
+    .custom-radio {
+      font-size: 15px !important;
+      padding: 9px 0 !important;
+    }
+
+    .calc-result {
+      width: 600px !important;
+      max-width: 600px !important;
+      flex: 1 !important;
+      min-width: 0 !important;
+      padding: 33px !important;
+      margin-right: 15px !important;
+      box-sizing: border-box !important;
+    }
+
+    .result-title {
+      font-size: 15px !important;
+    }
+
+    .result-content {
+      font-size: 15px !important;
+    }
+
+    #pulseMap {
+      width: 100% !important;
+      max-width: 1000px !important;
+      height: 480px !important;
+    }
+
+    .modal[style*="block"] {
+      padding: 24px 24px 24px 24px !important;
+      align-items: flex-start !important;
+    }
+
+    .modal__content {
+      margin: 5% auto 0 auto !important;
+    }
+  }
+
+  /* 4. Промежуточный 1037–1279px */
+  @media (min-width: 1037px) and (max-width: 1279px) {
+    .container {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 50px;
+    }
+
+    .pulse-hero {
+      height: 360px !important;
+      margin-top: 115px !important;
+      padding-left: 65px !important;
+    }
+
+    .pulse-hero__title {
+      font-size: 47px !important;
+      margin-top: 58px !important;
+    }
+
+    .hero-map-btn {
+      left: 65px !important;
+      bottom: 42px !important;
+      width: 265px !important;
+    }
+
+    .route-section {
+      flex-direction: row !important;
+      gap: 50px !important;
+      padding: 0 50px !important;
+      margin-top: 63px !important;
+    }
+
+    .gallery-container {
+      width: 750px !important;
+      max-width: 750px !important;
+      height: 498px !important;
+    }
+
+    .route-info {
+      width: 293px !important;
+      max-width: 293px !important;
+      height: 498px !important;
+    }
+
+    .route-info h3 {
+      font-size: 18px !important;
+    }
+
+    .route-info li {
+      font-size: 16px !important;
+    }
+
+    .route-description {
+      padding: 40px !important;
+      gap: 76px !important;
+      height: auto !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    .route-description__content {
+      width: 1000px !important;
+      max-width: 1000px !important;
+      font-size: 15px !important;
+      line-height: 1.6 !important;
+      box-sizing: border-box !important;
+    }
+
+    .route-description__title,
+    .route-description__subtitle {
+      font-size: 23px !important;
+      margin-bottom: 18px !important;
+    }
+
+    .route-description__text {
+      margin-bottom: 25px !important;
+    }
+
+    .route-description__sidebar {
+      width: 402px !important;
+      max-width: 402px !important;
+      height: auto !important;
+      padding: 33px !important;
+      font-size: 15px !important;
+      box-sizing: border-box !important;
+    }
+
+    .sidebar-title {
+      font-size: 16px !important;
+    }
+
+    .sidebar-list li {
+      margin-bottom: 14px !important;
+      font-size: 15px !important;
+    }
+
+    .calculator-section {
+      margin: 90px auto 130px !important;
+      padding: 0 50px !important;
+    }
+
+    .calc-title {
+      font-size: 24px !important;
+      margin-bottom: 80px !important;
+    }
+
+    .calc-subtitle {
+      font-size: 18px !important;
+    }
+
+    .calc-wrapper {
+      gap: 80px !important;
+    }
+
+    .calc-form {
+      width: 266px !important;
+      max-width: 266px !important;
+      flex-shrink: 0 !important;
+      padding: 35px 30px !important;
+      margin-right: 15px !important;
+      box-sizing: border-box !important;
+    }
+
+    .form-title {
+      font-size: 16px !important;
+      margin: 25px 0 15px 0 !important;
+    }
+
+    .custom-radio {
+      font-size: 16px !important;
+      padding: 9px 0 !important;
+    }
+
+    .calc-result {
+      width: 660px !important;
+      max-width: 660px !important;
+      flex: 1 !important;
+      min-width: 0 !important;
+      padding: 35px !important;
+      margin-right: 15px !important;
+      box-sizing: border-box !important;
+    }
+
+    .result-title {
+      font-size: 16px !important;
+    }
+
+    .result-content {
+      font-size: 16px !important;
+    }
+
+    #pulseMap {
+      width: 100% !important;
+      max-width: 1100px !important;
+      height: 520px !important;
+    }
+
+    .modal[style*="block"] {
+      padding: 24px 24px 24px 24px !important;
+      align-items: flex-start !important;
+    }
+
+    .modal__content {
+      margin: 5% auto 0 auto !important;
+    }
+  }
+
+  /* 5. Промежуточный 1280–1394px */
+  @media (min-width: 1280px) and (max-width: 1394px) {
+    .container {
+      max-width: 1200px;
+      margin: 75px auto;
+      padding: 0 20px;
+    }
+
+    .pulse-hero {
+      height: 288px !important;
+      margin-top: 0 !important;
+      padding-left: 73px !important;
+    }
+
+    .pulse-hero__title {
+      font-size: 48px !important;
+      margin-top: 60px !important;
+    }
+
+    .hero-map-btn {
+      left: 69px !important;
+      bottom: 45px !important;
+      width: 271px !important;
+    }
+
+    .route-section {
+      flex-direction: column !important;
+      gap: 50px !important;
+      padding: 0 20px !important;
+      margin-top: 66px !important;
+    }
+
+    .gallery-container {
+      width: 100% !important;
+      max-width: 877px !important;
+      height: 498px !important;
+    }
+
+    .route-info {
+      width: 100% !important;
+      max-width: 877px !important;
+      height: 498px !important;
+    }
+
+    .route-info h3 {
+      font-size: 18px !important;
+    }
+
+    .route-info li {
+      font-size: 16px !important;
+    }
+
+    .route-description {
+      padding: 40px !important;
+      gap: 76px !important;
+      height: 824px !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    .route-description__content {
+      width: 1000px !important;
+      max-width: 1000px !important;
+      font-size: 16px !important;
+      line-height: 1.6 !important;
+      box-sizing: border-box !important;
+    }
+
+    .route-description__title,
+    .route-description__subtitle {
+      font-size: 24px !important;
+      margin-bottom: 20px !important;
+    }
+
+    .route-description__text {
+      margin-bottom: 30px !important;
+    }
+
+    .route-description__sidebar {
+      width: 402px !important;
+      max-width: 402px !important;
+      height: 735px !important;
+      padding: 33px !important;
+      font-size: 16px !important;
+      box-sizing: border-box !important;
+    }
+
+    .sidebar-title {
+      font-size: 16px !important;
+    }
+
+    .sidebar-list li {
+      margin-bottom: 15px !important;
+      font-size: 16px !important;
+    }
+
+    .calculator-section {
+      margin: 100px auto 150px !important;
+      padding: 0 20px !important;
+    }
+
+    .calc-title {
+      font-size: 24px !important;
+      margin-bottom: 99px !important;
+    }
+
+    .calc-subtitle {
+      font-size: 18px !important;
+    }
+
+    .calc-wrapper {
+      gap: 80px !important;
+    }
+
+    .calc-form {
+      width: 266px !important;
+      max-width: 266px !important;
+      flex-shrink: 0 !important;
+      padding: 35px 30px !important;
+      margin-right: 15px !important;
+      box-sizing: border-box !important;
+    }
+
+    .form-title {
+      font-size: 16px !important;
+      margin: 25px 0 15px 0 !important;
+    }
+
+    .custom-radio {
+      font-size: 16px !important;
+      padding: 9px 0 !important;
+    }
+
+    .calc-result {
+      width: 660px !important;
+      max-width: 660px !important;
+      flex: 1 !important;
+      min-width: 0 !important;
+      padding: 35px !important;
+      margin-right: 15px !important;
+      box-sizing: border-box !important;
+    }
+
+    .result-title {
+      font-size: 16px !important;
+    }
+
+    .result-content {
+      font-size: 16px !important;
+    }
+
+    #pulseMap {
+      width: 100% !important;
+      max-width: 1200px !important;
+      height: 540px !important;
+    }
+
+    .modal[style*="block"] {
+      padding: 24px 24px 24px 24px !important;
+      align-items: flex-start !important;
+    }
+
+    .modal__content {
+      margin: 5% auto 0 auto !important;
+    }
+  }
+
+  /* 6. Промежуточный 1200–1300px - предотвращение переполнения текста */
+  @media (min-width: 1200px) and (max-width: 1300px) {
+    .route-description__content {
+      width: 58% !important;
+      max-width: 58% !important;
+      font-size: 15px !important;
+      line-height: 1.5 !important;
+      box-sizing: border-box !important;
+    }
+
+    .route-description__sidebar {
+      width: 35% !important;
+      max-width: 35% !important;
+      font-size: 15px !important;
+      padding: 30px !important;
+      box-sizing: border-box !important;
+    }
+
+    .route-description {
+      gap: 50px !important;
+      padding: 38px 35px !important;
+      box-sizing: border-box !important;
+    }
+  }
+
+  /* 7. Промежуточный 1300–1500px - уменьшение шрифтов */
+  @media (min-width: 1300px) and (max-width: 1500px) {
+    .pulse-hero__title {
+      font-size: 46px !important;
+    }
+
+    .route-info h3 {
+      font-size: 17px !important;
+    }
+
+    .route-info li {
+      font-size: 15px !important;
+    }
+
+    .route-description__content {
+      font-size: 15px !important;
+    }
+
+    .route-description__title,
+    .route-description__subtitle {
+      font-size: 22px !important;
+    }
+
+    .route-description__sidebar {
+      font-size: 15px !important;
+    }
+
+    .calc-title {
+      font-size: 23px !important;
+    }
+
+    .calc-subtitle {
+      font-size: 17px !important;
+    }
+
+    .form-title {
+      font-size: 15px !important;
+    }
+
+    .custom-radio {
+      font-size: 15px !important;
+    }
+
+    .result-title {
+      font-size: 15px !important;
+    }
+
+    .result-content {
+      font-size: 15px !important;
+    }
+  }
+
+  /* 8. Десктоп ≥1280px */
+  @media (min-width: 1280px) {
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 75px auto;
+    }
+
+    .pulse-hero {
+      height: 288px;
+      margin-top: 0;
+      padding-left: 73px;
+    }
+
+    .pulse-hero__title {
+      font-size: 48px;
+      margin-top: 60px;
+    }
+
+    .hero-map-btn {
+      left: 69px;
+      bottom: 45px;
+      width: 271px;
+    }
+
+    .route-section {
+      gap: 50px;
+      margin-top: 66px;
+      margin-bottom: 50px;
+      padding: 0 20px;
+    }
+
+    .gallery-container {
+      width: 877px;
+      height: 498px;
+    }
+
+    .route-info {
+      width: 293px;
+      height: 498px;
+    }
+
+    .route-description {
+      max-width: 100%;
+      height: 824px;
+      padding: 40px;
+      gap: 76px;
+    }
+
+    .route-description__content {
+      width: 1000px;
+      font-size: 16px;
+    }
+
+    .route-description__title,
+    .route-description__subtitle {
+      font-size: 24px;
+    }
+
+    .route-description__sidebar {
+      width: 402px;
+      height: 735px;
+      padding: 33px;
+      font-size: 16px;
+    }
+
+    .calculator-section {
+      margin: 100px auto 150px;
+    }
+
+    .calc-title {
+      font-size: 24px;
+      margin-bottom: 99px;
+    }
+
+    .calc-subtitle {
+      font-size: 18px;
+    }
+
+    .calc-wrapper {
+      gap: 80px;
+    }
+
+    .calc-form {
+      width: 266px;
+      padding: 35px 30px;
+      margin-right: 15px;
+    }
+
+    .calc-result {
+      width: 660px;
+      padding: 35px;
+      margin-right: 15px;
+    }
+
+    #pulseMap {
+      width: 1287px;
+      height: 558px;
+    }
+
+    .modal[style*="block"] {
+      padding: 24px 24px 24px 24px;
+      align-items: flex-start;
+    }
+
+    .modal__content {
+      margin: 5% auto 0 auto;
+    }
+  }

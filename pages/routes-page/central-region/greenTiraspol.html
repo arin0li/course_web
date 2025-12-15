@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="greenTiraspol.css">
+        <link rel="stylesheet" href="../../../blocks/header/header.css">
+        <link rel="stylesheet" href="../../../blocks/footer/footer.css">
+        <link rel="stylesheet" href="../../../blocks/modal/modal-favorutes/modal-favorites.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.min.js"></script>   
+
+      </head>
+
+      <body>
+        <header class="header">
+            <div class="header__container">
+                <div class="logo">
+                  <h1 class="logo__title">EcoTravel<br>Приднестровье</h1>
+                </div>
+           
+                <nav class="nav">
+                  <div class="burger-menu" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <ul class="nav__list">
+                    <li class="nav__item"><a href="../../../index.html#hero" class="nav__link">Главная</a></li>
+                    <li class="nav__item"><a href="../../../pages/routes.html" class="nav__link">Маршруты</a></li>
+                    <li class="nav__item"><a href="../../../pages/region__map/region-map.html" class="nav__link">Карта региона</a></li>
+                    <li class="nav__item"><a href="../../../pages/attraction-page/attractions.html" class="nav__link">Достопримечательности</a></li>
+                    <li class="nav__item"><a href="../../../pages/tips.html" class="nav__link">Советы путешественникам</a></li>
+                    <li class="nav__item"><a href="../../../index.html#about" class="nav__link">О нас</a></li>
+                    <li class="nav__item"><a href="../../../index.html#contact" class="nav__link">Контакты</a></li>
+                    <li class="nav__item">
+                      <a href="#" class="nav__link favorites-link" id="favoritesLink">
+                        <i class="fas fa-heart"></i>
+                        <span class="favorites-count" style="display: none;">0</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </header>
+
+            <section id="greenTiraspol-hero" class="greenTiraspol-hero">
+                <!-- Фоновое изображение -->
+                <div class="greenTiraspol-hero__bg"></div>
+                
+                <!-- Тёмный оверлей -->
+                <div class="greenTiraspol-hero__overlay"></div>
+                
+                <!-- Заголовок -->
+                <h1 class="greenTiraspol-hero__title">
+                  Центральный Регион - «Зелёный Пульс Тирасполя»
+                </h1>
+                
+                <!-- КНОПКА — теперь точно кликабельная и в нужном месте -->
+                <a href="#greenTiraspol-map-section" class="hero-map-btn">
+                    Показать маршруты на карте
+                </a>
+            </section>
+
+            <div class="route-section">
+                <!-- Галерея с кнопками -->
+                
+                <div class="gallery-container">
+                    <button class="nav-btn prev">
+                        <img src="images/back.png" alt="">
+                    </button>
+                
+                    <div class="gallery">
+                        <div class="gallery-track" id="galleryTrack">
+                            <div class="gallery-image"><img src="images/ecat.jpg" alt=""></div>
+                            <div class="gallery-image"><img src="images/botanic.jpg" alt=""></div>
+                            <div class="gallery-image"><img src="images/ecat1.jpg" alt=""></div>
+                            <div class="gallery-image"><img src="images/botanic3.jpg" alt=""></div>
+                            <div class="gallery-image"><img src="images/ecat2.jpg" alt=""></div>
+                            <div class="gallery-image"><img src="images/botanic4.jpeg" alt=""></div>
+                            <div class="gallery-image"><img src="images/botanic5.jpg" alt=""></div>
+                        </div>
+                    </div>
+                
+                    <button class="nav-btn next">
+                        <img src="images/next.png" alt="">
+                    </button>
+                </div>
+                
+            
+                <!-- Блок характеристик — теперь рядом с галереей -->
+                <div class="route-info">
+                    <h3>ХАРАКТЕРИСТИКИ<br>МАРШРУТА</h3>
+                    <ul>
+                        <li>Протяженность: 7 км</li>
+                        <li>Продолжительность: 2,5–3,5 часа</li>
+                        <li>Сложность: лёгкая</li>
+                        <li>Покрытие: дорожки, асфальт, утрамбованный грунт</li>
+                        <li>Лучшее время: апрель–октябрь</li>
+                        <li>Тип: пешеходный<br>(автомобиль не требуется)</li>
+                    </ul>
+                </div>     
+            </div>
+
+            <div class="rectangle">
+                <h1 class="rectangle-title">Екатерининский парк → Ботанический сад</h1>
+            </div>
+
+            <section id="greenTiraspol-map-section">
+                <div id="greenTiraspolMap"></div>
+              </section>
+
+
+              <section class="route-description">
+                <div class="route-description__content">
+                  <h2 class="route-description__title">Краткое описание</h2>
+                  <p class="route-description__text">
+                    Маршрут «Зелёный Пульс Тирасполя» — это прогулка по зелёному сердцу столицы, где шум городской жизни гармонично сочетается со спокойствием старинных парков и природных уголков. Путь проходит от ухоженных аллей Екатерининского парка до тенистых дорожек Ботанического сада, открывая путешественнику живой облик Тирасполя — зелёного, уютного и удивительно разнообразного.<br><br>
+                    Вдоль маршрута встречаются вековые деревья, декоративные растения, цветочные клумбы и скрытые экотропы, где можно услышать щебет птиц и увидеть белок, перебегающих по кронам. Городские пейзажи мягко сменяются полу-лесной зоной, а аромат лип и акаций сопровождает почти весь путь.<br><br>              
+                  <h2 class="route-description__subtitle">Легенда маршрута «Террасы над Днестром»</h2>
+                  Говорят, что когда-то над Тирасполем жил молодой дух-страж зелёных насаждений, который должен был поддерживать жизнь в городских рощах. Каждое утро он проходил путь от Екатерининского парка до Ботанического сада, оставляя за собой лёгкий след свежести и шорох листвы.<br>
+                  <br>Там, где он касался земли, росли липы и клёны — будто впитывая его энергию, они тянулись выше и гуще. На рассвете можно услышать, как листья мягко шелестят, будто повторяют его имена, а птицы перекликаются так, словно охраняют его путь.<br>
+                  <br>Местные старожилы шепчут: если пройти этот маршрут с открытым сердцем и вниманием к природе, можно увидеть, как солнечные лучи, пробиваясь через кроны, складываются в тонкую серебристую дорожку — знак того, что дух города приветствует путника и впускает его в зелёное дыхание Тирасполя.<br>
+                  </p>
+
+                </div>
+              
+                <aside class="route-description__sidebar">
+                  <h3 class="sidebar-title">Что взять с собой</h3>
+                  <ul class="sidebar-list">
+                    <li>Удобная обувь для прогулки</li>
+                    <li>Лёгкая ветровка</li>
+                    <li>Солнцезащитный крем</li>
+                    <li>Вода (1,5–2 л)</li>
+                    <li>Маленькая аптечка (пластыри, влажные салфетки)</li>
+                    <li>Телефон/камера</li>
+                    <li>Карта или офлайн-навигация</li>
+                  </ul>
+              
+                  <h3 class="sidebar-title">Возможные сложности на маршруте</h3>
+                  <ul class="sidebar-list">
+                    <li>В тёплый сезон активны комары в районе Ботанического сада</li>
+                    <li>После дождя на отдельных грунтовых участках возможна грязь</li>
+                    <li>В выходные дни — высокая посещаемость в Екатерининском парке</li>
+                    <li>На малых аллеях может быть слабый мобильный сигнал из-за плотных деревьев</li>
+                  </ul>
+              
+                  <a href="#more-info" class="sidebar-link">Больше сведений →</a>
+                </aside>
+              </section>
+              
+
+              <!-- СЕКЦИЯ: Рассчитайте свой поход с Духом Днестра -->
+<section class="calculator-section" id="more-info">
+    <div class="container">
+      <!-- Главный заголовок -->
+      <h2 class="calc-title" >
+        Рассчитайте свой поход с Духом-стражем зелёных насаждений<br>
+        <span class="calc-subtitle">Учитываем подготовку, группу и сезон</span>
+      </h2>
+  
+      <div class="calc-wrapper">
+        <!-- ЛЕВАЯ ЧАСТЬ — форма -->
+        <div class="calc-form">
+            <div class="radio-block">
+              <h3 class="form-title">Ваша подготовка:</h3>
+              <label class="custom-radio">
+                <input type="radio" name="level" value="beginner" required>
+                <span class="radiomark"></span>
+                Начинающий
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="level" value="average">
+                <span class="radiomark"></span>
+                Средний
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="level" value="experienced">
+                <span class="radiomark"></span>
+                Опытный
+              </label>
+            </div>
+    
+            <div class="radio-block">
+              <h3 class="form-title">Размер группы:</h3>
+              <div class="range-wrapper">
+                <div class="range-values">
+                  <span>1</span>
+                  <span id="groupValue">10</span>
+                  <span>20</span>
+                </div>
+                <input type="range" id="groupSize" min="1" max="20" value="10" class="range-slider">
+              </div>
+            </div>
+    
+            <div class="radio-block">
+              <h3 class="form-title">Сезон и настроение:</h3>
+              <label class="custom-radio">
+                <input type="radio" name="season" value="winter">
+                <span class="radiomark"></span> Зима
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="season" value="spring">
+                <span class="radiomark"></span> Весна
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="season" value="summer">
+                <span class="radiomark"></span> Лето
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="season" value="autumn">
+                <span class="radiomark"></span> Осень
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="season" value="heart">
+                <span class="radiomark"></span> Иду с добрым сердцем
+              </label>
+            </div>
+    
+            <div class="radio-block">
+              <h3 class="form-title">Вариант маршрута:</h3>
+              <label class="custom-radio">
+                <input type="radio" name="route" value="light" required>
+                <span class="radiomark"></span>
+                Лайт (только Екатерининский)
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="route" value="standard">
+                <span class="radiomark"></span>
+                Стандарт (Екатерининский → Ботанический сад)
+              </label>
+            </div>
+    
+            <button class="calc-btn" id="calcSubmit">
+              Рассчитать
+            </button>
+          </div>
+  
+        <!-- ПРАВАЯ ЧАСТЬ — результат (изначально скрыт) -->
+        <div class="calc-result" id="resultBlock" style="display: none;">
+          <h3 class="result-title">Ваш Результат:</h3>
+          <div class="result-content" id="resultContent">
+            <!-- Сюда будет вставляться результат -->
+          </div>
+
+        
+          <div class="route-map-section">
+            <h3 class="section-title">Маршрут на карте</h3>
+            <div id="routeMap" class="route-map"></div>
+          </div>
+
+        </div>       
+      </div>
+    </div>
+  </section>
+
+
+
+<!-- Модальное окно избранного -->
+<div id="modal-favorites" class="modal">
+  <div class="modal__content modal__content--favorites">
+    <span class="modal__close">&times;</span>
+    <h2 class="modal__title">Мои избранные</h2>
+    <div id="favorites-content" class="favorites-content">
+      <p class="favorites-empty">У вас пока нет избранных элементов</p>
+    </div>
+  </div>
+</div>
+
+<!-- Модальное окно для просмотра больших изображений -->
+<div id="modal-image-viewer" class="modal modal-image-viewer">
+  <div class="modal__content modal__content--image">
+    <span class="modal__close">&times;</span>
+    <img id="modal-image-viewer-img" src="" alt="" class="modal-image-viewer__img">
+  </div>
+</div>
+
+<footer id="footer" class="footer">
+  <div class="footer__container">
+    <!-- Колонка 1: Логотип -->
+    <div class="footer__column-logo">
+      <div class="footer__logo">EcoTravel</div>
+    </div>
+
+    <!-- Колонка 2: Навигация -->
+    <div class="footer__column-nav">
+      <h3 class="footer__nav-title">НАВИГАЦИЯ</h3>
+      <nav class="footer__nav">
+        <a href="../../../index.html" class="footer__link">Главная</a>
+        <a href="../../../pages/routes.html" class="footer__link">Маршруты</a>
+        <a href="../../../pages/region__map/region-map.html" class="footer__link">Карта региона</a>
+        <a href="../../../pages/attraction-page/attractions.html" class="footer__link">Достопримечательности</a>
+        <a href="../../../pages/tips.html" class="footer__link">Советы путешественникам</a>
+        <a href="../../../index.html#about" class="footer__link">О нас</a>
+        <a href="../../../index.html#contact" class="footer__link">Контакты</a>
+      </nav>
+    </div>
+
+    <!-- Колонка 3: Контакты (адрес и режим работы) -->
+    <div class="footer__column-contacts">
+      <h3 class="footer__contacts-title">КОНТАКТЫ</h3>
+      <div class="footer__address-block">
+        <p class="footer__address-label">Наш адрес</p>
+        <p class="footer__address-text">Приднестровье, г. Тирасполь</p>
+      </div>
+      <div class="footer__hours-block">
+        <p class="footer__hours-label">Режим работы</p>
+        <p class="footer__hours-item">ПН-ВС: 09:00-18:00</p>
+      </div>
+    </div>
+
+    <!-- Колонка 4: Телефон + Почта + Соцсети -->
+    <div class="footer__column-right">
+      <div class="footer__phone-block">
+        <p class="footer__phone">77993307</p>
+        <a href="mailto:ecotravel_forever228@mail.ru" class="footer__email">ecotravel_forever228@mail.ru</a>
+      </div>
+      <div>
+        <p class="footer__socials-label">Мы в соц сетях</p>
+        <div class="footer__socials">
+          <a href="#"><img src="../../../assets/images/vk.png" alt="VK" class="footer__icon"></a>
+          <a href="#"><img src="../../../assets/images/inst.png" alt="Instagram" class="footer__icon"></a>
+          <a href="#"><img src="../../../assets/images/facebook.png" alt="Facebook" class="footer__icon"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../../../blocks/favorites/favorites.js"></script>
+<script src="../../../blocks/favorites/favorites-modal.js"></script>
+<script src="../../../blocks/image-viewer/image-viewer.js"></script>
+<script src="greenTiraspol.js"></script>
+<script>
+function toggleMenu() {
+    document.querySelector('.burger-menu').classList.toggle('active');
+    document.querySelector('.nav__list').classList.toggle('active');
+}
+document.querySelectorAll('.nav__link').forEach(link => {
+    link.addEventListener('click', () => {
+        document.querySelector('.burger-menu').classList.remove('active');
+        document.querySelector('.nav__list').classList.remove('active');
+    });
+});
+</script>
+      </body>
+</html>

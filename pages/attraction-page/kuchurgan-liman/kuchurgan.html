@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="kuchurgan.css">
+        <link rel="stylesheet" href="../../../blocks/header/header.css">
+        <link rel="stylesheet" href="../../../blocks/footer/footer.css">
+        <link rel="stylesheet" href="../../../blocks/modal/modal-favorutes/modal-favorites.css">
+        <script src="../../../blocks/favorites/favorites.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>   
+      </head>
+
+      <body>
+        <header class="header">
+            <div class="header__container">
+                <div class="logo">
+                  <h1 class="logo__title">EcoTravel<br>Приднестровье</h1>
+                </div>
+           
+                <nav class="nav">
+                  <div class="burger-menu" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <ul class="nav__list">
+                    <li class="nav__item"><a href="../../../index.html#hero" class="nav__link">Главная</a></li>
+                    <li class="nav__item"><a href="../../../pages/routes.html" class="nav__link">Маршруты</a></li>
+                    <li class="nav__item"><a href="../../../pages/region__map/region-map.html" class="nav__link">Карта региона</a></li>
+                    <li class="nav__item"><a href="../../../pages/attraction-page/attractions.html" class="nav__link">Достопримечательности</a></li>
+                    <li class="nav__item"><a href="../../../pages/tips.html" class="nav__link">Советы путешественникам</a></li>
+                    <li class="nav__item"><a href="../../../index.html#about" class="nav__link">О нас</a></li>
+                    <li class="nav__item"><a href="../../../index.html#contact" class="nav__link">Контакты</a></li>
+                    <li class="nav__item">
+                      <a href="#" class="nav__link favorites-link" id="favoritesLink">
+                        <i class="fas fa-heart"></i>
+                        <span class="favorites-count" style="display: none;">0</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </header>
+        <!-- БЛОК-ГЕРОЙ НА СТРАНИЦЕ МАРШРУТОВ -->
+        <section id="kuchurgan-hero" class="kuchurgan-hero">
+            <!-- Фоновое изображение -->
+            <div class="kuchurgan-hero__bg"></div>
+          
+            <!-- Тёмный оверлей — точно как в карточках -->
+            <div class="kuchurgan-hero__overlay"></div>
+          
+            <!-- Заголовок -->
+            <h1 class="kuchurgan-hero__title">
+              КУЧУРГАНСКИЙ ЛИМАН
+            </h1>
+          </section>
+
+
+          <div class="container">
+
+            <div class="content-wrapper">
+        
+                <!-- Левый блок -->
+                <div class="left-block">
+        
+                    <div class="card">
+                        <h2>Описание</h2>
+                        <p>Кучурганский лиман — одно из крупнейших пресно-солёных озёр Приднестровья, расположенное на границе с Украиной.<br><br></p>
+        
+                        <p>Берега лимана покрыты тростниковыми массивами, солончаковыми степями и зарослями ивняка. Летом вода прогревается до 25–28°C, создавая отличные условия для птиц, рыб и водных растений.<br><br></p>
+        
+                        <p>Это место любят любители спокойного отдыха, фотографы, рыбаки и наблюдатели за птицами. Лиман также известен рыбным разнообразием и природными ландшафтами, сменяющимися от широких камышовых зон до открытых водных площадей.</p>
+        
+                        <h2>Интересные факты:</h2>
+                        <ul>
+                            <li>В XX веке лиман использовался как важный рыбопромысловый участок.</li>
+                            <li>Здесь останавливаются тысячи мигрирующих птиц по пути в Африку.</li>
+                            <li>Глубина лимана достигает до 3–4 метров, но большинство зон — мелководья, благоприятные для рыбы.</li>
+                            <li>В лимане встречаются редкие виды цапель и куликов, занесённые в Красную книгу Приднестровья.</li>
+                        </ul>
+        
+                        <h2>Кучурганский лиман:</h2>
+                        <p><strong>Регион:</strong> Слободзейский район, Днестровск</p>
+                        <p><strong>Расположение:</strong> на границе с Украиной</p>
+                        <p><strong>Точные координаты:</strong> 46.6209968716211, 29.94067330773749</p>
+                        <p><strong>Сезон посещения:</strong> весна – лето</p>
+                        <p><strong>Доступность:</strong> автомобиль, велосипед, пеший маршрут</p>
+                        <p><strong>Продолжительность прогулки:</strong> 1–2 часа</p>
+                        <p><strong>Сложность:</strong> лёгкая</p>
+                    </div>
+        
+                </div>
+        
+                <!-- Правая колонка -->
+                <div class="right-column">
+        
+                    <!-- Галерея -->
+                    <div class="gallery-container">
+                        <div class="gallery">
+                            <div class="gallery-track" id="galleryTrack">
+                                <div class="gallery-image"><img src="images/liman.jpeg" alt=""></div>
+                                <div class="gallery-image"><img src="images/liman1.jpg"></div>
+                                <div class="gallery-image"><img src="images/liman2.jpg"></div> 
+                                <div class="gallery-image"><img src="images/liman3.jpg"></div> 
+                                <div class="gallery-image"><img src="images/liman4.jpg"></div> 
+                            </div>                            
+                        </div>
+                        <button class="nav-btn prev" onclick="moveSlide(-1)"><img src="images/back.png" alt="back"></button>
+                            <button class="nav-btn next" onclick="moveSlide(1)"><img src="images/next.png" alt="next"></button>
+                    </div>
+        
+                    <!-- Блок под галереей -->
+                    <div class="card tips-block">
+                        <h2>Советы<br>путешественникам:</h2>
+        
+                        <p><strong>Лучшее время для посещения:</strong> Лето — когда вода прогревается до 25–28°C, создавая отличные условия для птиц, рыб и водных растений. Утро — лучшее время для наблюдения за цаплями и куликами.</p>
+        
+                        <p><strong><br>Возьмите с собой:</strong> воду 1–2 л, головной убор, репеллент, удобную обувь (берега могут быть вязкими), фотоаппарат или бинокль, лёгкий перекус.</p>
+        
+                        <p><strong><br>Всё, что вы принесли с собой (упаковки от еды, бутылки, салфетки, окурки), уносите обратно. Даже «биоразлагаемые» остатки портят вид и привлекают грызунов и насекомых. Не шумите в местах гнездования птиц,</strong></p>
+                    </div>
+        
+                </div>
+            </div>
+        
+            <!-- Нижний горизонтальный блок -->
+            <div class="bottom-block">
+        
+                <div class="card">
+        
+                    <h2 class="bottom-title">Как добраться:</h2>
+        
+                    <p>
+                        <strong>Автомобильный маршрут:</strong> Из Тирасполя направляйтесь в сторону Днестровска по трассе Тирасполь–Маяк. Въехав в Днестровск, следуйте по улице Ленина к южной части города — к набережной и зоне отдыха у лимана.
+                    </p>
+        
+                    <p><strong>Маршрутка:</strong> Тирасполь → Днестровск. Выход на конечной остановке. Далее 10–15 минут пешком вниз к набережной.     Ознакомиться с расписанием и подробным маршрутом можно
+                        <a href="https://i-pmr.com/transport/tiraspol/bus/" target="_blank">здесь</a>.</p>
+        
+                    <p><strong>Парковка:</strong> У набережной, бесплатно. Летом в выходные может быть занято.</p>
+                    <button class="nature-button" onclick="location.href='#nature-handbook'">Ознакомиться с природой</button>
+                </div>
+        
+        
+            </div>
+        
+        </div>
+
+
+        <!-- СПРАВОЧНИК ПРИРОДЫ -->
+        <section class="nature-handbook" id="nature-handbook">
+          <div class="handbook-header">
+              <h2 class="handbook-title">Справочник природы</h2>
+          </div>
+      
+          <div class="handbook-content">
+      
+              <!-- РАСТЕНИЯ -->
+              <div class="category">
+                  <div class="category-header">
+                      <h3 class="category-title">РАСТЕНИЯ</h3>
+                      <!-- Кнопка подробнее для всего ряда растений -->
+                      <span class="category-details" onclick="openModal('plants')">
+                        Подробнее
+                    </span>
+                  </div>
+                  <div class="cards-grid">
+                      <div class="nature-card">
+                          <img src="images/trostnik.jpg" alt="Тростник">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Тростник обыкновенный<br>(Phragmites australis)</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/rogoz.jpg" alt="Рогоз">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Рогоз широколистный<br>(Typha latifolia)</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/kamish.jpg" alt="Камыш">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Камыш озёрный<br>(Schoenoplectus lacustris)</div>
+                      </div>
+                  </div>
+              </div>
+      
+              <!-- ЖИВОТНЫЕ -->
+              <div class="category">
+                  <div class="category-header">
+                      <h3 class="category-title animal-title">ЖИВОТНЫЕ</h3>
+                      <!-- Кнопка подробнее для всего ряда животных -->
+                      <span class="category-details" onclick="openModal('animals')">
+                        Подробнее
+                    </span>
+                  </div>
+                  <div class="cards-grid">
+                      <div class="nature-card">
+                          <img src="images/caplya.jpg" alt="Цапля">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Серая цапля</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/baklan.jfif" alt="Баклан">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Большой баклан</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/lebed.jpeg" alt="Лебедь">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Лебедь-шипун</div>
+                      </div>
+                  </div>
+              </div>
+      
+              <!-- ГРИБЫ -->
+              <div class="category mushrooms">
+                  <div class="mushrooms-header">
+                      <h3 class="mushrooms-main-title">ГРИБЫ</h3>
+                      <div class="mushrooms-subtitles">
+                          <span class="poisonous">ЯДОВИТЫЕ</span>
+                          <span class="edible">СЪЕДОБНЫЕ</span>
+                      </div>
+                      <!-- Кнопка подробнее для грибов -->
+                      <span class="category-details" onclick="openModal('mushrooms')">
+                        Подробнее
+                    </span>
+                  </div>
+                  <!-- Сетка грибов с кастомными gap -->
+                  <div class="mushrooms-grid">
+                      <!-- Ядовитые -->
+                      <div class="nature-card">
+                          <img src="images/amanita muscaria.png" alt="Мухомор">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Мухомор красный</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/poganka.jpg" alt="Бледная поганка">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Бледная поганка</div>
+                      </div>
+      
+                      <!-- Съедобные -->
+                      <div class="nature-card">
+                          <img src="images/Armillaria-mellea.jpg" alt="Опенок осенний">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Опёнок осенний</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/maslenok.jpg" alt="Маслёнок">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Маслёнок обыкновенный</div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      
+      <!-- Модальные окна -->
+      <!-- Модальное окно для растений -->
+      <div id="plantsModal" class="modal">
+          <div class="modal-content">
+              <span class="close-button" onclick="closeModal('plantsModal')">&times;</span>
+              <h3>Растения Кучурганского лимана</h3>
+              
+              <div class="modal-item">
+                  <h4>1. Тростник обыкновенный (Phragmites australis)</h4>
+                  <img src="images/trostnik.jpg" alt="Тростник">
+                  <p><strong>Описание:</strong> формирует плотные заросли на берегах лимана и служит укрытием для множества птиц.</p>
+                  <p><strong>Место обитания:</strong> берега лимана, мелководья.</p>
+                  <p><strong>Интересный факт:</strong> тростниковые стенки служат домом для десятков видов птиц.</p>
+              </div>
+              
+              <div class="modal-item">
+                  <h4>2. Рогоз широколистный (Typha latifolia)</h4>
+                  <img src="images/rogoz.jpg" alt="Рогоз">
+                  <p><strong>Описание:</strong> растёт в заболоченных зонах и образует густые прибрежные полосы.</p>
+                  <p><strong>Место обитания:</strong> заболоченные зоны.</p>
+                  <p><strong>Интересный факт:</strong> его пух использовали вместо ваты.</p>
+              </div>
+              
+              <div class="modal-item">
+                  <h4>3. Камыш озёрный (Schoenoplectus lacustris)</h4>
+                  <img src="images/kamish.jpg" alt="Камыш">
+                  <p><strong>Описание:</strong> встречается на границе воды и суши и хорошо переносит колебания уровня воды.</p>
+                  <p><strong>Место обитания:</strong> граница воды и суши.</p>
+                  <p><strong>Интересный факт:</strong> устойчив к большим колебаниям уровня воды.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>4. Ситняг болотный (Eleocharis palustris)</h4>
+                  <img src="images/sitnyag.jfif" alt="Ситняг">
+                  <p><strong>Описание:</strong> покрывает мелководья и помогает естественной фильтрации воды.</p>
+                  <p><strong>Место обитания:</strong> мелкие заливы.</p>
+                  <p><strong>Интересный факт:</strong> отлично фильтрует воду.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>5. Лепешник водяной (Glyceria maxima)</h4>
+                  <img src="images/acorus_calamus.jpg" alt="Лепешник">
+                  <p><strong>Описание:</strong> растёт на влажных лугах и служит кормом для водоплавающих.</p>
+                  <p><strong>Место обитания:</strong> влажные луга у лимана.</p>
+                  <p><strong>Интересный факт:</strong> кормовое растение для водоплавающих птиц.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>6. Желтая кувшинка (Nuphar lutea)</h4>
+                  <img src="images/kuvshinka.jpg" alt="Кувшинка">
+                  <p><strong>Описание:</strong> украшает тихие заводи крупными жёлтыми цветами всё лето.</p>
+                  <p><strong>Место обитания:</strong> тихие заводи.</p>
+                  <p><strong>Интересный факт:</strong> цветёт всё лето.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>7. Горец земноводный (Persicaria amphibia)</h4>
+                  <img src="images/gorec-zemnovodniy-4-544x362.jpg" alt="Горец">
+                  <p><strong>Описание:</strong> способен расти как на воде, так и на суше, образуя плавучие ковры.</p>
+                  <p><strong>Место обитания:</strong> прибрежные зоны.</p>
+                  <p><strong>Интересный факт:</strong> способен расти и в воде, и на суше.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>8. Водяная мята (Mentha aquatica)</h4>
+                  <img src="images/myata.jfif" alt="Мята">
+                  <p><strong>Описание:</strong> ароматное растение влажных берегов с характерным мятным запахом.</p>
+                  <p><strong>Место обитания:</strong> влажные берега.</p>
+                  <p><strong>Интересный факт:</strong> издаёт сильный аромат при прикосновении.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>9. Осока береговая (Carex riparia)</h4>
+                  <img src="images/osoka.webp" alt="Осока">
+                  <p><strong>Описание:</strong> укрепляет почву в камышовых зонах и образует плотные куртины.</p>
+                  <p><strong>Место обитания:</strong> камышовые зоны.</p>
+                  <p><strong>Интересный факт:</strong> используется в укреплении почвы.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>10. Хвощ болотный (Equisetum palustre)</h4>
+                  <img src="images/hvosh.webp" alt="Хвощ">
+                  <p><strong>Описание:</strong> древнее влаголюбивое растение, распространённое на влажных почвах.</p>
+                  <p><strong>Место обитания:</strong> влажные участки вокруг лимана.</p>
+                  <p><strong>Интересный факт:</strong> древний родственник деревьев каменноугольного периода.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>11. Водяной орех (Trapa natans)</h4>
+                  <img src="images/orekh-vodyanoj-ili-chilim.jpg" alt="Водяной орех">
+                  <p><strong>Описание:</strong> редкое плавающее растение Красной книги, встречающееся в тихих заводях.</p>
+                  <p><strong>Место обитания:</strong> тихие закрытые участки лимана.</p>
+                  <p><strong>Интересный факт:</strong> занесён в Красную книгу ПМР.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>12. Рдест блестящий (Potamogeton lucens)</h4>
+                  <img src="images/rdest.jpg" alt="Рдест">
+                  <p><strong>Описание:</strong> подводное растение, насыщающее воду кислородом летом.</p>
+                  <p><strong>Место обитания:</strong> толща воды.</p>
+                  <p><strong>Интересный факт:</strong> основной источник кислорода в воде летом.</p>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Модальное окно для животных -->
+      <div id="animalsModal" class="modal">
+          <div class="modal-content">
+              <span class="close-button" onclick="closeModal('animalsModal')">&times;</span>
+              <h3>Животные Кучурганского лимана</h3>
+              
+              <div class="modal-item">
+                  <h4>1. Серая цапля</h4>
+                  <img src="images/caplya.jpg" alt="Цапля">
+                  <p><strong>Описание:</strong> охотится на мелководьях, подолгу оставаясь неподвижной.</p>
+                  <p><strong>Место обитания:</strong> мелководья.</p>
+                  <p><strong>Интересный факт:</strong> стоит неподвижно до 10 минут.</p>
+              </div>
+              
+              <div class="modal-item">
+                  <h4>2. Большой баклан</h4>
+                  <img src="images/baklan.jfif" alt="Баклан">
+                  <p><strong>Описание:</strong> часто сидит на камышах и ныряет за рыбой на большую глубину.</p>
+                  <p><strong>Место обитания:</strong> выступы камышей.</p>
+                  <p><strong>Интересный факт:</strong> ныряет до 20 метров.</p>
+              </div>
+              
+              <div class="modal-item">
+                  <h4>3. Лебедь-шипун</h4>
+                  <img src="images/lebed.jpeg" alt="Лебедь">
+                  <p><strong>Описание:</strong> плавает в открытых водах лимана и образует постоянные пары.</p>
+                  <p><strong>Место обитания:</strong> открытая вода.</p>
+                  <p><strong>Интересный факт:</strong> пары сохраняются всю жизнь.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>4. Утка-кряква</h4>
+                  <img src="images/duck.jpg" alt="Утка">
+                  <p><strong>Описание:</strong> самое массовое водоплавающее, встречающееся у берегов и в заводях.</p>
+                  <p><strong>Место обитания:</strong> берега и заводи.</p>
+                  <p><strong>Интересный факт:</strong> одна из самых распространённых.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>5. Полевка темная</h4>
+                  <img src="images/polevka.jpg" alt="Полевка">
+                  <p><strong>Описание:</strong> живёт в береговых норах и делает запасы травы.</p>
+                  <p><strong>Место обитания:</strong> береговые норы.</p>
+                  <p><strong>Интересный факт:</strong> делает запасы травы на зиму.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>6. Ондатра</h4>
+                  <img src="images/ondatra.jpg" alt="Ондатра">
+                  <p><strong>Описание:</strong> строит тростниковые «хатки» и отлично плавает.</p>
+                  <p><strong>Место обитания:</strong> тростниковые «хаты».</p>
+                  <p><strong>Интересный факт:</strong> отличные пловцы.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>7. Водяная крыса</h4>
+                  <img src="images/krisa.jpeg" alt="Крыса">
+                  <p><strong>Описание:</strong> обитает в прибрежных зонах и питается в основном растениями.</p>
+                  <p><strong>Место обитания:</strong> берега лимана.</p>
+                  <p><strong>Интересный факт:</strong> питается почти полностью растениями.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>8. Судук (судак)</h4>
+                  <img src="images/sydak.jpg" alt="Судак">
+                  <p><strong>Описание:</strong> хищная рыба глубоких участков лимана с отличным зрением.</p>
+                  <p><strong>Место обитания:</strong> глубокие зоны.</p>
+                  <p><strong>Интересный факт:</strong> хищная рыба с отличным зрением.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>9. Карась серебряный</h4>
+                  <img src="images/karas-serebryanyj-1.jpg" alt="Карась">
+                  <p><strong>Описание:</strong> живёт на мелководьях и выдерживает низкий уровень кислорода.</p>
+                  <p><strong>Место обитания:</strong> мелководья.</p>
+                  <p><strong>Интересный факт:</strong> выживает при низком кислороде.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>10. Сом европейский</h4>
+                  <img src="images/som.jpg" alt="Сом">
+                  <p><strong>Описание:</strong> крупная донная рыба, обитающая в глубоких ямах.</p>
+                  <p><strong>Место обитания:</strong> глубокие ямы.</p>
+                  <p><strong>Интересный факт:</strong> достигает более 2 метров.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>11. Зелёная жаба</h4>
+                  <img src="images/jaba.jpg" alt="Жаба">
+                  <p><strong>Описание:</strong> активна на влажных берегах преимущественно в вечернее время.</p>
+                  <p><strong>Место обитания:</strong> влажные берега.</p>
+                  <p><strong>Интересный факт:</strong> активна вечером.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>12. Обыкновенная уж (неядовитый)</h4>
+                  <img src="images/uj.png" alt="Уж">
+                  <p><strong>Описание:</strong> живёт в камышах, отлично плавает и питается рыбой.</p>
+                  <p><strong>Место обитания:</strong> камыши.</p>
+                  <p><strong>Интересный факт:</strong> отлично плавает и питается рыбой.</p>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Модальное окно для грибов -->
+      <div id="mushroomsModal" class="modal">
+          <div class="modal-content">
+              <span class="close-button" onclick="closeModal('mushroomsModal')">&times;</span>
+              <h3>Грибы Кучурганского лимана</h3>
+              
+              <div class="modal-section">
+                  <h4 class="edible-title">СЪЕДОБНЫЕ ГРИБЫ</h4>
+                  
+                  <div class="modal-item">
+                      <h4>1. Опёнок осенний</h4>
+                      <img src="images/Armillaria-mellea.jpg" alt="Опёнок">
+                      <p><strong>Описание:</strong> растёт большими группами на старых деревьях.</p>
+                      <p><strong>Место обитания:</strong> растёт на старых деревьях.</p>
+                      <p><strong>Интересный факт:</strong> может образовывать гигантские колонии и светиться в темноте.</p>
+                  </div>
+                  
+                  <div class="modal-item">
+                      <h4>2. Маслёнок обыкновенный</h4>
+                      <img src="images/maslenok.jpg" alt="Маслёнок">
+                      <p><strong>Описание:</strong> встречается в сосновых посадках возле лимана.</p>
+                      <p><strong>Место обитания:</strong> сосновые посадки возле лимана.</p>
+                      <p><strong>Интересный факт:</strong> перед готовкой нужно снимать слизистую кожицу со шляпки.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h4>3. Подберёзовик</h4>
+                      <img src="images/podberrzovik.jpg" alt="Подберёзовик">
+                      <p><strong>Описание:</strong> появляется под молодыми берёзами на влажной почве.</p>
+                      <p><strong>Место обитания:</strong> под молодыми берёзами.</p>
+                      <p><strong>Интересный факт:</strong> редко бывает червивым и очень питателен.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h4>4. Дождевик настоящий</h4>
+                      <img src="images/grib-dozhdevik-foto-i-opisanie-1.jpg" alt="Дождевик">
+                      <p><strong>Описание:</strong> растёт на влажных полянах и легко узнаётся по белой мякоти.</p>
+                      <p><strong>Место обитания:</strong> на влажных полянах.</p>
+                      <p><strong>Интересный факт:</strong> может достигать размера футбольного мяча и используется в медицине.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h4>5. Груздь настоящий</h4>
+                      <img src="images/gruzd-nastoyashhij-02.jpg" alt="Груздь">
+                      <p><strong>Описание:</strong> предпочитает тенистые места под кустарниками.</p>
+                      <p><strong>Место обитания:</strong> в тени кустарников.</p>
+                      <p><strong>Интересный факт:</strong> требует длительного вымачивания перед приготовлением.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h4>6. Лисичка обыкновенная</h4>
+                      <img src="images/lisichka.jpg" alt="Лисичка">
+                      <p><strong>Описание:</strong> встречается в смешанных насаждениях и имеет яркий жёлтый цвет.</p>
+                      <p><strong>Место обитания:</strong> смешанные посадки.</p>
+                      <p><strong>Интересный факт:</strong> никогда не бывает червивой благодаря особому веществу в мякоти.</p>
+                  </div>
+              </div>
+              
+              <div class="modal-section">
+                  <h4 class="poisonous-title">ЯДОВИТЫЕ ГРИБЫ</h4>
+                  
+                  <div class="modal-item">
+                      <h4>7. Мухомор красный</h4>
+                      <img src="images/amanita muscaria.png" alt="Мухомор">
+                      <p><strong>Описание:</strong> заметный ядовитый гриб с красной шляпкой возле берёз.</p>
+                      <p><strong>Место обитания:</strong> возле берёзовой поросли.</p>
+                      <p><strong>Интересный факт:</strong> опасный гриб, встречается редко.</p>
+                  </div>
+                  
+                  <div class="modal-item">
+                      <h4>8. Бледная поганка</h4>
+                      <img src="images/poganka.jpg" alt="Бледная поганка">
+                      <p><strong>Описание:</strong> крайне ядовита и встречается редко, но опасна.</p>
+                      <p><strong>Место обитания:</strong> лесополосы.</p>
+                      <p><strong>Интересный факт:</strong> опасный гриб, встречается редко.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h4>9. Паутинник пурпурный</h4>
+                      <img src="images/pautinik.jpg" alt="Паутинник">
+                      <p><strong>Описание:</strong> ядовитый гриб, растущий на влажных почвах.</p>
+                      <p><strong>Место обитания:</strong> у влажных почв.</p>
+                      <p><strong>Интересный факт:</strong> ядовитый.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h4>10. Горчак (желчный гриб)</h4>
+                      <img src="images/gorchak.jpg" alt="Горчак">
+                      <p><strong>Описание:</strong> несъедобный, имеет крайне горький вкус.</p>
+                      <p><strong>Место обитания:</strong> лесополосы.</p>
+                      <p><strong>Интересный факт:</strong> горький, несъедобный.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h4>11. Галерина окаймлённая</h4>
+                      <img src="images/Galerina-marginata_03.jpg" alt="Галерина">
+                      <p><strong>Описание:</strong> ядовитый гриб, растущий на влажных пнях.</p>
+                      <p><strong>Место обитания:</strong> на влажных пнях.</p>
+                      <p><strong>Интересный факт:</strong> ядовитая.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h4>12. Навозник мерцающий</h4>
+                      <img src="images/navoznik.jfif" alt="Навозник">
+                      <p><strong>Описание:</strong> несъедобный гриб, появляющийся на перегнойных почвах.</p>
+                      <p><strong>Место обитания:</strong> на перегнойных почвах.</p>
+                      <p><strong>Интересный факт:</strong> несъедобный.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  <section id="kuchurgan-liman-map-section">
+    <div id="kuchurgan-limanMap"></div>
+  </section>
+
+  <div class="routespage__header-outer">
+    <div class="routespage__header">
+      <h2 class="routespage__title">Приднестровье - это край, где плещется Днестр и молчат древние холмы</h2>
+    </div>
+  </div>
+  
+  <footer id="footer" class="footer">
+    <div class="footer__container">
+      
+      <!-- Колонка 1: Логотип -->
+      <div class="footer__column-logo">
+        <div class="footer__logo">EcoTravel</div>
+      </div>
+
+      <!-- Колонка 2: Навигация -->
+      <div class="footer__column-nav">
+        <h3 class="footer__nav-title">НАВИГАЦИЯ</h3>
+        <nav class="footer__nav">
+          <a href="../../../index.html" class="footer__link">Главная</a>
+          <a href="../../../pages/routes.html" class="footer__link">Маршруты</a>
+          <a href="../../../pages/region__map/region-map.html" class="footer__link">Карта региона</a>
+          <a href="../../../pages/attraction-page/attractions.html" class="footer__link">Достопримечательности</a>
+          <a href="../../../pages/tips.html" class="footer__link">Советы путешественникам</a>
+          <a href="../../../index.html#about" class="footer__link">О нас</a>
+          <a href="../../../index.html#contact" class="footer__link">Контакты</a>
+        </nav>
+      </div>
+
+      <!-- Колонка 3: Контакты (адрес и режим работы) -->
+      <div class="footer__column-contacts">
+        <h3 class="footer__contacts-title">КОНТАКТЫ</h3>
+        <div class="footer__address-block">
+          <p class="footer__address-label">Наш адрес</p>
+          <p class="footer__address-text">Приднестровье, г. Тирасполь</p>
+        </div>
+        <div class="footer__hours-block">
+          <p class="footer__hours-label">Режим работы</p>
+          <p class="footer__hours-item">ПН-ВС: 09:00-18:00</p>
+        </div>
+      </div>
+
+      <!-- Колонка 4: Телефон + Почта + Соцсети -->
+      <div class="footer__column-right">
+        <div class="footer__phone-block">
+          <p class="footer__phone">77993307</p>
+          <a href="mailto:ecotravel_forever228@mail.ru" class="footer__email">ecotravel_forever228@mail.ru</a>
+        </div>
+        <div>
+          <p class="footer__socials-label">Мы в соц сетях</p>
+          <div class="footer__socials">
+            <a href="#"><img src="../../../assets/images/vk.png" alt="VK" class="footer__icon"></a>
+            <a href="#"><img src="../../../assets/images/inst.png" alt="Instagram" class="footer__icon"></a>
+            <a href="#"><img src="../../../assets/images/facebook.png" alt="Facebook" class="footer__icon"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Модальное окно избранного -->
+  <div id="modal-favorites" class="modal">
+    <div class="modal__content modal__content--favorites">
+      <span class="modal__close">&times;</span>
+      <h2 class="modal__title">Мои избранные</h2>
+      <div id="favorites-content" class="favorites-content">
+        <p class="favorites-empty">У вас пока нет избранных элементов</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно для просмотра больших изображений -->
+  <div id="modal-image-viewer" class="modal modal-image-viewer">
+    <div class="modal__content modal__content--image">
+      <span class="modal__close">&times;</span>
+      <img id="modal-image-viewer-img" src="" alt="" class="modal-image-viewer__img">
+    </div>
+  </div>
+
+  <script src="../../../blocks/favorites/favorites.js"></script>
+  <script src="../../../blocks/favorites/favorites-modal.js"></script>
+  <script src="../../../blocks/image-viewer/image-viewer.js"></script>
+  <script src="kuchurgan.js"></script>
+  <script>
+  function toggleMenu() {
+      document.querySelector('.burger-menu').classList.toggle('active');
+      document.querySelector('.nav__list').classList.toggle('active');
+  }
+  document.querySelectorAll('.nav__link').forEach(link => {
+      link.addEventListener('click', () => {
+          document.querySelector('.burger-menu').classList.remove('active');
+          document.querySelector('.nav__list').classList.remove('active');
+      });
+  });
+  </script>
+      </body>
+</html>

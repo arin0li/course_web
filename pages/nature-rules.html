@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Правила поведения на природе - EcoTravel Приднестровье</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../blocks/header/header.css">
+    <link rel="stylesheet" href="../blocks/footer/footer.css">
+    <link rel="stylesheet" href="../blocks/modal/modal-favorutes/modal-favorites.css">
+    <script src="../blocks/favorites/favorites.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        .nature-rules-hero {
+            background: linear-gradient(135deg, #2D5016 0%, #295B68 100%);
+            padding: 120px 20px 60px;
+            text-align: center;
+            color: #fff;
+            margin-top: 70px;
+        }
+
+        .nature-rules-hero__title {
+            font-family: 'Merriweather', serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            white-space: nowrap;
+            letter-spacing: -0.5px;
+        }
+
+        .nature-rules-hero__subtitle {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        .nature-rules-content {
+            padding: 60px 0;
+            background-color: #F5F5DC;
+        }
+
+        .rules-section {
+            margin-bottom: 60px;
+        }
+
+        .rules-section__title {
+            font-family: 'Merriweather', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #2D5016;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .rule-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .rule-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .rule-card__icon {
+            font-size: 48px;
+            color: #4B99B2;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .rule-card__title {
+            font-family: 'Merriweather', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #2D5016;
+            margin-bottom: 15px;
+        }
+
+        .rule-card__text {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .rule-card__list {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #555;
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+
+        .rule-card__list li {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 767px) {
+            .nature-rules-hero {
+                padding: 100px 15px 40px;
+            }
+
+            .nature-rules-hero__title {
+                font-size: 32px;
+                white-space: normal;
+                letter-spacing: normal;
+            }
+
+            .nature-rules-hero__subtitle {
+                font-size: 16px;
+            }
+
+            .rules-section__title {
+                font-size: 24px;
+            }
+
+            .rules-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header__container">
+            <div class="logo">
+                <h1 class="logo__title">EcoTravel<br>Приднестровье</h1>
+            </div>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="../index.html#hero" class="nav__link">Главная</a></li>
+                    <li class="nav__item"><a href="routes.html" class="nav__link">Маршруты</a></li>
+                    <li class="nav__item"><a href="region__map/region-map.html" class="nav__link">Карта региона</a></li>
+                    <li class="nav__item"><a href="attraction-page/attractions.html" class="nav__link">Достопримечательности</a></li>
+                    <li class="nav__item"><a href="tips.html" class="nav__link">Советы путешественникам</a></li>
+                    <li class="nav__item"><a href="../index.html#about" class="nav__link">О нас</a></li>
+                    <li class="nav__item"><a href="../index.html#contact" class="nav__link">Контакты</a></li>
+                    <li class="nav__item">
+                        <a href="#" class="nav__link favorites-link" id="favoritesLink">
+                            <i class="fas fa-heart"></i>
+                            <span class="favorites-count" style="display: none;">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="nature-rules-hero">
+        <h1 class="nature-rules-hero__title">Правила поведения на природе</h1>
+        <p class="nature-rules-hero__subtitle">Основные принципы экологического туризма и ответственного отношения к природе</p>
+    </section>
+
+    <section class="nature-rules-content">
+        <div class="container">
+            <!-- Основные принципы -->
+            <div class="rules-section">
+                <h2 class="rules-section__title">Основные принципы экологического туризма</h2>
+                <div class="rules-grid">
+                    <div class="rule-card">
+                        <i class="fas fa-ban rule-card__icon"></i>
+                        <h3 class="rule-card__title">Не оставляй следов</h3>
+                        <p class="rule-card__text">Весь мусор, который вы принесли, должен уйти с вами. Используйте многоразовые контейнеры и упаковку.</p>
+                    </div>
+                    <div class="rule-card">
+                        <i class="fas fa-tree rule-card__icon"></i>
+                        <h3 class="rule-card__title">Уважай природу</h3>
+                        <p class="rule-card__text">Не срывайте растения, не пугайте животных. Наблюдайте за природой на безопасном расстоянии.</p>
+                    </div>
+                    <div class="rule-card">
+                        <i class="fas fa-fire rule-card__icon"></i>
+                        <h3 class="rule-card__title">Осторожно с огнём</h3>
+                        <p class="rule-card__text">Не разводите костры в неподготовленных местах. Используйте специально оборудованные площадки или газовые горелки.</p>
+                    </div>
+                    <div class="rule-card">
+                        <i class="fas fa-sign rule-card__icon"></i>
+                        <h3 class="rule-card__title">Соблюдай указатели</h3>
+                        <p class="rule-card__text">Следуйте маркировке троп, не заходите за ограждения в заповедниках и охраняемых зонах.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Рекомендации по выбору снаряжения -->
+            <div class="rules-section">
+                <h2 class="rules-section__title">Рекомендации по выбору снаряжения</h2>
+                <div class="rules-grid">
+                    <div class="rule-card">
+                        <i class="fas fa-bottle-water rule-card__icon"></i>
+                        <h3 class="rule-card__title">Многоразовая посуда</h3>
+                        <p class="rule-card__text">Используйте многоразовые бутылки, контейнеры и посуду вместо одноразовой пластиковой упаковки.</p>
+                    </div>
+                    <div class="rule-card">
+                        <i class="fas fa-shopping-bag rule-card__icon"></i>
+                        <h3 class="rule-card__title">Эко-сумки</h3>
+                        <p class="rule-card__text">Тканевые сумки вместо полиэтиленовых пакетов для продуктов и мусора.</p>
+                    </div>
+                    <div class="rule-card">
+                        <i class="fas fa-sun rule-card__icon"></i>
+                        <h3 class="rule-card__title">Экологичные кремы</h3>
+                        <p class="rule-card__text">Солнцезащитные кремы без оксибензона, безопасные для водных экосистем.</p>
+                    </div>
+                    <div class="rule-card">
+                        <i class="fas fa-campground rule-card__icon"></i>
+                        <h3 class="rule-card__title">Палатки и коврики</h3>
+                        <p class="rule-card__text">Выбирайте лёгкое и компактное снаряжение, которое не наносит вреда почве и растительности.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Что делать при встрече с дикими животными -->
+            <div class="rules-section">
+                <h2 class="rules-section__title">Что делать при встрече с дикими животными</h2>
+                <div class="rules-grid">
+                    <div class="rule-card">
+                        <i class="fas fa-eye rule-card__icon"></i>
+                        <h3 class="rule-card__title">Наблюдай на расстоянии</h3>
+                        <p class="rule-card__text">Не приближайтесь к животным, особенно к детёнышам. Используйте бинокль для наблюдения.</p>
+                    </div>
+                    <div class="rule-card">
+                        <i class="fas fa-shield-alt rule-card__icon"></i>
+                        <h3 class="rule-card__title">Не корми диких животных</h3>
+                        <p class="rule-card__text">Кормление нарушает естественное поведение животных и может быть опасно для вас.</p>
+                    </div>
+                    <div class="rule-card">
+                        <i class="fas fa-dog rule-card__icon"></i>
+                        <h3 class="rule-card__title">Собаки на поводке</h3>
+                        <p class="rule-card__text">Если идёте с собакой, держите её на поводке, чтобы не потревожить диких животных.</p>
+                    </div>
+                    <div class="rule-card">
+                        <i class="fas fa-exclamation-triangle rule-card__icon"></i>
+                        <h3 class="rule-card__title">При угрозе</h3>
+                        <p class="rule-card__text">Если животное проявляет агрессию, медленно отступайте, не поворачивайтесь спиной, не бегите.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Как правильно утилизировать отходы -->
+            <div class="rules-section">
+                <h2 class="rules-section__title">Как правильно утилизировать отходы в походе</h2>
+                <div class="rules-grid">
+                    <div class="rule-card">
+                        <i class="fas fa-recycle rule-card__icon"></i>
+                        <h3 class="rule-card__title">Принцип "Не оставляй следов"</h3>
+                        <p class="rule-card__text">Весь мусор, который вы принесли, должен уйти с вами. Используйте многоразовые контейнеры.</p>
+                    </div>
+                    <div class="rule-card">
+                        <i class="fas fa-trash-alt rule-card__icon"></i>
+                        <h3 class="rule-card__title">Сортировка отходов</h3>
+                        <p class="rule-card__text">Разделяйте мусор по типам (пластик, стекло, органика) и утилизируйте в специальных контейнерах в городе.</p>
+                    </div>
+                    <div class="rule-card">
+                        <i class="fas fa-ban rule-card__icon"></i>
+                        <h3 class="rule-card__title">Не закапывай мусор</h3>
+                        <p class="rule-card__text">Даже органические отходы могут привлекать животных и нарушать экосистему. Забирайте всё с собой.</p>
+                    </div>
+                    <div class="rule-card">
+                        <i class="fas fa-water rule-card__icon"></i>
+                        <h3 class="rule-card__title">Мытьё посуды</h3>
+                        <p class="rule-card__text">Мойте посуду вдали от водоёмов, используя биоразлагаемое мыло. Воду выливайте на землю, не в реку.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer" class="footer">
+        <div class="footer__container">
+            
+            <!-- Колонка 1: Логотип -->
+            <div class="footer__column-logo">
+                <div class="footer__logo">EcoTravel</div>
+            </div>
+
+            <!-- Колонка 2: Навигация -->
+            <div class="footer__column-nav">
+                <h3 class="footer__nav-title">НАВИГАЦИЯ</h3>
+                <nav class="footer__nav">
+                    <a href="../index.html" class="footer__link">Главная</a>
+                    <a href="routes.html" class="footer__link">Маршруты</a>
+                    <a href="region__map/region-map.html" class="footer__link">Карта региона</a>
+                    <a href="attraction-page/attractions.html" class="footer__link">Достопримечательности</a>
+                    <a href="tips.html" class="footer__link">Советы путешественникам</a>
+                    <a href="../index.html#about" class="footer__link">О нас</a>
+                    <a href="../index.html#contact" class="footer__link">Контакты</a>
+                </nav>
+            </div>
+
+            <!-- Колонка 3: Контакты (адрес и режим работы) -->
+            <div class="footer__column-contacts">
+                <h3 class="footer__contacts-title">КОНТАКТЫ</h3>
+                <div class="footer__address-block">
+                    <p class="footer__address-label">Наш адрес</p>
+                    <p class="footer__address-text">Приднестровье, г. Тирасполь</p>
+                </div>
+                <div class="footer__hours-block">
+                    <p class="footer__hours-label">Режим работы</p>
+                    <p class="footer__hours-item">ПН-ВС: 09:00-18:00</p>
+                </div>
+            </div>
+
+            <!-- Колонка 4: Телефон + Почта + Соцсети -->
+            <div class="footer__column-right">
+                <div class="footer__phone-block">
+                    <p class="footer__phone">77993307</p>
+                    <a href="mailto:ecotravel_forever228@mail.ru" class="footer__email">ecotravel_forever228@mail.ru</a>
+                </div>
+                <div>
+                    <p class="footer__socials-label">Мы в соц сетях</p>
+                    <div class="footer__socials">
+                        <a href="#"><img src="../assets/images/vk.png" alt="VK" class="footer__icon"></a>
+                        <a href="#"><img src="../assets/images/inst.png" alt="Instagram" class="footer__icon"></a>
+                        <a href="#"><img src="../assets/images/facebook.png" alt="Facebook" class="footer__icon"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../blocks/favorites/favorites-modal.js"></script>
+</body>
+</html>
+

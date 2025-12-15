@@ -1,0 +1,368 @@
+/* ============================================
+   ИДЕАЛЬНАЯ АДАПТИВНАЯ ШАПКА — ВСЁ ПО ЦЕНТРУ НА СРЕДНИХ ЭКРАНАХ
+   Работает идеально от 320px до 4K
+   ============================================ */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(180deg, #2D5016, #295B68);
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transition: height 0.3s ease;
+}
+
+.header__container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+/* Логотип всегда по центру */
+.header .logo__title,
+.logo__title {
+    font-family: "Rubik", sans-serif;
+    font-weight: 800;
+    color: white;
+    margin: 0;
+    text-align: center;
+    line-height: 1.2;
+    width: 100%;
+}
+
+/* Нижняя строка: меню + сердечко */
+.header__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.nav__list {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav__link {
+    color: white;
+    text-decoration: none;
+    font-family: "Rubik", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    position: relative;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.nav__link::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: white;
+    transition: width 0.3s ease;
+}
+
+.nav__link:hover::after {
+    width: 100%;
+}
+
+.nav__link:hover {
+    transform: translateY(-2px);
+}
+
+.favorites-link {
+    color: white;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.favorites-count {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    min-width: 18px;
+    height: 18px;
+    background: #ff4444;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+}
+
+/* ============================================================= */
+/* 1. Мобильные (до 767px) */
+@media (max-width: 767px) {
+    .header {
+        padding: 12px 0 !important;
+        min-height: 60px !important;
+    }
+    .header__container {
+        min-height: 60px !important;
+        padding: 12px 20px !important;
+    }
+    .header .logo__title,
+    .logo__title {
+        font-size: 20px !important;
+        line-height: 1.3 !important;
+    }
+    .nav__link {
+        font-size: 12.5px;
+    }
+    .header__bottom {
+        gap: 16px 20px;
+    }
+}
+
+/* 2. Планшеты и средние экраны (768px – 1279px) — ВСЁ ПО ЦЕНТРУ */
+@media (min-width: 768px) and (max-width: 1279px) {
+    .header {
+        height: auto;
+        padding: 16px 0;
+    }
+    
+    .logo__title {
+        font-size: 20px;
+    }
+
+    .nav__link {
+        font-size: 13px;
+    }
+
+    .header__bottom {
+        gap: 20px 24px;
+    }
+
+    /* Меню в 1–2 строки, по центру под логотипом */
+    .nav__list {
+        gap: 18px;
+    }
+}
+
+/* 3. Полноценный десктоп (1280px и выше) — классическая шапка */
+@media (min-width: 1280px) {
+    .header {
+        height: 70px;
+        padding: 0;
+    }
+
+    .header__container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        height: 70px;
+        gap: 0;
+    }
+
+    .logo__title {
+        font-size: 20px;
+        width: auto;
+        text-align: left;
+    }
+
+    .header__bottom {
+        width: auto;
+        justify-content: flex-end;
+        gap: 30px;
+    }
+
+    .nav__list {
+        gap: 30px;
+        justify-content: flex-end;
+    }
+
+    .nav__link {
+        font-size: 14px;
+    }
+}
+
+/* ============================================
+   БУРГЕР-МЕНЮ - СКРЫТО НА ДЕСКТОПЕ
+   ============================================ */
+.burger-menu {
+    display: none;
+}
+
+@media (max-width: 1279px) {
+    .burger-menu {
+        display: flex !important;
+        flex-direction: column;
+        gap: 6px;
+        cursor: pointer;
+        padding: 12px;
+        z-index: 1001;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .burger-menu span {
+        width: 30px;
+        height: 3px;
+        background: white;
+        border-radius: 2px;
+        transition: 0.3s ease;
+    }
+    
+    .burger-menu.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    .burger-menu.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .burger-menu.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+    
+    .header__container {
+        position: relative;
+    }
+    
+    .nav {
+        position: static;
+        width: 100%;
+    }
+    
+    .nav__list {
+        display: none !important;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: linear-gradient(180deg, #2D5016, #295B68);
+        padding: 25px 20px;
+        gap: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        z-index: 999;
+    }
+    
+    .nav__list.active {
+        display: flex !important;
+    }
+    
+    .nav__item {
+        text-align: center;
+    }
+    
+    .nav__link {
+        font-size: 18px;
+        padding: 12px;
+        display: block;
+    }
+}
+
+/* ============================================
+   УЛУЧШЕННАЯ АДАПТАЦИЯ ШАПКИ ДЛЯ МОБИЛЬНЫХ
+   Крупные шрифты и удобное меню
+   ============================================ */
+
+/* Планшеты (768-1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .header {
+        padding: 14px 0 !important;
+    }
+    
+    .logo__title {
+        font-size: 22px !important;
+    }
+    
+    .nav__list.active {
+        padding: 30px 25px !important;
+        gap: 18px !important;
+    }
+    
+    .nav__list.active .nav__link {
+        font-size: 20px !important;
+        padding: 14px !important;
+    }
+    
+    .burger-menu span {
+        width: 32px !important;
+        height: 4px !important;
+    }
+    
+    .favorites-link {
+        font-size: 26px !important;
+    }
+}
+
+/* Мобильные (до 767px) — дополнительные стили для бургер-меню */
+@media (max-width: 767px) {
+    .burger-menu {
+        padding: 14px !important;
+        right: 15px !important;
+    }
+    
+    .burger-menu span {
+        width: 28px !important;
+        height: 3.5px !important;
+    }
+    
+    .nav__list.active {
+        padding: 25px 20px !important;
+        gap: 12px !important;
+    }
+    
+    .nav__list.active .nav__link {
+        font-size: 20px !important;
+        padding: 14px 10px !important;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .nav__list.active .nav__item:last-child .nav__link {
+        border-bottom: none;
+    }
+    
+    .favorites-link {
+        font-size: 24px !important;
+    }
+    
+    .favorites-count {
+        min-width: 20px !important;
+        height: 20px !important;
+        font-size: 12px !important;
+    }
+}
+
+/* Очень маленькие экраны (до 380px) */
+@media (max-width: 380px) {
+    .logo__title {
+        font-size: 18px !important;
+    }
+    
+    .nav__list.active .nav__link {
+        font-size: 18px !important;
+    }
+}
+

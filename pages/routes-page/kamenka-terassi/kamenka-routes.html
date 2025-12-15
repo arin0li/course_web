@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="kamenka-routes.css">
+        <link rel="stylesheet" href="../../../blocks/header/header.css">
+        <link rel="stylesheet" href="../../../blocks/footer/footer.css">
+        <link rel="stylesheet" href="../../../blocks/modal/modal-favorutes/modal-favorites.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.min.js"></script>   
+
+      </head>
+
+      <body>
+        <header class="header">
+            <div class="header__container">
+                <div class="logo">
+                  <h1 class="logo__title">EcoTravel<br>Приднестровье</h1>
+                </div>
+           
+                <nav class="nav">
+                  <div class="burger-menu" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <ul class="nav__list">
+                    <li class="nav__item"><a href="../../../index.html#hero" class="nav__link">Главная</a></li>
+                    <li class="nav__item"><a href="../../../pages/routes.html" class="nav__link">Маршруты</a></li>
+                    <li class="nav__item"><a href="../../../pages/region__map/region-map.html" class="nav__link">Карта региона</a></li>
+                    <li class="nav__item"><a href="../../../pages/attraction-page/attractions.html" class="nav__link">Достопримечательности</a></li>
+                    <li class="nav__item"><a href="../../../pages/tips.html" class="nav__link">Советы путешественникам</a></li>
+                    <li class="nav__item"><a href="../../../index.html#about" class="nav__link">О нас</a></li>
+                    <li class="nav__item"><a href="../../../index.html#contact" class="nav__link">Контакты</a></li>
+                    <li class="nav__item">
+                      <a href="#" class="nav__link favorites-link" id="favoritesLink">
+                        <i class="fas fa-heart"></i>
+                        <span class="favorites-count" style="display: none;">0</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </header>
+
+            <section id="kamenka-hero" class="kamenka-hero">
+                <!-- Фоновое изображение -->
+                <div class="kamenka-hero__bg"></div>
+                
+                <!-- Тёмный оверлей -->
+                <div class="kamenka-hero__overlay"></div>
+                
+                <!-- Заголовок -->
+                <h1 class="kamenka-hero__title">
+                    Север Приднестровья - «Террасы над Днестром»
+                </h1>
+                
+                <!-- КНОПКА — теперь точно кликабельная и в нужном месте -->
+                <a href="#kamenka-map-section" class="hero-map-btn">
+                    Показать маршруты на карте
+                </a>
+            </section>
+
+            <div class="route-section">
+                <!-- Галерея с кнопками -->
+                
+                <div class="gallery-container">
+                    <button class="nav-btn prev">
+                        <img src="images/back.png" alt="">
+                    </button>
+                
+                    <div class="gallery">
+                        <div class="gallery-track" id="galleryTrack">
+                            <div class="gallery-image"><img src="images/Rashkov1.jpg" alt=""></div>
+                            <div class="gallery-image"><img src="images/terase-camenca1.jpg" alt=""></div>
+                            <div class="gallery-image"><img src="images/red2.jpg" alt=""></div>
+                            <div class="gallery-image"><img src="images/redmount.jpg" alt=""></div>
+                            <div class="gallery-image"><img src="images/rashkov.jpeg" alt=""></div>
+                            <div class="gallery-image"><img src="images/park-vitgenshtejna_kamenka-9.jpg" alt=""></div>
+                            <div class="gallery-image"><img src="images/terase.jpg" alt=""></div>
+                            <div class="gallery-image"><img src="images/park-vitgenshtejna.jpg" alt=""></div>
+                        </div>
+                    </div>
+                
+                    <button class="nav-btn next">
+                        <img src="images/next.png" alt="">
+                    </button>
+                </div>
+                
+            
+                <!-- Блок характеристик — теперь рядом с галереей -->
+                <div class="route-info">
+                    <h3>ХАРАКТЕРИСТИКИ<br>МАРШРУТА</h3>
+                    <ul>
+                        <li>Протяженность: 12 км</li>
+                        <li>Продолжительность: 4–5 часов</li>
+                        <li>Сложность: лёгкая</li>
+                        <li>Покрытие: грунтовые тропы, асфальт</li>
+                        <li>Лучшее время: апрель–октябрь</li>
+                        <li>Тип: Пешеходный / туристический<br>(нужен автомобиль)</li>
+                    </ul>
+                </div>     
+            </div>
+
+            <div class="rectangle">
+                <h1 class="rectangle-title">Парк Витгенштейна → Виноградные террасы → Мистическая Червона Гора → Рашков</h1>
+            </div>
+
+            <section id="kamenka-map-section">
+                <div id="kamenkaMap"></div>
+              </section>
+
+
+              <section class="route-description">
+                <div class="route-description__content">
+                  <h2 class="route-description__title">Краткое описание</h2>
+                  <p class="route-description__text">
+                    Марршрут «Природные жемчужины Каменки» — это экологическое путешествие по северу Приднестровья, где природа и история переплетаются в едином дыхании. Здесь вас ждут живописные холмы Каменки, покрытые виноградными лозами, старинные парки с вековыми дубами и тенистыми аллеями, дикие луга у Рашкова, где цветут редкие орхидеи и поют птицы.<br><br>
+                    Путь проходит вдоль Днестра, открывая захватывающие виды на его извилистые берега и широкие долины.<br><br>
+                    Это маршрут для тех, кто хочет почувствовать атмосферу тишины и естественной гармонии, увидеть разнообразие флоры и фауны региона и отдохнуть от городской суеты. Виноградные террасы, экотропы и агрофермы создают особое настроение — здесь всё пропитано ароматом трав, свежестью ветра и теплом земли.<br>               
+                  <h2 class="route-description__subtitle">Легенда маршрута «Террасы над Днестром»</h2>
+                    Говорят, когда-то над Каменкой жил старый хранитель природы — дух Днестра, который каждую весну проходил свой путь от парка Витгенштейна до лугов Рашкова, напевая ветру древнюю песнь.<br>
+                    Там, где он ступал, расцветали лозы, превращаясь в виноградные террасы, а на лугах рождались орхидеи, впитывая его дыхание.<br>
+                    На рассвете можно услышать, как листья шепчут благодарность за каждое прикосновение воды и солнца.<br>
+                    Даже пчёлы с Фазенды «Садки» будто узнают эту песнь — они взлетают над садами, когда над рекой плывёт туман, словно встречая невидимого путника.<br>
+                    Местные говорят: если пройти весь путь от Каменки до Рашкова с добрым сердцем, то Днестр однажды ответит тебе зеркальным блеском — как знак, что дух природы принял тебя в свои зелёные объятия.
+                  </p>
+
+                </div>
+              
+                <aside class="route-description__sidebar">
+                  <h3 class="sidebar-title">Что взять с собой</h3>
+                  <ul class="sidebar-list">
+                    <li>Удобная обувь для треккинга</li>
+                    <li>Головной убор</li>
+                    <li>Солнцезащитный крем</li>
+                    <li>Вода (1,5–2 л)</li>
+                    <li>Лёгкий перекус</li>
+                    <li>Фотоаппарат или телефон с зарядкой</li>
+                    <li>Карта или офлайн-навигация</li>
+                  </ul>
+              
+                  <h3 class="sidebar-title">Возможные сложности на маршруте</h3>
+                  <ul class="sidebar-list">
+                    <li>Неровный рельеф</li>
+                    <li>Отсутствие инфраструктуры на экотропе «Рашковские луга» — нет навесов и кафе, рекомендуется взять воду и перекус.</li>
+                    <li>Слабый мобильный сигнал — в пойме Днестра и на отдалённых участках</li>
+                    <li>Комары и клещи в сезон</li>
+                  </ul>
+              
+                  <a href="#more-info" class="sidebar-link">Больше сведений →</a>
+                </aside>
+              </section>
+              
+
+              <!-- СЕКЦИЯ: Рассчитайте свой поход с Духом Днестра -->
+<section class="calculator-section" id="more-info">
+    <div class="container">
+      <!-- Главный заголовок -->
+      <h2 class="calc-title" >
+        Рассчитайте свой поход с Духом Днестра<br>
+        <span class="calc-subtitle">Учитываем подготовку, группу и сезон</span>
+      </h2>
+  
+      <div class="calc-wrapper">
+        <!-- ЛЕВАЯ ЧАСТЬ — форма -->
+        <div class="calc-form">
+            <div class="radio-block">
+              <h3 class="form-title">Ваша подготовка:</h3>
+              <label class="custom-radio">
+                <input type="radio" name="level" value="beginner" required>
+                <span class="radiomark"></span>
+                Начинающий
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="level" value="average">
+                <span class="radiomark"></span>
+                Средний
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="level" value="experienced">
+                <span class="radiomark"></span>
+                Опытный
+              </label>
+            </div>
+    
+            <div class="radio-block">
+              <h3 class="form-title">Размер группы:</h3>
+              <div class="range-wrapper">
+                <div class="range-values">
+                  <span>1</span>
+                  <span id="groupValue">10</span>
+                  <span>20</span>
+                </div>
+                <input type="range" id="groupSize" min="1" max="20" value="10" class="range-slider">
+              </div>
+            </div>
+    
+            <div class="radio-block">
+              <h3 class="form-title">Сезон и настроение:</h3>
+              <label class="custom-radio">
+                <input type="radio" name="season" value="winter">
+                <span class="radiomark"></span> Зима
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="season" value="spring">
+                <span class="radiomark"></span> Весна
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="season" value="summer">
+                <span class="radiomark"></span> Лето
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="season" value="autumn">
+                <span class="radiomark"></span> Осень
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="season" value="heart">
+                <span class="radiomark"></span> Иду с добрым сердцем
+              </label>
+            </div>
+    
+            <div class="radio-block">
+              <h3 class="form-title">Вариант маршрута:</h3>
+              <label class="custom-radio">
+                <input type="radio" name="route" value="light" required>
+                <span class="radiomark"></span>
+                Лайт (10 км, до террас)
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="route" value="standard">
+                <span class="radiomark"></span>
+                Стандарт (15 км, Червона Гора)
+              </label>
+              <label class="custom-radio">
+                <input type="radio" name="route" value="pro">
+                <span class="radiomark"></span>
+                Про (30 км, до Рашкова)
+              </label>
+            </div>
+    
+            <button class="calc-btn" id="calcSubmit">
+              Рассчитать
+            </button>
+          </div>
+  
+        <!-- ПРАВАЯ ЧАСТЬ — результат (изначально скрыт) -->
+        <div class="calc-result" id="resultBlock" style="display: none;">
+          <h3 class="result-title">Ваш Результат:</h3>
+          <div class="result-content" id="resultContent">
+            <!-- Сюда будет вставляться результат -->
+          </div>
+
+        
+          <div class="route-map-section">
+            <h3 class="section-title">Маршрут на карте</h3>
+            <div id="routeMap" class="route-map"></div>
+          </div>
+
+        </div>       
+      </div>
+    </div>
+  </section>
+
+
+
+<!-- Модальное окно избранного -->
+<div id="modal-favorites" class="modal">
+  <div class="modal__content modal__content--favorites">
+    <span class="modal__close">&times;</span>
+    <h2 class="modal__title">Мои избранные</h2>
+    <div id="favorites-content" class="favorites-content">
+      <p class="favorites-empty">У вас пока нет избранных элементов</p>
+    </div>
+  </div>
+</div>
+
+<!-- Модальное окно для просмотра больших изображений -->
+<div id="modal-image-viewer" class="modal modal-image-viewer">
+  <div class="modal__content modal__content--image">
+    <span class="modal__close">&times;</span>
+    <img id="modal-image-viewer-img" src="" alt="" class="modal-image-viewer__img">
+  </div>
+</div>
+
+<footer id="footer" class="footer">
+  <div class="footer__container">
+    <!-- Колонка 1: Логотип -->
+    <div class="footer__column-logo">
+      <div class="footer__logo">EcoTravel</div>
+    </div>
+
+    <!-- Колонка 2: Навигация -->
+    <div class="footer__column-nav">
+      <h3 class="footer__nav-title">НАВИГАЦИЯ</h3>
+      <nav class="footer__nav">
+        <a href="../../../index.html" class="footer__link">Главная</a>
+        <a href="../../../pages/routes.html" class="footer__link">Маршруты</a>
+        <a href="../../../pages/region__map/region-map.html" class="footer__link">Карта региона</a>
+        <a href="../../../pages/attraction-page/attractions.html" class="footer__link">Достопримечательности</a>
+        <a href="../../../pages/tips.html" class="footer__link">Советы путешественникам</a>
+        <a href="../../../index.html#about" class="footer__link">О нас</a>
+        <a href="../../../index.html#contact" class="footer__link">Контакты</a>
+      </nav>
+    </div>
+
+    <!-- Колонка 3: Контакты (адрес и режим работы) -->
+    <div class="footer__column-contacts">
+      <h3 class="footer__contacts-title">КОНТАКТЫ</h3>
+      <div class="footer__address-block">
+        <p class="footer__address-label">Наш адрес</p>
+        <p class="footer__address-text">Приднестровье, г. Тирасполь</p>
+      </div>
+      <div class="footer__hours-block">
+        <p class="footer__hours-label">Режим работы</p>
+        <p class="footer__hours-item">ПН-ВС: 09:00-18:00</p>
+      </div>
+    </div>
+
+    <!-- Колонка 4: Телефон + Почта + Соцсети -->
+    <div class="footer__column-right">
+      <div class="footer__phone-block">
+        <p class="footer__phone">77993307</p>
+        <a href="mailto:ecotravel_forever228@mail.ru" class="footer__email">ecotravel_forever228@mail.ru</a>
+      </div>
+      <div>
+        <p class="footer__socials-label">Мы в соц сетях</p>
+        <div class="footer__socials">
+          <a href="#"><img src="../../../assets/images/vk.png" alt="VK" class="footer__icon"></a>
+          <a href="#"><img src="../../../assets/images/inst.png" alt="Instagram" class="footer__icon"></a>
+          <a href="#"><img src="../../../assets/images/facebook.png" alt="Facebook" class="footer__icon"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../../../blocks/favorites/favorites.js"></script>
+<script src="../../../blocks/favorites/favorites-modal.js"></script>
+<script src="../../../blocks/image-viewer/image-viewer.js"></script>
+<script src="kamenka.js"></script>
+<script>
+function toggleMenu() {
+    document.querySelector('.burger-menu').classList.toggle('active');
+    document.querySelector('.nav__list').classList.toggle('active');
+}
+document.querySelectorAll('.nav__link').forEach(link => {
+    link.addEventListener('click', () => {
+        document.querySelector('.burger-menu').classList.remove('active');
+        document.querySelector('.nav__list').classList.remove('active');
+    });
+});
+</script>
+      </body>
+</html>

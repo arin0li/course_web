@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="parkV.css">
+        <link rel="stylesheet" href="../../../blocks/header/header.css">
+        <link rel="stylesheet" href="../../../blocks/footer/footer.css">
+        <link rel="stylesheet" href="../../../blocks/modal/modal-favorutes/modal-favorites.css">
+        <script src="../../../blocks/favorites/favorites.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>   
+      </head>
+
+      <body>
+        <header class="header">
+            <div class="header__container">
+                <div class="logo">
+                  <h1 class="logo__title">EcoTravel<br>Приднестровье</h1>
+                </div>
+           
+                <nav class="nav">
+                  <div class="burger-menu" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <ul class="nav__list">
+                    <li class="nav__item"><a href="../../../index.html#hero" class="nav__link">Главная</a></li>
+                    <li class="nav__item"><a href="../../../pages/routes.html" class="nav__link">Маршруты</a></li>
+                    <li class="nav__item"><a href="../../../pages/region__map/region-map.html" class="nav__link">Карта региона</a></li>
+                    <li class="nav__item"><a href="../../../pages/attraction-page/attractions.html" class="nav__link">Достопримечательности</a></li>
+                    <li class="nav__item"><a href="../../../pages/tips.html" class="nav__link">Советы путешественникам</a></li>
+                    <li class="nav__item"><a href="../../../index.html#about" class="nav__link">О нас</a></li>
+                    <li class="nav__item"><a href="../../../index.html#contact" class="nav__link">Контакты</a></li>
+                    <li class="nav__item">
+                      <a href="#" class="nav__link favorites-link" id="favoritesLink">
+                        <i class="fas fa-heart"></i>
+                        <span class="favorites-count" style="display: none;">0</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </header>
+        <!-- БЛОК-ГЕРОЙ НА СТРАНИЦЕ МАРШРУТОВ -->
+        <section id="parkv-hero" class="parkv-hero">
+            <!-- Фоновое изображение -->
+            <div class="parkv-hero__bg"></div>
+          
+            <!-- Тёмный оверлей — точно как в карточках -->
+            <div class="parkv-hero__overlay"></div>
+          
+            <!-- Заголовок -->
+            <h1 class="parkv-hero__title">
+              ПАРК ВИТГЕНШТЕЙНА
+            </h1>
+          </section>
+
+
+          <div class="container">
+
+            <div class="content-wrapper">
+        
+                <!-- Левый блок -->
+                <div class="left-block">
+        
+                    <div class="card">
+                        <h2>Описание</h2>
+                        <p>Парк Витгенштейна — один из самых атмосферных и исторических парков Приднестровья, уютно расположенный среди старинной застройки и природных ландшафтов Каменского района. Его аллеи проходят вдоль ухоженных газонов, старых деревьев и декоративных кустарников, а тенистые дорожки ведут к живописным видам на холмы и окрестные сельские пространства.<br><br></p>
+        
+                        <p>Здесь царит особая тишина: лёгкий шелест листвы, птицы в кронах и спокойные прогулки по широким тенистым аллеям делают парк идеальным местом для отдыха, фотосессий, семейных прогулок и небольших туристических экскурсий.</p>
+        
+                        <p>Парк известен своими мощёными дорожками, старыми липами и клёнами, а также культурным наследием — именно здесь некогда проходили прогулочные маршруты дворянской семьи Витгенштейнов, чьё имя парк носит и сегодня.</p>
+        
+                        <h2>Интересные факты:</h2>
+                        <ul>
+                            <li>Парк был частью исторической усадьбы рода Витгенштейнов — одной из влиятельных фамилий Бессарабии XIX века.</li>
+                            <li>Некоторые липы и тополя в парке растут более 120 лет.</li>
+                            <li>Весной здесь цветут десятки кустов сирени, образуя ароматные аллеи.</li>
+                            <li>В парке встречаются редкие виды певчих птиц, включая зяблика и дрозда-певчего.</li>
+                            <li>Местные жители называют парк «зелёным сердцем Каменки».</li>
+                        </ul>
+        
+                        <h2>Парк Витгенштейна:</h2>
+                        <p><strong>Регион:</strong> Каменский район</p>
+                        <p><strong>Расположение:</strong> южная часть города Каменка, недалеко от центральных исторических кварталов</p>
+                        <p><strong>Точные координаты:</strong> 48.03488652169475, 28.68529999814944</p>
+                        <p><strong>Сезон посещения:</strong> круглый год</p>
+                        <p><strong>Доступность:</strong> автомобиль, автобус, пеший маршрут</p>
+                        <p><strong>Продолжительность прогулки:</strong> 30–90 минут</p>
+                        <p><strong>Сложность:</strong> лёгкая, подходит для семейных прогулок</p>
+                    </div>
+        
+                </div>
+        
+                <!-- Правая колонка -->
+                <div class="right-column">
+        
+                    <!-- Галерея -->
+                    <div class="gallery-container">
+                        <div class="gallery">
+                            <div class="gallery-track" id="galleryTrack">
+                                <div class="gallery-image"><img src="images/parkvingsteina.webp" alt=""></div>
+                                <div class="gallery-image"><img src="images/park-vitgenshtejna4.jpg"></div>
+                                <div class="gallery-image"><img src="images/park-vitgenshtejna1-9.jpg"></div> 
+                                <div class="gallery-image"><img src="images/park-vitgenshtejna2.jpg"></div>    
+                                <div class="gallery-image"><img src="images/parkvingsteina3.jpg"></div>  
+                            </div>                            
+                        </div>
+                        <button class="nav-btn prev" onclick="moveSlide(-1)"><img src="images/back.png" alt="back"></button>
+                            <button class="nav-btn next" onclick="moveSlide(1)"><img src="images/next.png" alt="next"></button>
+                    </div>
+        
+                    <!-- Блок под галереей -->
+                    <div class="card tips-block">
+                        <h2>Советы<br>путешественникам:</h2>
+        
+                        <p><strong>Лучшее время для посещения:</strong> Весна и начало лета — аромат лип и сирени; осенью — яркая жёлто-красная листва клёнов.</p>
+        
+                        <p><strong><br>Возьмите с собой:</strong> воду (0.5–1 л на человека), головной убор летом, удобную обувь (есть участки с естественным грунтом), фотокамеру или телефон, плед для отдыха на газоне.</p>
+        
+                        <p><strong><br>Правила поведения:</strong> не ломайте ветки декоративных кустов; не кормите птиц хлебом; забирайте мусор с собой; в дождливые дни избегайте низин — может быть грязно.</p>
+                    </div>
+        
+                </div>
+            </div>
+        
+            <!-- Нижний горизонтальный блок -->
+            <div class="bottom-block">
+        
+                <div class="card">
+        
+                    <h2 class="bottom-title">Как добраться:</h2>
+        
+                    <p><strong>Автомобилем:</strong> Следуйте в город Каменка по трассе М4. Въехав в город, двигайтесь к южной части, к историческому центру. От центральной площади сверните к старой усадебной зоне — парк будет справа от дороги. Парковка: у входа, бесплатная, мест немного — лучше утром.</p>
+        
+                    <p><strong>Автобусом / маршруткой:</strong> Маршрут Тирасполь — Каменка или любой проходящий через Каменку. Выходить на остановке «Центр», далее 8–10 минут пешком до главного входа.</p>
+                    <p><strong>Пешком:</strong> Из любой точки центра Каменки парк в 10–15 минутах ходьбы, рядом с жилой и исторической зоной.</p>
+                    <button class="nature-button" onclick="location.href='#nature-handbook'">Ознакомиться с природой</button>
+                </div>
+        
+        
+            </div>
+        
+        </div>
+
+
+        <!-- СПРАВОЧНИК ПРИРОДЫ -->
+        <section class="nature-handbook" id="nature-handbook">
+          <div class="handbook-header">
+              <h2 class="handbook-title">Справочник природы</h2>
+          </div>
+      
+          <div class="handbook-content">
+      
+              <!-- РАСТЕНИЯ -->
+              <div class="category">
+                  <div class="category-header">
+                      <h3 class="category-title">РАСТЕНИЯ</h3>
+                      <!-- Кнопка подробнее для всего ряда растений -->
+                      <span class="category-details" onclick="openModal('plants')">
+                        Подробнее
+                    </span>
+                  </div>
+                  <div class="cards-grid">
+                      <div class="nature-card">
+                          <img src="images/lipat.jpg" alt="Липа сердцевидная">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Липа сердцевидная</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/klen.jpg" alt="Клён остролистный">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Клён остролистный</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/bereza.jpg" alt="Берёза повислая">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Берёза повислая</div>
+                      </div>
+                  </div>
+              </div>
+      
+              <!-- ЖИВОТНЫЕ -->
+              <div class="category">
+                  <div class="category-header">
+                      <h3 class="category-title animal-title">ЖИВОТНЫЕ</h3>
+                      <!-- Кнопка подробнее для всего ряда животных -->
+                      <span class="category-details" onclick="openModal('animals')">
+                        Подробнее
+                    </span>
+                  </div>
+                  <div class="cards-grid">
+                      <div class="nature-card">
+                          <img src="images/ej.jpg" alt="Ёж обыкновенный">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Ёж обыкновенный</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/belka.jpg" alt="Белка обыкновенная">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Белка обыкновенная</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/заяц-русак.jpg" alt="Заяц-русак">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Заяц-русак</div>
+                      </div>
+                  </div>
+              </div>
+      
+              <!-- ГРИБЫ -->
+              <div class="category mushrooms">
+                  <div class="mushrooms-header">
+                      <h3 class="mushrooms-main-title">ГРИБЫ</h3>
+                      <div class="mushrooms-subtitles">
+                          <span class="poisonous">ЯДОВИТЫЕ</span>
+                          <span class="edible">СЪЕДОБНЫЕ</span>
+                      </div>
+                      <!-- Кнопка подробнее для грибов -->
+                      <span class="category-details" onclick="openModal('mushrooms')">
+                        Подробнее
+                    </span>
+                  </div>
+                  <!-- Сетка грибов с кастомными gap -->
+                  <div class="mushrooms-grid">
+                      <!-- Ядовитые -->
+                      <div class="nature-card">
+                          <img src="images/muhomorj.jpg" alt="Мухомор красный">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Мухомор красный</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/pogank5.jpg" alt="Бледная поганка">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Бледная поганка</div>
+                      </div>
+      
+                      <!-- Съедобные -->
+                      <div class="nature-card">
+                          <img src="images/podber.jpg" alt="Подберёзовик">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Подберёзовик</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/podosinovik-v-lesu.jpg" alt="Подосиновик">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Подосиновик</div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      
+      <!-- Модальные окна -->
+      <!-- Модальное окно для растений -->
+      <div id="plantsModal" class="modal">
+          <div class="modal-content">
+              <span class="close-button" onclick="closeModal('plantsModal')">&times;</span>
+              <h3>Растения парка Витгенштейна</h3>
+              
+              <div class="modal-item">
+                  <h4>1. Липа сердцевидная</h4>
+                  <img src="images/lipat.jpg" alt="Липа сердцевидная">
+                  <p><strong>Описание:</strong> Крупное дерево с душистыми цветами и крупной листвой.</p>
+                  <p><strong>Место обитания:</strong> Аллеи и центральные дорожки парка.</p>
+                  <p><strong>Интересный факт:</strong> Цветы липы привлекают десятки видов пчёл одновременно.</p>
+              </div>
+              
+              <div class="modal-item">
+                  <h4>2. Клён остролистный</h4>
+                  <img src="images/klen.jpg" alt="Клён остролистный">
+                  <p><strong>Описание:</strong> Изящное дерево с ярко-жёлтой и красной осенней листвой.</p>
+                  <p><strong>Место обитания:</strong> Тенистые участки возле скамеек.</p>
+                  <p><strong>Интересный факт:</strong> «Вертолётики» семян могут планировать на 10–20 метров.</p>
+              </div>
+              
+              <div class="modal-item">
+                  <h4>3. Берёза повислая</h4>
+                  <img src="images/bereza.jpg" alt="Берёза повислая">
+                  <p><strong>Описание:</strong> Стройное дерево с белым стволом и свисающими ветвями.</p>
+                  <p><strong>Место обитания:</strong> Открытые солнечные участки и поляны парка.</p>
+                  <p><strong>Интересный факт:</strong> Берёзовая кора почти не гниёт — её использовали для древних письмен.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>4. Рябина обыкновенная</h4>
+                  <img src="images/ryabina.jpg" alt="Рябина обыкновенная">
+                  <p><strong>Описание:</strong> Дерево с яркими гроздьями красных ягод.</p>
+                  <p><strong>Место обитания:</strong> Опушки и края дорожек.</p>
+                  <p><strong>Интересный факт:</strong> Зимой ягоды рябины спасают певчих птиц от голода.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>5. Акация белая (робиния)</h4>
+                  <img src="images/acacia.jpg" alt="Акация белая">
+                  <p><strong>Описание:</strong> Быстрорастущее дерево с ароматными белыми кистями.</p>
+                  <p><strong>Место обитания:</strong> Южные солнечные участки парка.</p>
+                  <p><strong>Интересный факт:</strong> Отличное медоносное растение, выделяет много нектара.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>6. Сирень обыкновенная</h4>
+                  <img src="images/siren.webp" alt="Сирень обыкновенная">
+                  <p><strong>Описание:</strong> Кустарник с крупными душистыми фиолетовыми или белыми соцветиями.</p>
+                  <p><strong>Место обитания:</strong> Декоративные посадки вдоль тропинок.</p>
+                  <p><strong>Интересный факт:</strong> На одном кусте бывает более 10 оттенков цветов.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>7. Шиповник майский</h4>
+                  <img src="images/shipovnik.jpg" alt="Шиповник майский">
+                  <p><strong>Описание:</strong> Колючий кустарник с нежно-розовыми цветами.</p>
+                  <p><strong>Место обитания:</strong> Окраины парка и природные зоны.</p>
+                  <p><strong>Интересный факт:</strong> Плоды содержат витамина С больше, чем лимон.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>8. Плющ обыкновенный</h4>
+                  <img src="images/plush.jpg" alt="Плющ обыкновенный">
+                  <p><strong>Описание:</strong> Вечнозелёная лиана, покрывающая деревья и стены.</p>
+                  <p><strong>Место обитания:</strong> Тенистые участки, старые стены парка.</p>
+                  <p><strong>Интересный факт:</strong> Может жить до 400 лет.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>9. Калина обыкновенная</h4>
+                  <img src="images/kalina.jpg" alt="Калина обыкновенная">
+                  <p><strong>Описание:</strong> Кустарник с белыми соцветиями и красными ягодами.</p>
+                  <p><strong>Место обитания:</strong> Влажные зоны и низины парка.</p>
+                  <p><strong>Интересный факт:</strong> Символ красоты и силы в славянской культуре.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>10. Ель обыкновенная</h4>
+                  <img src="images/el.jpg" alt="Ель обыкновенная">
+                  <p><strong>Описание:</strong> Хвойное дерево с густой пирамидальной кроной.</p>
+                  <p><strong>Место обитания:</strong> Посадки возле пруда.</p>
+                  <p><strong>Интересный факт:</strong> Хвоя живёт 5–7 лет, затем полностью обновляется.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>11. Тополь чёрный</h4>
+                  <img src="images/topol.png" alt="Тополь чёрный">
+                  <p><strong>Описание:</strong> Мощное дерево с широкими листьями.</p>
+                  <p><strong>Место обитания:</strong> По периметру парка, вдоль дорог.</p>
+                  <p><strong>Интересный факт:</strong> Эффективно очищает воздух от пыли.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>12. Полевица тонкая</h4>
+                  <img src="images/polevica1.jpg" alt="Полевица тонкая">
+                  <p><strong>Описание:</strong> Низкорослая густая трава, устойчивая к вытаптыванию.</p>
+                  <p><strong>Место обитания:</strong> Газоны и зоны отдыха.</p>
+                  <p><strong>Интересный факт:</strong> Используется на профессиональных футбольных полях.</p>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Модальное окно для животных -->
+      <div id="animalsModal" class="modal">
+          <div class="modal-content">
+              <span class="close-button" onclick="closeModal('animalsModal')">&times;</span>
+              <h3>Животные парка Витгенштейна</h3>
+              
+              <div class="modal-item">
+                  <h4>1. Ёж обыкновенный</h4>
+                  <img src="images/ej.jpg" alt="Ёж обыкновенный">
+                  <p><strong>Описание:</strong> Небольшой зверёк с иголками и острым нюхом.</p>
+                  <p><strong>Место обитания:</strong> Кустарники и тихие зоны парка.</p>
+                  <p><strong>Интересный факт:</strong> Может за ночь пройти 2–3 км.</p>
+              </div>
+              
+              <div class="modal-item">
+                  <h4>2. Белка обыкновенная</h4>
+                  <img src="images/belka.jpg" alt="Белка обыкновенная">
+                  <p><strong>Описание:</strong> Ловкий грызун с пушистым хвостом.</p>
+                  <p><strong>Место обитания:</strong> Клёны, ели и старые липы.</p>
+                  <p><strong>Интересный факт:</strong> Делает десятки тайников с орехами.</p>
+              </div>
+              
+              <div class="modal-item">
+                  <h4>3. Заяц-русак</h4>
+                  <img src="images/заяц-русак.jpg" alt="Заяц-русак">
+                  <p><strong>Описание:</strong> Быстрое животное с длинными ушами.</p>
+                  <p><strong>Место обитания:</strong> Поляны и окраины парка.</p>
+                  <p><strong>Интересный факт:</strong> Может развивать скорость до 60 км/ч.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>4. Дрозд-рябинник</h4>
+                  <img src="images/drozd.jpg" alt="Дрозд-рябинник">
+                  <p><strong>Описание:</strong> Певчая птица с пятнистой грудкой.</p>
+                  <p><strong>Место обитания:</strong> Рябиновые посадки и аллеи.</p>
+                  <p><strong>Интересный факт:</strong> Любит зимовать рядом с людьми и не боится городов.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>5. Большая синица</h4>
+                  <img src="images/sinicab.jpg" alt="Большая синица">
+                  <p><strong>Описание:</strong> Яркая жёлто-синяя птица.</p>
+                  <p><strong>Место обитания:</strong> Хвойные и лиственные деревья.</p>
+                  <p><strong>Интересный факт:</strong> Запоминает кормушки и прилетает ежедневно.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>6. Воробей домовый</h4>
+                  <img src="images/vorobey.jpg" alt="Воробей домовый">
+                  <p><strong>Описание:</strong> Небольшая серая птица, сосед человека.</p>
+                  <p><strong>Место обитания:</strong> Скамейки, площадки, постройки парка.</p>
+                  <p><strong>Интересный факт:</strong> Делает коллективные «купания» в пыли для чистки перьев.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>7. Серый дятел</h4>
+                  <img src="images/seryi.jpg" alt="Серый дятел">
+                  <p><strong>Описание:</strong> Птица с зелёной спиной и серой головой.</p>
+                  <p><strong>Место обитания:</strong> Старые липы и тополя.</p>
+                  <p><strong>Интересный факт:</strong> Может выстукивать до 10 ударов в секунду.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>8. Лесная мышь</h4>
+                  <img src="images/mish.jpg" alt="Лесная мышь">
+                  <p><strong>Описание:</strong> Маленькое животное с большими глазами.</p>
+                  <p><strong>Место обитания:</strong> Кусты, корни деревьев, хозпостройки.</p>
+                  <p><strong>Интересный факт:</strong> Делает запасы семян в норах по несколько килограммов.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>9. Жаба обыкновенная</h4>
+                  <img src="images/jaba.jpg" alt="Жаба обыкновенная">
+                  <p><strong>Описание:</strong> Земноводное бурого цвета с бородавчатой кожей.</p>
+                  <p><strong>Место обитания:</strong> Влажные зоны у пруда.</p>
+                  <p><strong>Интересный факт:</strong> За сезон уничтожает тысячи насекомых.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>10. Крот европейский</h4>
+                  <img src="images/krot.jpg" alt="Крот европейский">
+                  <p><strong>Описание:</strong> Слеповатое животное с сильными лапами для рытья.</p>
+                  <p><strong>Место обитания:</strong> Газоны и мягкие почвы парка.</p>
+                  <p><strong>Интересный факт:</strong> Может «плавать» под землёй со скоростью до 5 м/мин.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>11. Летучая мышь рукокрылая</h4>
+                  <img src="images/letuchaya.jpg" alt="Летучая мышь">
+                  <p><strong>Описание:</strong> Ночное животное, питается насекомыми.</p>
+                  <p><strong>Место обитания:</strong> Дупла старых деревьев.</p>
+                  <p><strong>Интересный факт:</strong> Ловит добычу с помощью ультразвука.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>12. Уж обыкновенный (неопасен)</h4>
+                  <img src="images/uj.png" alt="Уж обыкновенный">
+                  <p><strong>Описание:</strong> Тонкая черновато-зелёная змея с жёлтыми пятнами.</p>
+                  <p><strong>Место обитания:</strong> Влажные участки возле пруда.</p>
+                  <p><strong>Интересный факт:</strong> При опасности притворяется мёртвым.</p>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Модальное окно для грибов -->
+      <div id="mushroomsModal" class="modal">
+          <div class="modal-content">
+              <span class="close-button" onclick="closeModal('mushroomsModal')">&times;</span>
+              <h3>Грибы парка Витгенштейна</h3>
+              
+              <div class="modal-section">
+                  <h4 class="edible-title">СЪЕДОБНЫЕ ГРИБЫ</h4>
+                  
+                  <div class="modal-item">
+                      <h5>1. Подберёзовик</h5>
+                      <img src="images/podber.jpg" alt="Подберёзовик">
+                      <p><strong>Описание:</strong> Светло-коричневый гриб с плотной ножкой.</p>
+                      <p><strong>Место обитания:</strong> Под берёзами парка.</p>
+                      <p><strong>Интересный факт:</strong> Может вырастать всего за 2–3 дня после дождя.</p>
+                  </div>
+                  
+                  <div class="modal-item">
+                      <h5>2. Подосиновик</h5>
+                      <img src="images/podosinovik-v-lesu.jpg" alt="Подосиновик">
+                      <p><strong>Описание:</strong> Красно-оранжевая шляпка, толстая ножка.</p>
+                      <p><strong>Место обитания:</strong> Под осинами и во влажных участках.</p>
+                      <p><strong>Интересный факт:</strong> Мякоть синеет на срезе.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>3. Сыроежка зелёная</h5>
+                      <img src="images/siroejka.jpg" alt="Сыроежка зелёная">
+                      <p><strong>Описание:</strong> Невысокий гриб со светло-зелёной шляпкой.</p>
+                      <p><strong>Место обитания:</strong> Смешанные лесные зоны парка.</p>
+                      <p><strong>Интересный факт:</strong> Почти не прячется под листьями.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>4. Опёнок летний</h5>
+                      <img src="images/opyata.jpg" alt="Опёнок летний">
+                      <p><strong>Описание:</strong> Маленькие светло-коричневые грибы на пнях.</p>
+                      <p><strong>Место обитания:</strong> Старые упавшие деревья.</p>
+                      <p><strong>Интересный факт:</strong> Растут группами по десятки штук.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>5. Маслёнок зернистый</h5>
+                      <img src="images/maslenok.jpg" alt="Маслёнок зернистый">
+                      <p><strong>Описание:</strong> Скользкая жёлтая шляпка с капельками «масла».</p>
+                      <p><strong>Место обитания:</strong> У хвойных, особенно у ели.</p>
+                      <p><strong>Интересный факт:</strong> Шляпка выделяет капли смолистой влаги.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>6. Лисичка настоящая</h5>
+                      <img src="images/lisichka.jpg" alt="Лисичка настоящая">
+                      <p><strong>Описание:</strong> Ярко-жёлтая воронкообразная шляпка.</p>
+                      <p><strong>Место обитания:</strong> Хвойные и смешанные посадки.</p>
+                      <p><strong>Интересный факт:</strong> Практически никогда не бывает червивой.</p>
+                  </div>
+              </div>
+              
+              <div class="modal-section">
+                  <h4 class="poisonous-title">НЕСЪЕДОБНЫЕ / ЯДОВИТЫЕ ГРИБЫ</h4>
+                  
+                  <div class="modal-item">
+                      <h5>7. Мухомор красный</h5>
+                      <img src="muhomorj.jpg" alt="Мухомор красный">
+                      <p><strong>Описание:</strong> Красная шляпка с белыми пятнами.</p>
+                      <p><strong>Место обитания:</strong> Влажные тенистые зоны у берёз.</p>
+                      <p><strong>Интересный факт:</strong> Один из самых узнаваемых ядовитых грибов.</p>
+                  </div>
+                  
+                  <div class="modal-item">
+                      <h5>8. Бледная поганка</h5>
+                      <img src="pogank5.jpg" alt="Бледная поганка">
+                      <p><strong>Описание:</strong> Зеленоватая шляпка, кольцо и вольва.</p>
+                      <p><strong>Место обитания:</strong> У корней лип и клёнов.</p>
+                      <p><strong>Интересный факт:</strong> Смертельно ядовита даже в малом количестве.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>9. Ложный опёнок</h5>
+                      <img src="lozni.jpg" alt="Ложный опёнок">
+                      <p><strong>Описание:</strong> Маленькие оливковые грибы на пнях.</p>
+                      <p><strong>Место обитания:</strong> Брёвна и влажные участки.</p>
+                      <p><strong>Интересный факт:</strong> Часто путают с настоящими опятами.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>10. Галерина окаймлённая</h5>
+                      <img src="galerina.jpg" alt="Галерина окаймлённая">
+                      <p><strong>Описание:</strong> Ржаво-коричневый маленький гриб.</p>
+                      <p><strong>Место обитания:</strong> Гниющие деревья.</p>
+                      <p><strong>Интересный факт:</strong> Содержит токсины, как у бледной поганки.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>11. Волоконница Патуийяра</h5>
+                      <img src="volokonica.jpg" alt="Волоконница Патуийяра">
+                      <p><strong>Описание:</strong> Маленький бледно-коричневый гриб.</p>
+                      <p><strong>Место обитания:</strong> Газоны под деревьями.</p>
+                      <p><strong>Интересный факт:</strong> Один из самых токсичных грибов Европы.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>12. Желчная грибная свинушка</h5>
+                      <img src="svinuha.jpg" alt="Желчная свинушка">
+                      <p><strong>Описание:</strong> Коричнево-жёлтый гриб с ломкой мякотью.</p>
+                      <p><strong>Место обитания:</strong> У старых пней и под липами.</p>
+                      <p><strong>Интересный факт:</strong> Ранее считалась съедобной, сейчас признана ядовитой.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  <section id="parkv-map-section">
+    <div id="parkvMap"></div>
+  </section>
+
+  <div class="routespage__header-outer">
+    <div class="routespage__header">
+      <h2 class="routespage__title">Приднестровье - это край, где плещется Днестр и молчат древние холмы</h2>
+    </div>
+  </div>
+  
+  <footer id="footer" class="footer">
+    <div class="footer__container">
+      
+      <!-- Колонка 1: Логотип -->
+      <div class="footer__column-logo">
+        <div class="footer__logo">EcoTravel</div>
+      </div>
+
+      <!-- Колонка 2: Навигация -->
+      <div class="footer__column-nav">
+        <h3 class="footer__nav-title">НАВИГАЦИЯ</h3>
+        <nav class="footer__nav">
+          <a href="../../../index.html" class="footer__link">Главная</a>
+          <a href="../../../pages/routes.html" class="footer__link">Маршруты</a>
+          <a href="../../../pages/region__map/region-map.html" class="footer__link">Карта региона</a>
+          <a href="../../../pages/attraction-page/attractions.html" class="footer__link">Достопримечательности</a>
+          <a href="../../../pages/tips.html" class="footer__link">Советы путешественникам</a>
+          <a href="../../../index.html#about" class="footer__link">О нас</a>
+          <a href="../../../index.html#contact" class="footer__link">Контакты</a>
+        </nav>
+      </div>
+
+      <!-- Колонка 3: Контакты (адрес и режим работы) -->
+      <div class="footer__column-contacts">
+        <h3 class="footer__contacts-title">КОНТАКТЫ</h3>
+        <div class="footer__address-block">
+          <p class="footer__address-label">Наш адрес</p>
+          <p class="footer__address-text">Приднестровье, г. Тирасполь</p>
+        </div>
+        <div class="footer__hours-block">
+          <p class="footer__hours-label">Режим работы</p>
+          <p class="footer__hours-item">ПН-ВС: 09:00-18:00</p>
+        </div>
+      </div>
+
+      <!-- Колонка 4: Телефон + Почта + Соцсети -->
+      <div class="footer__column-right">
+        <div class="footer__phone-block">
+          <p class="footer__phone">77993307</p>
+          <a href="mailto:ecotravel_forever228@mail.ru" class="footer__email">ecotravel_forever228@mail.ru</a>
+        </div>
+        <div>
+          <p class="footer__socials-label">Мы в соц сетях</p>
+          <div class="footer__socials">
+            <a href="#"><img src="../../../assets/images/vk.png" alt="VK" class="footer__icon"></a>
+            <a href="#"><img src="../../../assets/images/inst.png" alt="Instagram" class="footer__icon"></a>
+            <a href="#"><img src="../../../assets/images/facebook.png" alt="Facebook" class="footer__icon"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Модальное окно избранного -->
+  <div id="modal-favorites" class="modal">
+    <div class="modal__content modal__content--favorites">
+      <span class="modal__close">&times;</span>
+      <h2 class="modal__title">Мои избранные</h2>
+      <div id="favorites-content" class="favorites-content">
+        <p class="favorites-empty">У вас пока нет избранных элементов</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно для просмотра больших изображений -->
+  <div id="modal-image-viewer" class="modal modal-image-viewer">
+    <div class="modal__content modal__content--image">
+      <span class="modal__close">&times;</span>
+      <img id="modal-image-viewer-img" src="" alt="" class="modal-image-viewer__img">
+    </div>
+  </div>
+
+  <script src="../../../blocks/favorites/favorites-modal.js"></script>
+  <script src="../../../blocks/image-viewer/image-viewer.js"></script>
+  <script src="parkV.js"></script>
+  <script>
+  function toggleMenu() {
+      document.querySelector('.burger-menu').classList.toggle('active');
+      document.querySelector('.nav__list').classList.toggle('active');
+  }
+  document.querySelectorAll('.nav__link').forEach(link => {
+      link.addEventListener('click', () => {
+          document.querySelector('.burger-menu').classList.remove('active');
+          document.querySelector('.nav__list').classList.remove('active');
+      });
+  });
+  </script>
+      </body>
+</html>

@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="kistkani.css">
+        <link rel="stylesheet" href="../../../blocks/header/header.css">
+        <link rel="stylesheet" href="../../../blocks/footer/footer.css">
+        <link rel="stylesheet" href="../../../blocks/modal/modal-favorutes/modal-favorites.css">
+        <script src="../../../blocks/favorites/favorites.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>   
+      </head>
+
+      <body>
+        <header class="header">
+            <div class="header__container">
+                <div class="logo">
+                  <h1 class="logo__title">EcoTravel<br>Приднестровье</h1>
+                </div>
+           
+                <nav class="nav">
+                  <div class="burger-menu" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <ul class="nav__list">
+                    <li class="nav__item"><a href="../../../index.html#hero" class="nav__link">Главная</a></li>
+                    <li class="nav__item"><a href="../../../pages/routes.html" class="nav__link">Маршруты</a></li>
+                    <li class="nav__item"><a href="../../../pages/region__map/region-map.html" class="nav__link">Карта региона</a></li>
+                    <li class="nav__item"><a href="../../../pages/attraction-page/attractions.html" class="nav__link">Достопримечательности</a></li>
+                    <li class="nav__item"><a href="../../../pages/tips.html" class="nav__link">Советы путешественникам</a></li>
+                    <li class="nav__item"><a href="../../../index.html#about" class="nav__link">О нас</a></li>
+                    <li class="nav__item"><a href="../../../index.html#contact" class="nav__link">Контакты</a></li>
+                    <li class="nav__item">
+                      <a href="#" class="nav__link favorites-link" id="favoritesLink">
+                        <i class="fas fa-heart"></i>
+                        <span class="favorites-count" style="display: none;">0</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </header>
+        <!-- БЛОК-ГЕРОЙ НА СТРАНИЦЕ МАРШРУТОВ -->
+        <section id="kitskan-hero" class="kitskan-hero">
+            <!-- Фоновое изображение -->
+            <div class="kitskan-hero__bg"></div>
+          
+            <!-- Тёмный оверлей — точно как в карточках -->
+            <div class="kitskan-hero__overlay"></div>
+          
+            <!-- Заголовок -->
+            <h1 class="kitskan-hero__title">
+              КИЦКАНСКИЙ ЛЕС
+            </h1>
+          </section>
+
+
+          <div class="container">
+
+            <div class="content-wrapper">
+        
+                <!-- Левый блок -->
+                <div class="left-block">
+        
+                    <div class="card">
+                        <h2>Описание</h2>
+                        <p>Кицканский лес — один из самых живописных и экологически ценных природных массивов Приднестровья. Это место, где смешиваются лиственные и хвойные породы деревьев, создавая густую тень и насыщенный свежий воздух. Лес защищён от городского шума и отлично подходит для пеших прогулок, наблюдения за птицами, сбора грибов и фотосъёмки природы.<br><br></p>
+        
+                        <p>Под пологом леса всегда прохладно и тихо: слышны только шум листьев, стрекотание насекомых и пение птиц. Здесь часто встречаются белки, зайцы, лесные птицы и множество видов растений, в том числе редких.</p>
+        
+                        <p>Лес особенно красив весной, когда всё покрывается молодой зеленью, и осенью — когда деревья окрашиваются в золотые, оранжевые и красные оттенки.</p>
+        
+                        <h2>Интересные факты:</h2>
+                        <ul>
+                            <li>Турунчук считается одной из самых чистых водных артерий региона.</li>
+                            <li>В прибрежных зонах можно встретить редких птиц — серых цапель, диких уток, лебедей.</li>
+                            <li>Название реки происходит от тюркского слова, означающего «ветвь» или «рукав».</li>
+                            <li>В старину здесь проходили торговые пути и стояли рыбацкие поселения.</li>
+                        </ul>
+        
+                        <h2>Кицканский лес:</h2>
+                        <p><strong>Регион:</strong> за тираспольским мостом через Днестр</p>
+                        <p><strong>Расположение:</strong> между селами Чобручи и Красное</p>
+                        <p><strong>Точные координаты:</strong> 46.817612, 29.593596</p>
+                        <p><strong>Сезон посещения:</strong> весна – осень</p>
+                        <p><strong>Доступность:</strong> автомобиль, пешком</p>
+                        <p><strong>Продолжительность прогулки:</strong> 1–3 часа</p>
+                        <p><strong>Сложность:</strong> лёгкая</p>
+                    </div>
+        
+                </div>
+        
+                <!-- Правая колонка -->
+                <div class="right-column">
+        
+                    <!-- Галерея -->
+                    <div class="gallery-container">
+                        <div class="gallery">
+                            <div class="gallery-track" id="galleryTrack">
+                                <div class="gallery-image"><img src="images/kitsk1.jpg" alt=""></div>
+                                <div class="gallery-image"><img src="images/kitsk4.jpg"></div>
+                                <div class="gallery-image"><img src="images/kitsk_3.jpg"></div> 
+                                <div class="gallery-image"><img src="images/kitskan.jpg"></div>    
+                                <div class="gallery-image"><img src="images/kitskani.jpg"></div>  
+                            </div>                            
+                        </div>
+                        <button class="nav-btn prev" onclick="moveSlide(-1)"><img src="images/back.png" alt="back"></button>
+                            <button class="nav-btn next" onclick="moveSlide(1)"><img src="images/next.png" alt="next"></button>
+                    </div>
+        
+                    <!-- Блок под галереей -->
+                    <div class="card tips-block">
+                        <h2>Советы<br>путешественникам:</h2>
+        
+                        <p><strong>Лучшее время для посещения:</strong> Утро или ближе к закату — в эти часы температура воздуха ниже, в густом лесу тень деревьев даёт естественную прохладу, а солнце не слепит и не нагревает так сильно, как днём.</p>
+        
+                        <p><strong><br>Возьмите с собой:</strong> Репеллент от насекомых (особенно важен в тёплое время года — комары и мошки могут испортить всю прогулку), достаточное количество питьевой воды, удобную закрытую обувь с хорошим протектором</p>
+        
+                        <p><strong><br>Всё, что вы принесли с собой (упаковки от еды, бутылки, салфетки, окурки), уносите обратно. Даже «биоразлагаемые» остатки портят вид и привлекают грызунов и насекомых.</strong></p>
+                    </div>
+        
+                </div>
+            </div>
+        
+            <!-- Нижний горизонтальный блок -->
+            <div class="bottom-block">
+        
+                <div class="card">
+        
+                    <h2 class="bottom-title">Как добраться:</h2>
+        
+                    <p>
+                        Маршрут: Тирасполь → Кицканы.
+После въезда в Кицканы двигайтесь по главной дороге, затем поверните в сторону лесной зоны — она начинается через 300–500 м от центральной улицы села.
+Автомобиль: удобные подъезды с нескольких сторон.
+                        Ознакомиться с расписанием и подробным маршрутом можно
+                        <a href="https://kickany.ru/index.php/poleznaya-informatsiya/raspisanie-marshrutok" target="_blank">здесь</a>.
+                    </p>
+        
+                    <p><strong>Маршрутка:</strong> Тирасполь → Кицканы, выход на остановке «Центральная», далее 10–12 мин пешком</p>
+        
+                    <p><strong>Парковка:</strong> бесплатная, места ограничены</p>
+                    <button class="nature-button" onclick="location.href='#nature-handbook'">Ознакомиться с природой</button>
+                </div>
+        
+        
+            </div>
+        
+        </div>
+
+
+        <!-- СПРАВОЧНИК ПРИРОДЫ -->
+        <section class="nature-handbook" id="nature-handbook">
+          <div class="handbook-header">
+              <h2 class="handbook-title">Справочник природы</h2>
+          </div>
+      
+          <div class="handbook-content">
+      
+              <!-- РАСТЕНИЯ -->
+              <div class="category">
+                  <div class="category-header">
+                      <h3 class="category-title">РАСТЕНИЯ</h3>
+                      <!-- Кнопка подробнее для всего ряда растений -->
+                      <span class="category-details" onclick="openModal('plants')">
+                        Подробнее
+                    </span>
+                  </div>
+                  <div class="cards-grid">
+                      <div class="nature-card">
+                          <img src="images/dub.jpg" alt="Дуб">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Дуб черешчатый<br>(Quercus robur)</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/akacia.jpg" alt="Акация">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Акация белая<br>(Robinia pseudoacacia)</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/lewina_aureya_2.jpg" alt="Лещина">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Лещина обыкновенная<br>(Corylus avellana)</div>
+                      </div>
+                  </div>
+              </div>
+      
+              <!-- ЖИВОТНЫЕ -->
+              <div class="category">
+                  <div class="category-header">
+                      <h3 class="category-title animal-title">ЖИВОТНЫЕ</h3>
+                      <!-- Кнопка подробнее для всего ряда животных -->
+                      <span class="category-details" onclick="openModal('animals')">
+                        Подробнее
+                    </span>
+                  </div>
+                  <div class="cards-grid">
+                      <div class="nature-card">
+                          <img src="images/belka.jpg" alt="Белка">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Белка обыкновенная<br>(Sciurus vulgaris)</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/rabbit.jpg" alt="Заяц">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Заяц-русак<br>(Lepus europaeus)</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/hedgehog.png" alt="Ёж">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Ёж обыкновенный<br>(Erinaceus europaeus)</div>
+                      </div>
+                  </div>
+              </div>
+      
+              <!-- ГРИБЫ -->
+              <div class="category mushrooms">
+                  <div class="mushrooms-header">
+                      <h3 class="mushrooms-main-title">ГРИБЫ</h3>
+                      <div class="mushrooms-subtitles">
+                          <span class="poisonous">ЯДОВИТЫЕ</span>
+                          <span class="edible">СЪЕДОБНЫЕ</span>
+                      </div>
+                      <!-- Кнопка подробнее для грибов -->
+                      <span class="category-details" onclick="openModal('mushrooms')">
+                        Подробнее
+                    </span>
+                  </div>
+                  <!-- Сетка грибов с кастомными gap -->
+                  <div class="mushrooms-grid">
+                      <!-- Ядовитые -->
+                      <div class="nature-card">
+                          <img src="images/muhomorj.jpg" alt="Мухомор">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Мухомор красный<br>(Amanita muscaria)</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/Amanita-pantherina.jpg" alt="Мухомор пантерный">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Мухомор пантерный<br>(Amanita pantherina)</div>
+                      </div>
+      
+                      <!-- Съедобные -->
+                      <div class="nature-card">
+                          <img src="images/opyata.jpg" alt="Опенок осенний">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Опёнок осенний<br>(Armillaria mellea)</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/podber.jpg" alt="Подберёзовик">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Подберёзовик<br>(Leccinum scabrum)</div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      
+      <!-- Модальные окна -->
+      <!-- Модальное окно для растений -->
+      <div id="plantsModal" class="modal">
+          <div class="modal-content">
+              <span class="close-button" onclick="closeModal('plantsModal')">&times;</span>
+              <h3>Растения Кицканского леса</h3>
+              
+              <div class="modal-item">
+                  <h4>1. Дуб черешчатый (Quercus robur)</h4>
+                  <img src="images/dub.jpg" alt="Дуб">
+                  <p><strong>Описание:</strong> Мощное дерево, формирующее основной полог леса.</p>
+                  <p><strong>Место обитания:</strong> Старые участки Кицканского леса, сухие возвышенности.</p>
+                  <p><strong>Интересный факт:</strong> Может жить до 500 лет и выдерживать засухи.</p>
+              </div>
+              
+              <div class="modal-item">
+                  <h4>2. Акация белая (Robinia pseudoacacia)</h4>
+                  <img src="images/akacia.jpg" alt="Акация">
+                  <p><strong>Описание:</strong> Быстрорастущее дерево с ароматными цветами.</p>
+                  <p><strong>Место обитания:</strong> Опушки и лесные дороги.</p>
+                  <p><strong>Интересный факт:</strong> Отличный медонос — пчёлы активно собирают с неё нектар.</p>
+              </div>
+              
+              <div class="modal-item">
+                  <h4>3. Лещина обыкновенная (Corylus avellana)</h4>
+                  <img src="images/lewina_aureya_2.jpg" alt="Лещина">
+                  <p><strong>Описание:</strong> Кустарник, дающий лесные орехи.</p>
+                  <p><strong>Место обитания:</strong> Тенистые влажные участки, подлесок.</p>
+                  <p><strong>Интересный факт:</strong> Орехи лещины — любимая пища белок и соек.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>4. Клён полевой (Acer campestre)</h4>
+                  <img src="images/klen.jpg" alt="Клён">
+                  <p><strong>Описание:</strong> Невысокое дерево с широкими листьями.</p>
+                  <p><strong>Место обитания:</strong> Смешанные участки леса.</p>
+                  <p><strong>Интересный факт:</strong> Осенью листья становятся ярко-жёлтыми.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>5. Ясень обыкновенный (Fraxinus excelsior)</h4>
+                  <img src="images/yasen.jpg" alt="Ясень">
+                  <p><strong>Описание:</strong> Высокое стройное дерево с ажурной кроной.</p>
+                  <p><strong>Место обитания:</strong> Участки с плодородной почвой.</p>
+                  <p><strong>Интересный факт:</strong> Древесина ясеня ценится за прочность и гибкость.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>6. Тополь серебристый (Populus alba)</h4>
+                  <img src="images/topol.webp" alt="Тополь">
+                  <p><strong>Описание:</strong> Дерево с листьями серебристой нижней стороны.</p>
+                  <p><strong>Место обитания:</strong> Влажные места и низины.</p>
+                  <p><strong>Интересный факт:</strong> При ветре кажется, что листья «блестят».</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>7. Берёза повислая (Betula pendula)</h4>
+                  <img src="images/bereza.jpg" alt="Берёза">
+                  <p><strong>Описание:</strong> Белоствольное дерево, встречается пятнами.</p>
+                  <p><strong>Место обитания:</strong> Освещённые участки леса.</p>
+                  <p><strong>Интересный факт:</strong> Берёзовый сок содержит до 12 витаминов.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>8. Шиповник майский (Rosa canina)</h4>
+                  <img src="images/shipovnik.jpg" alt="Шиповник">
+                  <p><strong>Описание:</strong> Колючий кустарник с красными плодами.</p>
+                  <p><strong>Место обитания:</strong> Опушки, солнечные поляны.</p>
+                  <p><strong>Интересный факт:</strong> Ягоды содержат витамина C больше, чем лимон.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>9. Жимолость лесная (Lonicera xylosteum)</h4>
+                  <img src="images/zjomolost.jpg" alt="Жимолость">
+                  <p><strong>Описание:</strong> Кустарник с парными красными ягодами.</p>
+                  <p><strong>Место обитания:</strong> Подлесок, тенистые участки.</p>
+                  <p><strong>Интересный факт:</strong> Ягоды несъедобны, но их любят птицы.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>10. Тысячелистник обыкновенный (Achillea millefolium)</h4>
+                  <img src="images/tisachelist.jpg" alt="Тысячелистник">
+                  <p><strong>Описание:</strong> Травянистое растение с белыми соцветиями.</p>
+                  <p><strong>Место обитания:</strong> Поляны и открытые участки леса.</p>
+                  <p><strong>Интересный факт:</strong> Используется как лечебная трава более 3000 лет.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>11. Камыш лесной (Scirpus sylvaticus)</h4>
+                  <img src="images/kamish.jpg" alt="Камыш">
+                  <p><strong>Описание:</strong> Влажнолюбивое растение с высоким стеблем.</p>
+                  <p><strong>Место обитания:</strong> Низины и заболоченные места леса.</p>
+                  <p><strong>Интересный факт:</strong> Даёт укрытие лягушкам и водяным насекомым.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>12. Крапива двудомная (Urtica dioica)</h4>
+                  <img src="images/krapivas.jpg" alt="Крапива">
+                  <p><strong>Описание:</strong> Жгучее травянистое растение.</p>
+                  <p><strong>Место обитания:</strong> У обочин троп и в тенистых влажных местах.</p>
+                  <p><strong>Интересный факт:</strong> Молодая крапива — ценный источник белка и витаминов.</p>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Модальное окно для животных -->
+      <div id="animalsModal" class="modal">
+          <div class="modal-content">
+              <span class="close-button" onclick="closeModal('animalsModal')">&times;</span>
+              <h3>Животные Кицканского леса</h3>
+              
+              <div class="modal-item">
+                  <h4>1. Белка обыкновенная (Sciurus vulgaris)</h4>
+                  <img src="images/belka.jpg" alt="Белка">
+                  <p><strong>Описание:</strong> Быстрая и ловкая жительница леса.</p>
+                  <p><strong>Место обитания:</strong> Дубы, орешник, высокие деревья.</p>
+                  <p><strong>Интересный факт:</strong> Белки делают до 30 тайников с орехами за сезон.</p>
+              </div>
+              
+              <div class="modal-item">
+                  <h4>2. Заяц-русак (Lepus europaeus)</h4>
+                  <img src="images/rabbit.jpg" alt="Заяц">
+                  <p><strong>Описание:</strong> Быстрое лесное животное.</p>
+                  <p><strong>Место обитания:</strong> Поляны, опушки.</p>
+                  <p><strong>Интересный факт:</strong> Максимальная скорость — до 60 км/ч.</p>
+              </div>
+              
+              <div class="modal-item">
+                  <h4>3. Ёж обыкновенный (Erinaceus europaeus)</h4>
+                  <img src="images/hedgehog.png" alt="Ёж">
+                  <p><strong>Описание:</strong> Ночной житель леса.</p>
+                  <p><strong>Место обитания:</strong> Кустарники, заросли, опавшая листва.</p>
+                  <p><strong>Интересный факт:</strong> За ночь может пройти более 2 км.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>4. Косуля европейская (Capreolus capreolus)</h4>
+                  <img src="images/kosulia.jpg" alt="Косуля">
+                  <p><strong>Описание:</strong> Грациозный лесной зверь.</p>
+                  <p><strong>Место обитания:</strong> Тихие участки леса и опушки.</p>
+                  <p><strong>Интересный факт:</strong> Косули боятся громких звуков и редко подпускают человека.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>5. Лисица рыжая (Vulpes vulpes)</h4>
+                  <img src="images/lisica-obyknovennaja_ea1ede0ef95adf883dad67fb7850c1de.jpg" alt="Лисица">
+                  <p><strong>Описание:</strong> Хищник с острым слухом.</p>
+                  <p><strong>Место обитания:</strong> Окраины леса, норы у холмов.</p>
+                  <p><strong>Интересный факт:</strong> Лисица различает мышь под слоем снега.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>6. Серая куропатка (Perdix perdix)</h4>
+                  <img src="images/kuropatka.jpg" alt="Куропатка">
+                  <p><strong>Описание:</strong> Небольшая птичка, маскирующаяся в траве.</p>
+                  <p><strong>Место обитания:</strong> Поля, луга около леса.</p>
+                  <p><strong>Интересный факт:</strong> Ходит больше, чем летает.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>7. Дятел большой пёстрый (Dendrocopos major)</h4>
+                  <img src="images/dyatel.jpg" alt="Дятел">
+                  <p><strong>Описание:</strong> Основной «стукарь» леса.</p>
+                  <p><strong>Место обитания:</strong> Старые деревья с дуплами.</p>
+                  <p><strong>Интересный факт:</strong> Язык дятла длиннее его клюва почти в 2 раза.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>8. Синица большая (Parus major)</h4>
+                  <img src="images/sinica.jpeg" alt="Синица">
+                  <p><strong>Описание:</strong> Активная лесная птица.</p>
+                  <p><strong>Место обитания:</strong> Дупла, кормушки, кустарники.</p>
+                  <p><strong>Интересный факт:</strong> Зимой объединяется в стаи с воробьями и поползнями.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>9. Сойка (Garrulus glandarius)</h4>
+                  <img src="images/soika.jpg" alt="Сойка">
+                  <p><strong>Описание:</strong> Крупная яркая птица.</p>
+                  <p><strong>Место обитания:</strong> Дубовые участки леса.</p>
+                  <p><strong>Интересный факт:</strong> Сойки запасают жёлуди на зиму.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>10. Уж обыкновенный (Natrix natrix)</h4>
+                  <img src="images/uj.png" alt="Уж">
+                  <p><strong>Описание:</strong> Мирная неядовитая змея.</p>
+                  <p><strong>Место обитания:</strong> Влажные низины, возле ручьёв.</p>
+                  <p><strong>Интересный факт:</strong> Притворяется мёртвой при опасности.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>11. Лесная мышь (Apodemus sylvaticus)</h4>
+                  <img src="images/mish.jpg" alt="Мышь">
+                  <p><strong>Описание:</strong> Маленький грызун.</p>
+                  <p><strong>Место обитания:</strong> Норы в корнях деревьев.</p>
+                  <p><strong>Интересный факт:</strong> Становится добычей для сов и лисиц.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>12. Сова ушастая (Asio otus)</h4>
+                  <img src="images/sova1.jpg" alt="Сова">
+                  <p><strong>Описание:</strong> Ночной хищник.</p>
+                  <p><strong>Место обитания:</strong> Старые деревья и густые хвойные участки.</p>
+                  <p><strong>Интересный факт:</strong> Слышит движение мыши под листьями на расстоянии 10 м.</p>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Модальное окно для грибов -->
+      <div id="mushroomsModal" class="modal">
+          <div class="modal-content">
+              <span class="close-button" onclick="closeModal('mushroomsModal')">&times;</span>
+              <h3>Грибы Кицканского леса</h3>
+              
+              <div class="modal-section">
+                  <h4 class="edible-title">СЪЕДОБНЫЕ ГРИБЫ</h4>
+                  
+                  <div class="modal-item">
+                      <h5>1. Подберёзовик (Leccinum scabrum)</h5>
+                      <img src="images/podber.jpg" alt="Подберёзовик">
+                      <p><strong>Описание:</strong> Съедобный гриб на крепкой ножке.</p>
+                      <p><strong>Место обитания:</strong> Под берёзами.</p>
+                      <p><strong>Интересный факт:</strong> Редко бывает червивым.</p>
+                  </div>
+                  
+                  <div class="modal-item">
+                      <h5>2. Подосиновик (Leccinum aurantiacum)</h5>
+                      <img src="images/podosinovik.jpg" alt="Подосиновик">
+                      <p><strong>Описание:</strong> С яркой оранжевой шляпкой.</p>
+                      <p><strong>Место обитания:</strong> Возле осин и смешанных лесов.</p>
+                      <p><strong>Интересный факт:</strong> Меняет цвет среза на фиолетовый.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>3. Опёнок осенний (Armillaria mellea)</h5>
+                      <img src="images/opyata.jpg" alt="Опёнок">
+                      <p><strong>Описание:</strong> Растёт большими семействами.</p>
+                      <p><strong>Место обитания:</strong> На пнях и мёртвой древесине.</p>
+                      <p><strong>Интересный факт:</strong> Может образовывать гигантские колонии.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>4. Маслёнок (Suillus luteus)</h5>
+                      <img src="images/maslenok.jpg" alt="Маслёнок">
+                      <p><strong>Описание:</strong> Гладкая слизистая шляпка.</p>
+                      <p><strong>Место обитания:</strong> Вблизи хвойных деревьев.</p>
+                      <p><strong>Интересный факт:</strong> Перед готовкой нужно снимать кожицу.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>5. Лисичка (Cantharellus cibarius)</h5>
+                      <img src="images/lisichka.jpg" alt="Лисичка">
+                      <p><strong>Описание:</strong> Ярко-жёлтый гриб.</p>
+                      <p><strong>Место обитания:</strong> Мшистая почва.</p>
+                      <p><strong>Интересный факт:</strong> Никогда не бывает червивой.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>6. Дождевик гигантский (Calvatia gigantea)</h5>
+                      <img src="images/dojdevik.jpg" alt="Дождевик">
+                      <p><strong>Описание:</strong> Белый шарообразный гриб.</p>
+                      <p><strong>Место обитания:</strong> Лесные поляны.</p>
+                      <p><strong>Интересный факт:</strong> Может достигать размера футбольного мяча.</p>
+                  </div>
+              </div>
+              
+              <div class="modal-section">
+                  <h4 class="poisonous-title">ЯДОВИТЫЕ ГРИБЫ</h4>
+                  
+                  <div class="modal-item">
+                      <h5>7. Мухомор красный (Amanita muscaria)</h5>
+                      <img src="images/muhomorj.jpg" alt="Мухомор">
+                      <p><strong>Описание:</strong> Ярко-красный ядовитый гриб.</p>
+                      <p><strong>Место обитания:</strong> Под берёзами и соснами.</p>
+                      <p><strong>Интересный факт:</strong> Используется как символ леса во всём мире.</p>
+                  </div>
+                  
+                  <div class="modal-item">
+                      <h5>8. Мухомор пантерный (Amanita pantherina)</h5>
+                      <img src="images/Amanita-pantherina.jpg" alt="Мухомор пантерный">
+                      <p><strong>Описание:</strong> Очень ядовитый.</p>
+                      <p><strong>Место обитания:</strong> Листопадные участки.</p>
+                      <p><strong>Интересный факт:</strong> Его легко перепутать с съедобным зонтиком.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>9. Жёлчный гриб (Tylopilus felleus)</h5>
+                      <img src="images/tylopilus_felleus_03.jpg" alt="Жёлчный гриб">
+                      <p><strong>Описание:</strong> Несъедобный, горький.</p>
+                      <p><strong>Место обитания:</strong> Дубравы.</p>
+                      <p><strong>Интересный факт:</strong> Похож на белый гриб.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>10. Паутинник красный (Cortinarius rubellus)</h5>
+                      <img src="images/pautinik.jpg" alt="Паутинник">
+                      <p><strong>Описание:</strong> Один из самых опасных грибов.</p>
+                      <p><strong>Место обитания:</strong> Опавшая хвоя.</p>
+                      <p><strong>Интересный факт:</strong> Его яд действует через несколько дней.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>11. Ложнодождевик (Scleroderma citrinum)</h5>
+                      <img src="images/lozhnodozhdevik-obyknovennyj-2.jpg" alt="Ложнодождевик">
+                      <p><strong>Описание:</strong> Ядовитый двойник съедобного дождевика.</p>
+                      <p><strong>Место обитания:</strong> У корней деревьев.</p>
+                      <p><strong>Интересный факт:</strong> При сжатии выбрасывает тёмные споры.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>12. Трутовик серно-жёлтый (Laetiporus sulphureus)</h5>
+                      <img src="images/Laetiporus-sulphureus_02.jpg" alt="Трутовик">
+                      <p><strong>Описание:</strong> Ярко-жёлтый гриб на стволах.</p>
+                      <p><strong>Место обитания:</strong> Деревья, старые дубы.</p>
+                      <p><strong>Интересный факт:</strong> Молодые экземпляры съедобны, старые — нет.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  <section id="kitskanski-forest-map-section">
+    <div id="kitskanski-forestMap"></div>
+  </section>
+
+  <div class="routespage__header-outer">
+    <div class="routespage__header">
+      <h2 class="routespage__title">Приднестровье - это край, где плещется Днестр и молчат древние холмы</h2>
+    </div>
+  </div>
+  
+  <footer id="footer" class="footer">
+    <div class="footer__container">
+      
+      <!-- Колонка 1: Логотип -->
+      <div class="footer__column-logo">
+        <div class="footer__logo">EcoTravel</div>
+      </div>
+
+      <!-- Колонка 2: Навигация -->
+      <div class="footer__column-nav">
+        <h3 class="footer__nav-title">НАВИГАЦИЯ</h3>
+        <nav class="footer__nav">
+          <a href="../../../index.html" class="footer__link">Главная</a>
+          <a href="../../../pages/routes.html" class="footer__link">Маршруты</a>
+          <a href="../../../pages/region__map/region-map.html" class="footer__link">Карта региона</a>
+          <a href="../../../pages/attraction-page/attractions.html" class="footer__link">Достопримечательности</a>
+          <a href="../../../pages/tips.html" class="footer__link">Советы путешественникам</a>
+          <a href="../../../index.html#about" class="footer__link">О нас</a>
+          <a href="../../../index.html#contact" class="footer__link">Контакты</a>
+        </nav>
+      </div>
+
+      <!-- Колонка 3: Контакты (адрес и режим работы) -->
+      <div class="footer__column-contacts">
+        <h3 class="footer__contacts-title">КОНТАКТЫ</h3>
+        <div class="footer__address-block">
+          <p class="footer__address-label">Наш адрес</p>
+          <p class="footer__address-text">Приднестровье, г. Тирасполь</p>
+        </div>
+        <div class="footer__hours-block">
+          <p class="footer__hours-label">Режим работы</p>
+          <p class="footer__hours-item">ПН-ВС: 09:00-18:00</p>
+        </div>
+      </div>
+
+      <!-- Колонка 4: Телефон + Почта + Соцсети -->
+      <div class="footer__column-right">
+        <div class="footer__phone-block">
+          <p class="footer__phone">77993307</p>
+          <a href="mailto:ecotravel_forever228@mail.ru" class="footer__email">ecotravel_forever228@mail.ru</a>
+        </div>
+        <div>
+          <p class="footer__socials-label">Мы в соц сетях</p>
+          <div class="footer__socials">
+            <a href="#"><img src="../../../assets/images/vk.png" alt="VK" class="footer__icon"></a>
+            <a href="#"><img src="../../../assets/images/inst.png" alt="Instagram" class="footer__icon"></a>
+            <a href="#"><img src="../../../assets/images/facebook.png" alt="Facebook" class="footer__icon"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Модальное окно избранного -->
+  <div id="modal-favorites" class="modal">
+    <div class="modal__content modal__content--favorites">
+      <span class="modal__close">&times;</span>
+      <h2 class="modal__title">Мои избранные</h2>
+      <div id="favorites-content" class="favorites-content">
+        <p class="favorites-empty">У вас пока нет избранных элементов</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно для просмотра больших изображений -->
+  <div id="modal-image-viewer" class="modal modal-image-viewer">
+    <div class="modal__content modal__content--image">
+      <span class="modal__close">&times;</span>
+      <img id="modal-image-viewer-img" src="" alt="" class="modal-image-viewer__img">
+    </div>
+  </div>
+
+  <script src="../../../blocks/favorites/favorites.js"></script>
+  <script src="../../../blocks/favorites/favorites-modal.js"></script>
+  <script src="../../../blocks/image-viewer/image-viewer.js"></script>
+  <script src="kitskani.js"></script>
+  <script>
+  function toggleMenu() {
+      document.querySelector('.burger-menu').classList.toggle('active');
+      document.querySelector('.nav__list').classList.toggle('active');
+  }
+  document.querySelectorAll('.nav__link').forEach(link => {
+      link.addEventListener('click', () => {
+          document.querySelector('.burger-menu').classList.remove('active');
+          document.querySelector('.nav__list').classList.remove('active');
+      });
+  });
+  </script>
+      </body>
+</html>

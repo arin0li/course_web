@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="yagorlyk.css">
+        <link rel="stylesheet" href="../../../blocks/header/header.css">
+        <link rel="stylesheet" href="../../../blocks/footer/footer.css">
+        <link rel="stylesheet" href="../../../blocks/modal/modal-favorutes/modal-favorites.css">
+        <script src="../../../blocks/favorites/favorites.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>   
+      </head>
+
+      <body>
+        <header class="header">
+            <div class="header__container">
+                <div class="logo">
+                  <h1 class="logo__title">EcoTravel<br>Приднестровье</h1>
+                </div>
+           
+                <nav class="nav">
+                  <div class="burger-menu" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <ul class="nav__list">
+                    <li class="nav__item"><a href="../../../index.html#hero" class="nav__link">Главная</a></li>
+                    <li class="nav__item"><a href="../../../pages/routes.html" class="nav__link">Маршруты</a></li>
+                    <li class="nav__item"><a href="../../../pages/region__map/region-map.html" class="nav__link">Карта региона</a></li>
+                    <li class="nav__item"><a href="../../../pages/attraction-page/attractions.html" class="nav__link">Достопримечательности</a></li>
+                    <li class="nav__item"><a href="../../../pages/tips.html" class="nav__link">Советы путешественникам</a></li>
+                    <li class="nav__item"><a href="../../../index.html#about" class="nav__link">О нас</a></li>
+                    <li class="nav__item"><a href="../../../index.html#contact" class="nav__link">Контакты</a></li>
+                    <li class="nav__item">
+                      <a href="#" class="nav__link favorites-link" id="favoritesLink">
+                        <i class="fas fa-heart"></i>
+                        <span class="favorites-count" style="display: none;">0</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </header>
+        <!-- БЛОК-ГЕРОЙ НА СТРАНИЦЕ МАРШРУТОВ -->
+        <section id="yagorlyk-hero" class="yagorlyk-hero">
+            <!-- Фоновое изображение -->
+            <div class="yagorlyk-hero__bg"></div>
+          
+            <!-- Тёмный оверлей — точно как в карточках -->
+            <div class="yagorlyk-hero__overlay"></div>
+          
+            <!-- Заголовок -->
+            <h1 class="yagorlyk-hero__title">
+              ЗАПОВЕДНИК ЯГОРЛЫК
+            </h1>
+          </section>
+
+
+          <div class="container">
+
+            <div class="content-wrapper">
+        
+                <!-- Левый блок -->
+                <div class="left-block">
+        
+                    <div class="card">
+                        <h2>Описание</h2>
+                        <p>Заповедник «Ягорлык» — единственный государственный заповедник в Приднестровье, созданный 15 февраля 1988 г. на месте старого ихтиологического заказника «Гоянский залив». Он включает природные территории и акваторию (водоёмы, заводи, леса, степные участки) на левобережье Днестра — в нижнем течении реки Ягорлык (Дубоссарский район).<br><br></p>
+        
+                        <p>Ландшафт заповедника — сложный и разнообразный: акватории, заливы, плавни, острова и водно-болотные угодья, лесные рощи, степные и полустепные участки.<br><br></p>
+        
+                        <p>Благодаря этому «Ягорлык» — место с высоким биоразнообразием: сотни видов растений, птиц, рыб и других животных.<br><br></p>
+        
+                        <h2>Интересные факты:</h2>
+                        <ul>
+                            <li>«Ягорлык» — единственный государственный заповедник Приднестровья.</li>
+                            <li>Он включает значительную водную зону: более 250–270 га водной поверхности, плюс сотни гектаров суши.</li>
+                            <li>Флора сосудистых растений насчитывает сотни видов; при этом обнаруживаются редкие и исчезающие растения, занесённые в Красную книгу Приднестровья.</li>
+                            <li>В 2024‑м учёные "Ягорлыка" установили 350 нерестовых гнёзд для рыб, что помогло вывести миллионы мальков — это шаг к восстановлению рыбных запасов Днестра.</li>
+                        </ul>
+        
+                        <h2>Заповедник Ягорлык:</h2>
+                        <p><strong>Регион:</strong> Дубоссарский район, ПМР</p>
+                        <p><strong>Расположение:</strong> близ села Гояны, на берегу реки Ягорлык</p>
+                        <p><strong>Точные координаты:</strong> 47.39125183207701, 29.163465454908124</p>
+                        <p><strong>Сезон посещения:</strong> круглый год</p>
+                        <p><strong>Доступность:</strong> автомобиль, велосипед, пеший подъём</p>
+                        <p><strong>Продолжительность прогулки:</strong> 30–90 минут</p>
+                        <p><strong>Сложность:</strong> лёгкая</p>
+                    </div>
+        
+                </div>
+        
+                <!-- Правая колонка -->
+                <div class="right-column">
+        
+                    <!-- Галерея -->
+                    <div class="gallery-container">
+                        <div class="gallery">
+                            <div class="gallery-track" id="galleryTrack">
+                                <div class="gallery-image"><img src="images/yag.jpg" alt=""></div>
+                                <div class="gallery-image"><img src="images/yagorlyk1.jpg"></div> 
+                                <div class="gallery-image"><img src="images/yagorly3.jpg"></div>    
+                                <div class="gallery-image"><img src="images/yagorlyk4.jpg"></div>   
+                            </div>                            
+                        </div>
+                        <button class="nav-btn prev" onclick="moveSlide(-1)"><img src="images/back.png" alt="back"></button>
+                            <button class="nav-btn next" onclick="moveSlide(1)"><img src="images/next.png" alt="next"></button>
+                    </div>
+        
+                    <!-- Блок под галереей -->
+                    <div class="card tips-block">
+                        <h2>Советы<br>путешественникам:</h2>
+        
+                        <p><strong>Лучшее время для посещения:</strong>Весна и начало лета — когда природа особенно буйна, цветут степные травы и вода прозрачная. Поздняя весна — хорошо для наблюдения птиц и рыб, до начала жары. Осень — красивая палитра степей, мягкий свет, меньше людей.</p>
+        
+                        <p><strong><br>Возьмите с собой:</strong> Воду, головной убор, удобную обувь (почвы могут быть заболочены), репеллент (комары/москиты), бинокль или фотоаппарат, одежду, закрывающую тело (из‑за комаров и возможных колючек).</p>
+        
+                        <p><strong><br>Не уходите с троп — особенно в водно‑болотные зоны; Не шумите — многие птицы и звери пугливы; Не ломайте и не выкапывайте растения; Не кормите диких животных; Мусор забирайте с собой.</strong></p>
+                    </div>
+        
+                </div>
+            </div>
+        
+            <!-- Нижний горизонтальный блок -->
+            <div class="bottom-block">
+        
+                <div class="card">
+        
+                    <h2 class="bottom-title">Как добраться:</h2>
+        
+                    <p>
+                        <strong>На автомобиле:</strong> Ехать в сторону села Гояны (Дубоссарский район). По прибытию двигайтесь к южной окраине села, к берегу реки Ягорлык, где расположены тропы заповедника. Есть несколько грунтовых подъездных дорог и мест для парковки у начала маршрутов.
+                    </p>
+        
+                    <p><strong>Маршрутка:</strong>Из Тирасполя ходят маршрутки в город Дубоссары. Из Дубоссар ходят маршрутки в село Гояны. Выходить на центральной улице села, далее пешком 5–10 минут до троп заповедника.
+                      Ознакомиться с расписанием и подробным маршрутом можно
+                        <a href="https://i-pmr.com/transport/tiraspol/bus/" target="_blank">здесь</a>.
+                    </p>
+                    <p><strong>Парковка:</strong>У начала троп заповедника, бесплатно. Летом могут быть заняты некоторые места.</p>
+                    <button class="nature-button" onclick="location.href='#nature-handbook'">Ознакомиться с природой</button>
+                </div>
+        
+        
+            </div>
+        
+        </div>
+
+
+        <!-- СПРАВОЧНИК ПРИРОДЫ -->
+        <section class="nature-handbook" id="nature-handbook">
+          <div class="handbook-header">
+              <h2 class="handbook-title">Справочник природы</h2>
+          </div>
+      
+          <div class="handbook-content">
+      
+              <!-- РАСТЕНИЯ -->
+              <div class="category">
+                  <div class="category-header">
+                      <h3 class="category-title">РАСТЕНИЯ</h3>
+                      <!-- Кнопка подробнее для всего ряда растений -->
+                      <span class="category-details" onclick="openModal('plants')">
+                        Подробнее
+                    </span>
+                  </div>
+                  <div class="cards-grid">
+                      <div class="nature-card">
+                          <img src="images/kovil.jpg" alt="Ковыль перистый">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Ковыль перистый</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/tipchak.jpg" alt="Типчак">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Типчак</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/myatlik.jpg" alt="Мятлик луговой">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Мятлик луговой</div>
+                      </div>
+                  </div>
+              </div>
+      
+              <!-- ЖИВОТНЫЕ -->
+              <div class="category">
+                  <div class="category-header">
+                      <h3 class="category-title animal-title">ЖИВОТНЫЕ</h3>
+                      <!-- Кнопка подробнее для всего ряда животных -->
+                      <span class="category-details" onclick="openModal('animals')">
+                        Подробнее
+                    </span>
+                  </div>
+                  <div class="cards-grid">
+                      <div class="nature-card">
+                          <img src="images/kosyla.jpg" alt="Косуля европейская">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Косуля европейская</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/kunica1.jpg" alt="Каменная куница">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Каменная куница</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/enot.webp" alt="Енотовидная собака">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Енотовидная собака</div>
+                      </div>
+                  </div>
+              </div>
+      
+              <!-- ГРИБЫ -->
+              <div class="category mushrooms">
+                  <div class="mushrooms-header">
+                      <h3 class="mushrooms-main-title">ГРИБЫ</h3>
+                      <div class="mushrooms-subtitles">
+                          <span class="edible">СЪЕДОБНЫЕ</span>
+                          <span class="poisonous">ЯДОВИТЫЕ</span>
+                      </div>
+                      <!-- Кнопка подробнее для грибов -->
+                      <span class="category-details" onclick="openModal('mushrooms')">
+                        Подробнее
+                    </span>
+                  </div>
+                  <!-- Сетка грибов с кастомными gap -->
+                  <div class="mushrooms-grid">
+                      <!-- Съедобные -->
+                      <div class="nature-card">
+                          <img src="images/dozhdevik-zhemchuzhniy-544x394.jpg" alt="Дождевик настоящий">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Дождевик настоящий</div>
+                      </div>
+      
+                      <!-- Ядовитые -->
+                      <div class="nature-card">
+                          <img src="images/muhomorj.jpg" alt="Мухомор красный">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Мухомор красный</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/poganka.jpg" alt="Бледная поганка">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Бледная поганка</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/shampin.jpg" alt="Шампиньон луговой">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Шампиньон луговой</div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      
+      <!-- Модальные окна -->
+      <!-- Модальное окно для растений -->
+      <div id="plantsModal" class="modal">
+          <div class="modal-content">
+              <span class="close-button" onclick="closeModal('plantsModal')">&times;</span>
+              <h3>Растения заповедника Ягорлык</h3>
+              
+              <div class="modal-item">
+                  <h4>1. Ковыль перистый</h4>
+                  <img src="images/kovil.jpg" alt="Ковыль перистый">
+                  <p><strong>Описание:</strong> Степная высокая трава с перистыми соцветиями.</p>
+                  <p><strong>Место обитания:</strong> степные участки Ягорлыка.</p>
+                  <p><strong>Интересный факт:</strong> Устойчива к засухе и служит кормом для степных животных.</p>
+              </div>
+              
+              <div class="modal-item">
+                  <h4>2. Типчак (Festuca)</h4>
+                  <img src="images/tipchak.jpg" alt="Типчак">
+                  <p><strong>Описание:</strong> Жёсткая многолетняя злаковая трава.</p>
+                  <p><strong>Место обитания:</strong> сухие склоновые места.</p>
+                  <p><strong>Интересный факт:</strong> Один из доминирующих видов травостоя в степях Ягорлыка.</p>
+              </div>
+              
+              <div class="modal-item">
+                  <h4>3. Мятлик луговой</h4>
+                  <img src="images/myatlik.jpg" alt="Мятлик луговой">
+                  <p><strong>Описание:</strong> Тонкая, мягкая трава с мелкими семенами.</p>
+                  <p><strong>Место обитания:</strong> влажные лужайки и поймы.</p>
+                  <p><strong>Интересный факт:</strong> Служит кормом для травоядных животных.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>4. Эндемичный тонконог молдавский</h4>
+                  <img src="images/tonkonog.php" alt="Тонконог молдавский">
+                  <p><strong>Описание:</strong> Редкий вид тонкой степной травы.</p>
+                  <p><strong>Место обитания:</strong> редкие участки степей.</p>
+                  <p><strong>Интересный факт:</strong> Характерный эндемичный вид региона ПМР.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>5. Наголоватка лавандолистная</h4>
+                  <img src="images/nagolovatka.jpg" alt="Наголоватка лавандолистная">
+                  <p><strong>Описание:</strong> Низкорослое растение с мелкими фиолетовыми цветками.</p>
+                  <p><strong>Место обитания:</strong> степи и сухие склоны.</p>
+                  <p><strong>Интересный факт:</strong> Занесена в Красную книгу ПМР.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>6. Прострел крупноцветковый (сон-трава)</h4>
+                  <img src="images/prostrel.webp" alt="Прострел крупноцветковый">
+                  <p><strong>Описание:</strong> Растение с крупными колокольчатыми цветками.</p>
+                  <p><strong>Место обитания:</strong> открытые поляны.</p>
+                  <p><strong>Интересный факт:</strong> Редкий и красивоцветущий вид, привлекательный для фотографов.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>7. Миндаль степной</h4>
+                  <img src="images/mindal.jpeg" alt="Миндаль степной">
+                  <p><strong>Описание:</strong> Низкий кустарник с мелкими листьями и цветами.</p>
+                  <p><strong>Место обитания:</strong> редкие кустарниковые заросли на склонах.</p>
+                  <p><strong>Интересный факт:</strong> Устойчив к засухе и жаре.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>8. Рябчик горный (луговой)</h4>
+                  <img src="images/ryabchik.jpg" alt="Рябчик горный">
+                  <p><strong>Описание:</strong> Красивый декоративный цветок с яркой окраской.</p>
+                  <p><strong>Место обитания:</strong> травянистые участки.</p>
+                  <p><strong>Интересный факт:</strong> Редкий вид, охраняемый в регионе.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>9. Колокольчик персиколистный</h4>
+                  <img src="images/kolokol.jpg" alt="Колокольчик персиколистный">
+                  <p><strong>Описание:</strong> Нежный цветок с колокольчатыми соцветиями.</p>
+                  <p><strong>Место обитания:</strong> склоны и поляны.</p>
+                  <p><strong>Интересный факт:</strong> Популярен среди насекомых-опылителей.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>10. Сухие степные злаковые смеси</h4>
+                  <img src="images/suhie.jfif" alt="Степные злаковые смеси">
+                  <p><strong>Описание:</strong> Множество видов степных трав.</p>
+                  <p><strong>Место обитания:</strong> степи и полупустыни.</p>
+                  <p><strong>Интересный факт:</strong> Обеспечивают кормовую базу для многих животных.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>11. Общая водно-болотная растительность (камыш, тростник и др.)</h4>
+                  <img src="images/obshaya.jpg" alt="Водно-болотная растительность">
+                  <p><strong>Описание:</strong> Водно-болотные растения с густыми зарослями.</p>
+                  <p><strong>Место обитания:</strong> прибрежные и водно-болотные зоны.</p>
+                  <p><strong>Интересный факт:</strong> Создаёт укрытия для птиц и рыб.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>12. Луговые травы (разнообразные злаки и полевые растения)</h4>
+                  <img src="images/lugovye_00.jpg" alt="Луговые травы">
+                  <p><strong>Описание:</strong> Смесь луговых растений различной высоты.</p>
+                  <p><strong>Место обитания:</strong> поймы и влажные участки.</p>
+                  <p><strong>Интересный факт:</strong> Поддерживают биоразнообразие флоры и фауны заповедника.</p>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Модальное окно для животных -->
+      <div id="animalsModal" class="modal">
+          <div class="modal-content">
+              <span class="close-button" onclick="closeModal('animalsModal')">&times;</span>
+              <h3>Животные заповедника Ягорлык</h3>
+              
+              <div class="modal-item">
+                  <h4>1. Косуля европейская</h4>
+                  <img src="images/kosyla.jpg" alt="Косуля европейская">
+                  <p><strong>Описание:</strong> Небольшое грациозное млекопитающее.</p>
+                  <p><strong>Место обитания:</strong> лесные и степные участки.</p>
+                  <p><strong>Интересный факт:</strong> Охраняемый вид, регулирует растительность.</p>
+              </div>
+              
+              <div class="modal-item">
+                  <h4>2. Каменная куница</h4>
+                  <img src="images/kunica1.jpg" alt="Каменная куница">
+                  <p><strong>Описание:</strong> Хищное млекопитающее с гибким телом.</p>
+                  <p><strong>Место обитания:</strong> лесополосы.</p>
+                  <p><strong>Интересный факт:</strong> Контролирует численность грызунов.</p>
+              </div>
+              
+              <div class="modal-item">
+                  <h4>3. Енотовидная собака (енотовидный пёс)</h4>
+                  <img src="images/enot.webp" alt="Енотовидная собака">
+                  <p><strong>Описание:</strong> Редкий, осторожный хищник.</p>
+                  <p><strong>Место обитания:</strong> смешанные леса и кустарники.</p>
+                  <p><strong>Интересный факт:</strong> Ночная активность и скрытность затрудняют наблюдение.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>4. Горностай</h4>
+                  <img src="images/gornostay.jpg" alt="Горностай">
+                  <p><strong>Описание:</strong> Маленький хищник с длинным телом и коричневой шерстью.</p>
+                  <p><strong>Место обитания:</strong> леса и заросли.</p>
+                  <p><strong>Интересный факт:</strong> Охотится на мелких животных, регулируя экосистему.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>5. Суслик европейский</h4>
+                  <img src="images/syslik.jpg" alt="Суслик европейский">
+                  <p><strong>Описание:</strong> Небольшой грызун с полосатой спиной.</p>
+                  <p><strong>Место обитания:</strong> степные участки.</p>
+                  <p><strong>Интересный факт:</strong> Является пищей для хищников.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>6. Болотная черепаха</h4>
+                  <img src="images/cherepaha.jpg" alt="Болотная черепаха">
+                  <p><strong>Описание:</strong> Водное пресмыкающееся с панцирем.</p>
+                  <p><strong>Место обитания:</strong> водно-болотные зоны и заводи.</p>
+                  <p><strong>Интересный факт:</strong> Исчезающий вид, нуждается в защите.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>7. Желтобрюхий полоз</h4>
+                  <img src="images/jeltobruh0.jpg" alt="Желтобрюхий полоз">
+                  <p><strong>Описание:</strong> Змейка с ярким брюшком.</p>
+                  <p><strong>Место обитания:</strong> сухие склоны.</p>
+                  <p><strong>Интересный факт:</strong> Редкий пресмыкающийся, занесён в региональные списки.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>8. Разные виды рыб (карп, карась, судак, лещ, плотва)</h4>
+                  <img src="images/vodnyi.jpg" alt="Рыбы">
+                  <p><strong>Описание:</strong> Водоёмные позвоночные, важные для пищевой цепи.</p>
+                  <p><strong>Место обитания:</strong> акватории и затоны.</p>
+                  <p><strong>Интересный факт:</strong> Заповедные нерестовые гнёзда сохраняют популяции.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>9. Водно-болотные птицы (цапли, кулики и др.)</h4>
+                  <img src="images/caplyas.jpg" alt="Водно-болотные птицы">
+                  <p><strong>Описание:</strong> Разнообразные птицы с длинными ногами и клювом.</p>
+                  <p><strong>Место обитания:</strong> плавни, заводи и прибрежные заросли.</p>
+                  <p><strong>Интересный факт:</strong> Используют Ягорлык как место отдыха и гнездования.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>10. Перелётные птицы</h4>
+                  <img src="images/perelet.jpg" alt="Перелётные птицы">
+                  <p><strong>Описание:</strong> Мигрирующие виды, перелетающие на большие расстояния.</p>
+                  <p><strong>Место обитания:</strong> акватория и степи.</p>
+                  <p><strong>Интересный факт:</strong> Ягорлык — важный «перекрёсток» миграционных путей.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>11. Насекомые (бабочки, стрекозы)</h4>
+                  <img src="images/babochki.jpg" alt="Насекомые">
+                  <p><strong>Описание:</strong> Лёгкие и яркие насекомые.</p>
+                  <p><strong>Место обитания:</strong> степи и поймы.</p>
+                  <p><strong>Интересный факт:</strong> Индикаторы состояния экосистемы, важны для опыления.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>12. Амфибии (лягушки, тритоны)</h4>
+                  <img src="images/lyaguch.jpg" alt="Амфибии">
+                  <p><strong>Описание:</strong> Мелкие водные или полуводные животные.</p>
+                  <p><strong>Место обитания:</strong> влажные участки и заводи.</p>
+                  <p><strong>Интересный факт:</strong> Контролируют численность насекомых.</p>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Модальное окно для грибов -->
+      <div id="mushroomsModal" class="modal">
+          <div class="modal-content">
+              <span class="close-button" onclick="closeModal('mushroomsModal')">&times;</span>
+              <h3>Грибы заповедника Ягорлык</h3>
+              
+              <div class="modal-section">
+                  <h4 class="edible-title">СЪЕДОБНЫЕ ГРИБЫ</h4>
+                  
+                  <div class="modal-item">
+                      <h5>1. Дождевик настоящий</h5>
+                      <img src="images/dozhdevik-zhemchuzhniy-544x394.jpg" alt="Дождевик настоящий">
+                      <p><strong>Описание:</strong> Шарообразный гриб.</p>
+                      <p><strong>Место обитания:</strong> влажные поляны и берега.</p>
+                      <p><strong>Интересный факт:</strong> При старении выпускает облако спор.</p>
+                  </div>
+                  
+                  <div class="modal-item">
+                      <h5>2. Шампиньон луговой</h5>
+                      <img src="images/shampin.jpg" alt="Шампиньон луговой">
+                      <p><strong>Описание:</strong> Белый съедобный гриб с округлой шляпкой.</p>
+                      <p><strong>Место обитания:</strong> луговые участки и междурядья.</p>
+                      <p><strong>Интересный факт:</strong> Чаще встречается после дождей.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>3. Подосиновик / Подберёзовик</h5>
+                      <img src="images/podosin.jpg" alt="Подосиновик / Подберёзовик">
+                      <p><strong>Описание:</strong> Съедобный гриб с толстой ножкой.</p>
+                      <p><strong>Место обитания:</strong> лиственные посадки.</p>
+                      <p><strong>Интересный факт:</strong> Предпочитает дубовые и берёзовые леса.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>4. Моховик зелёный / боровик</h5>
+                      <img src="images/mohovik2.jpg" alt="Моховик зелёный / боровик">
+                      <p><strong>Описание:</strong> Условно съедобный гриб с тёмной шляпкой.</p>
+                      <p><strong>Место обитания:</strong> хвойные и смешанные леса.</p>
+                      <p><strong>Интересный факт:</strong> Меняет цвет при повреждении.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>5. Опёнок осенний</h5>
+                      <img src="images/openok-osenniy-544x362.jpg" alt="Опёнок осенний">
+                      <p><strong>Описание:</strong> Мелкие грибы семейными группами.</p>
+                      <p><strong>Место обитания:</strong> старые пни и влажные погосты.</p>
+                      <p><strong>Интересный факт:</strong> Образует длинные «кольца», объединяясь с корнями.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>6. Лисичка</h5>
+                      <img src="images/lisichka2.jpg" alt="Лисичка">
+                      <p><strong>Описание:</strong> Ярко-жёлтый гриб с характерным запахом.</p>
+                      <p><strong>Место обитания:</strong> лесные опушки, хвойные.</p>
+                      <p><strong>Интересный факт:</strong> Легко узнаётся по ароматной мякоти.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>7. Навозник серый (Coprinus comatus)</h5>
+                      <img src="images/navozn.webp" alt="Навозник серый">
+                      <p><strong>Описание:</strong> Съедобный в молодом виде гриб с вытянутой шляпкой.</p>
+                      <p><strong>Место обитания:</strong> открытые участки, опавшая листва.</p>
+                      <p><strong>Интересный факт:</strong> Широко используется в кулинарии.</p>
+                  </div>
+              </div>
+              
+              <div class="modal-section">
+                  <h4 class="poisonous-title">НЕСЪЕДОБНЫЕ И ЯДОВИТЫЕ</h4>
+                  
+                  <div class="modal-item">
+                      <h5>8. Мухомор красный (Amanita muscaria)</h5>
+                      <img src="images/muhomorj.jpg" alt="Мухомор красный">
+                      <p><strong>Описание:</strong> Ядовитый гриб с ярко-красной шляпкой.</p>
+                      <p><strong>Место обитания:</strong> лесные зоны, лиственные и хвойные.</p>
+                      <p><strong>Интересный факт:</strong> Символ многих народных сказок и легенд.</p>
+                  </div>
+                  
+                  <div class="modal-item">
+                      <h5>9. Бледная поганка (Amanita phalloides)</h5>
+                      <img src="images/poganka.jpg" alt="Бледная поганка">
+                      <p><strong>Описание:</strong> Смертельно ядовитый гриб.</p>
+                      <p><strong>Место обитания:</strong> лиственные леса.</p>
+                      <p><strong>Интересный факт:</strong> Один из самых опасных грибов в мире.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>10. Паутинник болотный</h5>
+                      <img src="images/pautin2.jpg" alt="Паутинник болотный">
+                      <p><strong>Описание:</strong> Несъедобный мелкий гриб.</p>
+                      <p><strong>Место обитания:</strong> влажные и заболоченные участки.</p>
+                      <p><strong>Интересный факт:</strong> Редкий гриб, индикатор состояния почвы.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>11. Строфария</h5>
+                      <img src="images/Stropharia-coronilla_01.jpg" alt="Строфария">
+                      <p><strong>Описание:</strong> Ядовитый или условно съедобный гриб с яркой ножкой.</p>
+                      <p><strong>Место обитания:</strong> влажные леса.</p>
+                      <p><strong>Интересный факт:</strong> Часто путается с съедобными видами.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>12. Горчак / лишайник-сапрофит</h5>
+                      <img src="images/gorchak.jpg" alt="Горчак">
+                      <p><strong>Описание:</strong> Несъедобный гриб-симбионт.</p>
+                      <p><strong>Место обитания:</strong> сухие края леса и кустарников.</p>
+                      <p><strong>Интересный факт:</strong> Важен для экосистемы, разлагая органику.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  <section id="yagorlyk-map-section">
+    <div id="yagorlykMap"></div>
+  </section>
+
+  <div class="routespage__header-outer">
+    <div class="routespage__header">
+      <h2 class="routespage__title">Приднестровье - это край, где плещется Днестр и молчат древние холмы</h2>
+    </div>
+  </div>
+  
+  <footer id="footer" class="footer">
+    <div class="footer__container">
+      
+      <!-- Колонка 1: Логотип + Копирайт -->
+      <div class="footer__column-logo">
+        <div class="footer__logo">EcoTravel</div>
+        <div class="footer__copyright">(с) Все права защищены</div>
+      </div>
+
+      <!-- Колонка 2: Навигация -->
+      <div class="footer__column-nav">
+        <h3 class="footer__nav-title">НАВИГАЦИЯ</h3>
+        <nav class="footer__nav">
+          <a href="../../../index.html" class="footer__link">Главная</a>
+          <a href="../../../pages/routes.html" class="footer__link">Маршруты</a>
+          <a href="../../../pages/region__map/region-map.html" class="footer__link">Карта региона</a>
+          <a href="../../../pages/attraction-page/attractions.html" class="footer__link">Достопримечательности</a>
+          <a href="../../../pages/tips.html" class="footer__link">Советы путешественникам</a>
+          <a href="../../../index.html#about" class="footer__link">О нас</a>
+          <a href="../../../index.html#contact" class="footer__link">Контакты</a>
+        </nav>
+      </div>
+
+      <!-- Колонка 3: Контакты (адрес и режим работы) -->
+      <div class="footer__column-contacts">
+        <h3 class="footer__contacts-title">КОНТАКТЫ</h3>
+        <div class="footer__address-block">
+          <p class="footer__address-label">Наш адрес</p>
+          <p class="footer__address-text">Приднестровье, г. Тирасполь</p>
+        </div>
+        <div class="footer__hours-block">
+          <p class="footer__hours-label">Режим работы</p>
+          <p class="footer__hours-item">ПН-ВС: 09:00-18:00</p>
+        </div>
+      </div>
+
+      <!-- Колонка 4: Телефон + Почта + Соцсети -->
+      <div class="footer__column-right">
+        <div class="footer__phone-block">
+          <p class="footer__phone">77993307</p>
+          <a href="mailto:ecotravel_forever228@mail.ru" class="footer__email">ecotravel_forever228@mail.ru</a>
+        </div>
+        <div>
+          <p class="footer__socials-label">Мы в соц сетях</p>
+          <div class="footer__socials">
+            <a href="#"><img src="../../../assets/images/vk.png" alt="VK" class="footer__icon"></a>
+            <a href="#"><img src="../../../assets/images/inst.png" alt="Instagram" class="footer__icon"></a>
+            <a href="#"><img src="../../../assets/images/facebook.png" alt="Facebook" class="footer__icon"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Модальное окно избранного -->
+  <div id="modal-favorites" class="modal">
+    <div class="modal__content modal__content--favorites">
+      <span class="modal__close">&times;</span>
+      <h2 class="modal__title">Мои избранные</h2>
+      <div id="favorites-content" class="favorites-content">
+        <p class="favorites-empty">У вас пока нет избранных элементов</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно для просмотра больших изображений -->
+  <div id="modal-image-viewer" class="modal modal-image-viewer">
+    <div class="modal__content modal__content--image">
+      <span class="modal__close">&times;</span>
+      <img id="modal-image-viewer-img" src="" alt="" class="modal-image-viewer__img">
+    </div>
+  </div>
+
+  <script src="../../../blocks/favorites/favorites.js"></script>
+  <script src="../../../blocks/favorites/favorites-modal.js"></script>
+  <script src="../../../blocks/image-viewer/image-viewer.js"></script>
+  <script src="yagorlyk.js"></script>
+  <script>
+  function toggleMenu() {
+      document.querySelector('.burger-menu').classList.toggle('active');
+      document.querySelector('.nav__list').classList.toggle('active');
+  }
+  document.querySelectorAll('.nav__link').forEach(link => {
+      link.addEventListener('click', () => {
+          document.querySelector('.burger-menu').classList.remove('active');
+          document.querySelector('.nav__list').classList.remove('active');
+      });
+  });
+  </script>
+      </body>
+</html>

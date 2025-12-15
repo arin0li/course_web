@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html>
+    <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css?v=5">
+        <link rel="stylesheet" href="blocks/header/header.css?v=5">
+        <link rel="stylesheet" href="blocks/footer/footer.css">
+        <link rel="stylesheet" href="blocks/modal/modal-favorutes/modal-favorites.css">
+        <script src="script.js"></script>
+        <script src="blocks/favorites/favorites.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <!-- Шрифты согласно ТЗ -->
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+      </head>
+    <header class="header">
+    <div class="header__container">
+        <div class="logo">
+          <h1 class="logo__title">EcoTravel<br>Приднестровье</h1>
+        </div>
+    
+        <nav class="nav">
+          <div class="burger-menu" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <ul class="nav__list">
+            <li class="nav__item"><a href="#hero" class="nav__link">Главная</a></li>
+            <li class="nav__item"><a href="pages/routes.html" class="nav__link">Маршруты</a></li>
+            <li class="nav__item"><a href="pages/region__map/region-map.html" class="nav__link">Карта региона</a></li>
+            <li class="nav__item"><a href="pages/attraction-page/attractions.html" class="nav__link">Достопримечательности</a></li>
+            <li class="nav__item"><a href="pages/tips.html" class="nav__link">Советы путешественникам</a></li>
+            <li class="nav__item"><a href="#about" class="nav__link">О нас</a></li>
+            <li class="nav__item"><a href="#contact" class="nav__link">Контакты</a></li>
+            <li class="nav__item">
+              <a href="#" class="nav__link favorites-link" id="favoritesLink">
+                <i class="fas fa-heart"></i>
+                <span class="favorites-count" style="display: none;">0</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <body>
+      <section id="hero" class="hero">
+        <div class="hero__content">
+          <h1 class="hero__title">
+            <span class="hero__line hero__line--top">ПУТЕШЕСТВУЙ</span>
+            
+            <span class="hero__line hero__line--middle">вместе с</span>
+            
+            <span class="hero__line hero__line--bottom">Приднестровьем</span>
+          </h1>
+          
+          <a href="#routes" class="hero__button">Посмотреть маршруты →</a>
+        </div>
+      </section>
+
+      <!-- Секция Популярные достопримечательности -->
+      <section id="attractions" class="attractions">
+        <div class="attractions__header-outer">
+          <div class="attractions__header">
+            <h2 class="attractions__title">Популярные достопримечательности</h2>
+            <a href="pages/attraction-page/attractions.html" class="attractions__all">Смотреть все</a>
+          </div>
+        </div>
+    <div class="attractions__grid">
+      
+      <article class="attraction-card card-yagorlyk">
+        <button class="favorite-btn-attraction" data-attraction-id="yagorlyk" data-attraction-title="Заповедник Ягорлык: прогулка в сердце дикой природы" data-attraction-desc="Приглашаем вас в одно из самых живописных мест региона — заповедник «Ягорлык». Маршрут пройдёт по берегам реки, через луга и лесные тропы, где можно увидеть редкие растения, птиц и нетронутую природу. Это идеальное место, чтобы ощутить гармонию и красоту дикой природы Приднестровья." data-attraction-image="assets/images/yagorlyk.jpg">
+          <i class="far fa-heart"></i>
+        </button>
+        <div class="routes-card__quick">Быстрый просмотр</div>
+        <div class="attraction-card__overlay"></div>
+        <div class="attraction-card__content">
+          <h3 class="attraction-card__name">
+            Заповедник Ягорлык:<br>прогулка в сердце дикой природы
+          </h3>
+          <p class="attraction-card__desc">Приглашаем вас в одно из самых живописных мест региона — заповедник «Ягорлык». Маршрут пройдёт по берегам реки, через луга и лесные тропы, где можно увидеть редкие растения, птиц и нетронутую природу. Это идеальное место, чтобы ощутить гармонию и красоту дикой природы Приднестровья.</p>
+          <a href="pages/attraction-page/yagorlyk/yagorlyk.html" class="attraction-card__btn">Подробнее</a>
+        </div>
+      </article>
+
+      <article class="attraction-card card-grape">
+        <button class="favorite-btn-attraction" data-attraction-id="vineyards" data-attraction-title="Виноградные террасы" data-attraction-desc="Путешествие по виноградным террасам Каменки подарит вам незабываемые впечатления. Здесь холмы, покрытые зеленью лоз, спускаются к реке Днестр, а воздух наполнен ароматом спелых ягод. Вы познакомитесь с винодельческими традициями региона и насладитесь прекрасными видами на долину." data-attraction-image="assets/images/grape_tiras.jpg">
+          <i class="far fa-heart"></i>
+        </button>
+        <div class="routes-card__quick">Быстрый просмотр</div>
+        <div class="attraction-card__overlay"></div>
+        <div class="attraction-card__content">
+          <h3 class="attraction-card__name">
+            Виноградные террасы
+          </h3>
+          <p class="attraction-card__desc">Путешествие по виноградным террасам Каменки подарит вам незабываемые впечатления. Здесь холмы, покрытые зеленью лоз, спускаются к реке Днестр, а воздух наполнен ароматом спелых ягод. Вы познакомитесь с винодельческими традициями региона и насладитесь прекрасными видами на долину.</p>
+          <a href="pages/attraction-page/vinogradny_teras/vinogradny.html" class="attraction-card__btn">Подробнее</a>
+        </div>
+      </article>
+
+      <article class="attraction-card card-park">
+        <button class="favorite-btn-attraction" data-attraction-id="rodina" data-attraction-title="Парк имени Д.К. Родина: по следам природы и истории" data-attraction-desc="Этот маршрут познакомит вас с одним из старейших парков региона. Вас ждут тенистые аллеи, старинные деревья и атмосфера спокойствия. Парк имени Дмитрия Родина хранит историю города и остаётся любимым местом прогулок жителей и гостей Приднестровья." data-attraction-image="assets/images/park.jpg">
+          <i class="far fa-heart"></i>
+        </button>
+        <div class="routes-card__quick">Быстрый просмотр</div>
+        <div class="attraction-card__overlay"></div>
+        <div class="attraction-card__content">
+          <h3 class="attraction-card__name">
+            Парк имени Д.К. Родина:<br>по следам природы и истории
+          </h3>
+          <p class="attraction-card__desc">Этот маршрут познакомит вас с одним из старейших парков региона. Вас ждут тенистые аллеи, старинные деревья и атмосфера спокойствия. Парк имени Дмитрия Родина хранит историю города и остаётся любимым местом прогулок жителей и гостей Приднестровья.</p>
+          <a href="pages/attraction-page/park-rodina/park.html" class="attraction-card__btn">Подробнее</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<section id="routes" class="routes">
+  <div class="routes__header-outer">
+    <div class="routes__header">
+      <h2 class="routes__title">Популярные маршруты</h2>
+      <a href="pages/routes.html" class="routes__all">Смотреть все</a>
+    </div>
+  </div>
+<div class="routes__grid">
+
+<article class="routes-card card-kamenka">
+ <button class="favorite-btn-route" data-route-id="north-pmr" data-route-title="Север Приднестровья – «Террасы над Днестром»" data-route-desc="Путешествие по виноградным холмам Каменки откроет перед вами красоту северного Приднестровья. Вдоль извилистых склонов Днестра тянутся старинные лозы и можжевеловые рощи..." data-route-image="pages/routes-page/kamenka-terassi/images/Rashkov1.jpg">
+   <i class="far fa-heart"></i>
+ </button>
+ <div class="routes-card__quick">Быстрый просмотр</div>
+ <div class="routes-card__overlay"></div>
+ <div class="routes-card__content">
+   <h3 class="routes-card__name">
+     «Террасы над Днестром»
+   </h3>
+   <div class="routes-card__info">
+     <div class="routes-card__info-item">
+       <i class="fa-solid fa-person-hiking"></i> 10–30 км
+     </div>
+     <div class="routes-card__info-item">
+       <i class="fa-regular fa-clock"></i> 3–8 часов
+     </div>
+     <div class="routes-card__info-item">
+       <i class="fa-solid fa-signal"></i> Лёгкая–Сложная
+     </div>
+   </div>
+    <p class="routes-card__desc">Путешествие по виноградным холмам Каменки откроет перед вами красоту северного Приднестровья. Вдоль извилистых склонов Днестра тянутся старинные лозы и можжевеловые рощи...</p>
+    <a href="pages/routes-page/kamenka-terassi/kamenka-routes.html" class="routes-card__btn">Подробнее</a>
+  </div>
+</article>
+
+<article class="routes-card card-bender">
+  <button class="favorite-btn-route" data-route-id="bender-south" data-route-title="Южный Регион - «Днестр в Тени Парка»" data-route-desc="Прогулка вдоль южного Днестра подарит вам встречу с живой рекой. Парк, набережная и пойменные луга — это пространство, где вода, ивы и птицы сливаются в единый природный ритм." data-route-image="/pages/routes-page/benderDnestr/images/naberej.jpg">
+    <i class="far fa-heart"></i>
+  </button>
+  <div class="routes-card__quick">Быстрый просмотр</div>
+  <div class="routes-card__overlay"></div>
+  <div class="routes-card__content">
+    <h3 class="routes-card__name">
+      «Днестр в Тени Парка»
+    </h3>
+    <div class="routes-card__info">
+      <div class="routes-card__info-item">
+        <i class="fa-solid fa-person-hiking"></i> 7–8 км
+      </div>
+      <div class="routes-card__info-item">
+        <i class="fa-regular fa-clock"></i> 2.5–3.5 часа
+      </div>
+      <div class="routes-card__info-item">
+        <i class="fa-solid fa-signal"></i> Лёгкая
+      </div>
+    </div>
+    <p class="routes-card__desc">
+      Прогулка вдоль южного Днестра подарит вам встречу с живой рекой. Парк, набережная и пойменные луга — это пространство, где вода, ивы и птицы сливаются в единый природный ритм.
+    </p>
+    <a href="pages/routes-page/benderDnestr/bender.html" class="routes-card__btn">Подробнее</a>
+  </div>
+</article>
+
+<article class="routes-card card-turunchuck">
+  <button class="favorite-btn-route" data-route-id="slobodzeya" data-route-title="Слободзейский Район - «Гроты и Рукав Турунчук»" data-route-desc="Маршрут по берегам Турунчука уводит в мир тишины и прозрачных вод. Гроты, покрытые мхом, и речные пороги открывают тайну древнего русла, где природа говорит голосом камня и ветра." data-route-image="pages/routes-page/parkTurunchik/images/rodina6.jpg">
+    <i class="far fa-heart"></i>
+  </button>
+  <div class="routes-card__quick">Быстрый просмотр</div>
+  <div class="routes-card__overlay"></div>
+  <div class="routes-card__content">
+    <h3 class="routes-card__name">
+      «Гроты и Рукав Турунчук»
+    </h3>
+    <div class="routes-card__info">
+      <div class="routes-card__info-item">
+        <i class="fa-solid fa-person-hiking"></i> ~5 км
+      </div>
+      <div class="routes-card__info-item">
+        <i class="fa-regular fa-clock"></i> 4–6 часов
+      </div>
+      <div class="routes-card__info-item">
+        <i class="fa-solid fa-signal"></i> Лёгкая
+      </div>
+    </div>
+    <p class="routes-card__desc">
+      Маршрут по берегам Турунчука уводит в мир тишины и прозрачных вод. Гроты, покрытые мхом, и речные пороги открывают тайну древнего русла, где природа говорит голосом камня и ветра.
+    </p>
+    <a href="pages/routes-page/parkTurunchik/parkTuruncuk.html" class="routes-card__btn">Подробнее</a>
+  </div>
+</article>
+</div>
+</div>
+</section>
+
+
+<section id="tips" class="tips">
+  <div class="tips__header-outer">
+    <div class="tips__header">
+      <h2 class="tips__title">Советы для путешественников</h2>
+    </div>
+  </div>
+
+  <div class="tips__content">
+    <div class="tips__left">
+    <div class="tips__top">
+      <div class="tip-card tip-card--small">
+        <h3 class="tip-card__title">Что взять с собой</h3>
+        <p class="tip-card__text">
+          Удобную обувь и одежду по погоде<br>
+          Шляпу или кепку от солнца<br>
+          Воду и лёгкий перекус<br>
+          Фотоаппарат или смартфон
+        </p>
+      </div>
+
+      <div class="tip-card tip-card--small">
+        <h3 class="tip-card__title">Лучшее время для прогулок</h3>
+        <p class="tip-card__text">
+          Весна и осень — мягкая погода, мало туристов<br>
+          Летом нужна солнцезащита, вода<br>
+          Зимой — прогулки только в безопасных местах
+        </p>
+      </div>
+
+      <div class="tip-card tip-card--small">
+        <h3 class="tip-card__title">Транспорт и доступность</h3>
+        <p class="tip-card__text">
+          Легко добраться на автомобиле или велосипеде<br>
+          Многие маршруты доступны пешком<br>
+          Для удалённых объектов — заказывайте заранее
+        </p>
+      </div>
+    </div>
+
+    <div class="tips__bottom">
+      <div class="tip-card tip-card--large">
+        <div class="tip-card__header" data-modal="nature-rules">
+        <img src="assets/images/Vector.png" class="tips_page">
+        <h3 class="tip-card__title">Правила поведения на природе</h3>
+      </div>
+        <p class="tip-card__text">
+          Не мусорить, уважать флору и фауну<br>
+          Не разводить костры в непопоженных местах<br>
+          Соблюдать указатели и ограждения в заповедниках
+        </p>
+      </div>
+
+      <div class="tip-card tip-card--large">
+        <div class="tip-card__header" data-modal="safety">
+          <img src="assets/images/Vector.png" class="tips_page">
+          <h3 class="tip-card__title">Безопасность</h3>
+        </div>
+      
+        <p class="tip-card__text">
+          Сообщайте близким о маршруте и времени возвращения<br>
+          Берите с собой телефон с полной зарядкой<br>
+          На сложных маршрутах используйте карту или GPS
+        </p>
+      </div>
+    </div>
+  </div>
+  <img src="assets/images/tips.png" alt="tips" class="tips__large__page">
+  </div>
+</section>
+
+
+<section id="about"  class="about">
+  <div class="about__header-outer">
+    <div class="about__header">
+      <h2 class="about__title">О нас</h2>
+    </div>
+  </div>
+
+  <!-- Основной контент: фото + белый блок -->
+  <div class="about__content">
+    <!-- Фоновое фото пейзажа -->
+    <img src="assets/images/dnestr-landscape.png" alt="Днестр" class="about__bg">
+
+    <!-- Белый блок с текстом справа -->
+    <div class="about__card">
+      <div class="about__card-header">
+        <img src="assets/images/about_icon.png" alt="" class="about__icon">
+        <h3 class="about__card-title">О нас</h3>
+      </div>
+      <div class="about__text">
+        <p><span class="text__blue">EcoTravel</span> — это гид по самым живописным и экологически чистым уголкам Приднестровья.</p>
+        Наша цель — показать, насколько богата и разнообразна природа нашего края, и вдохновить путешествовать с уважением к окружающей среде.
+        Мы собираем и публикуем маршруты, которые проходят через леса, степи, заповедные зоны, реки и озёра — туда, где природа сохранила свою первозданную красоту. На нашем сайте вы найдёте не только подробные описания маршрутов, но и рекомендации по экотуризму, фото природных достопримечательностей, а также советы, как путешествовать без вреда для природы.</p>
+        <p><span class="text__blue">EcoTravel</span> — это больше, чем просто карта маршрутов. Это сообщество тех, кто ценит природу, заботится о ней и стремится открыть для себя уникальные природные богатства Приднестровья.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="contact__header-outer">
+    <div class="contact__header">
+      <h2 class="contact__title">Свяжитесь с нами</h2>
+    </div>
+  </div>
+
+  <div class="contact__content">
+    <!-- Тексты сверху -->
+    <div class="contact__intro">
+      <p class="contact__text contact__text--main">
+        У вас есть вопросы, идеи, замечания или просто хотите поделиться впечатлениями от путешествий по Приднестровью? Мы будем рады услышать вас!<br>
+        Оставьте комментарий или отзыв через форму — ваше мнение помогает нам делать EcoTravel лучше.
+      </p>
+      <p class="contact__text contact__text--secondary">
+        Также вы можете связаться с нами напрямую по указанным контактам.
+      </p>
+    </div>
+
+    <!-- Два блока: форма и контакты -->
+    <div class="contact__blocks">
+      <!-- БЛОК ФОРМЫ (слева) -->
+      <div class="contact__form-block">
+        <h3 class="contact__form-title">Оставить отзыв/мнение</h3>
+
+        <!-- ОБЯЗАТЕЛЬНО добавь id="contactForm" -->
+        <form class="contact__form" id="contactForm">
+          <input type="text" placeholder="Имя:" class="contact__input" required>
+          <input type="email" placeholder="Email:" class="contact__input" required>
+          <textarea placeholder="Комментарий:" class="contact__textarea" required></textarea>
+          
+          <button type="submit" class="contact-card__btn">Отправить</button>
+        </form>
+      </div>
+
+      <!-- БЛОК КОНТАКТОВ (справа) -->
+      <div class="contact__info-block">
+        <h3 class="contact__info-title">Контакты</h3>
+        <p class="contact__info-phone">Наш телефон: <strong>8-800-555-3535</strong></p>
+        <p class="contact__info-email">Почта: <strong>ecotravel_forever228@mail.ru</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ПОДВАЛ — В САМОМ НИЗУ СТРАНИЦЫ -->
+<footer id="footer" class="footer">
+  <div class="footer__container">
+    
+      <!-- Колонка 1: Логотип -->
+      <div class="footer__column-logo">
+        <div class="footer__logo">EcoTravel</div>
+      </div>
+
+    <!-- Колонка 2: Навигация -->
+    <div class="footer__column-nav">
+      <h3 class="footer__nav-title">НАВИГАЦИЯ</h3>
+      <nav class="footer__nav">
+        <a href="#hero" class="footer__link">Главная</a>
+        <a href="pages/routes.html" class="footer__link">Маршруты</a>
+        <a href="pages/region__map/region-map.html" class="footer__link">Карта региона</a>
+        <a href="pages/attraction-page/attractions.html" class="footer__link">Достопримечательности</a>
+        <a href="pages/tips.html" class="footer__link">Советы путешественникам</a>
+        <a href="#about" class="footer__link">О нас</a>
+        <a href="#contact" class="footer__link">Контакты</a>
+      </nav>
+    </div>
+
+    <!-- Колонка 3: Контакты (адрес и режим работы) -->
+    <div class="footer__column-contacts">
+      <h3 class="footer__contacts-title">КОНТАКТЫ</h3>
+      <div class="footer__address-block">
+        <p class="footer__address-label">Наш адрес</p>
+        <p class="footer__address-text">Приднестровье, г. Тирасполь</p>
+      </div>
+      <div class="footer__hours-block">
+        <p class="footer__hours-label">Режим работы</p>
+        <p class="footer__hours-item">ПН-ВС: 09:00-18:00</p>
+      </div>
+    </div>
+
+    <!-- Колонка 4: Телефон + Почта + Соцсети -->
+    <div class="footer__column-right">
+      <div class="footer__phone-block">
+        <p class="footer__phone">77993307</p>
+        <a href="mailto:ecotravel_forever228@mail.ru" class="footer__email">ecotravel_forever228@mail.ru</a>
+      </div>
+      <div>
+        <p class="footer__socials-label">Мы в соц сетях</p>
+        <div class="footer__socials">
+          <a href="#"><img src="assets/images/vk.png" alt="VK" class="footer__icon"></a>
+          <a href="#"><img src="assets/images/inst.png" alt="Instagram" class="footer__icon"></a>
+          <a href="#"><img src="assets/images/facebook.png" alt="Facebook" class="footer__icon"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Модальные окна для достопримечательностей -->
+<div id="modal-attraction-yagorlyk" class="modal">
+  <div class="modal__content">
+    <span class="modal__close">&times;</span>
+    <div class="modal__image" style="background-image: url('assets/images/yagorlyk.jpg');"></div>
+    <div class="modal__body">
+      <h2 class="modal__title">Заповедник Ягорлык: прогулка в сердце дикой природы</h2>
+      <p class="modal__text">Приглашаем вас в одно из самых живописных мест региона — заповедник «Ягорлык». Маршрут пройдёт по берегам реки, через луга и лесные тропы, где можно увидеть редкие растения, птиц и нетронутую природу. Это идеальное место, чтобы ощутить гармонию и красоту дикой природы Приднестровья.</p>
+      <p class="modal__text">Заповедник предлагает уникальную возможность наблюдать за дикой природой в её естественной среде обитания. Здесь обитают редкие виды птиц, а растительность представлена уникальными экосистемами, которые сохранились благодаря особому статусу охраняемой территории.</p>
+    </div>
+  </div>
+</div>
+
+<div id="modal-attraction-vineyards" class="modal">
+  <div class="modal__content">
+    <span class="modal__close">&times;</span>
+    <div class="modal__image" style="background-image: url('assets/images/grape_tiras.jpg');"></div>
+    <div class="modal__body">
+      <h2 class="modal__title">Виноградные террасы</h2>
+      <p class="modal__text">Путешествие по виноградным террасам Каменки подарит вам незабываемые впечатления. Здесь холмы, покрытые зеленью лоз, спускаются к реке Днестр, а воздух наполнен ароматом спелых ягод. Вы познакомитесь с винодельческими традициями региона и насладитесь прекрасными видами на долину.</p>
+      <p class="modal__text">Террасы были созданы много веков назад и являются частью культурного наследия региона. Здесь выращивают уникальные сорта винограда, которые используются для производства местных вин.</p>
+    </div>
+  </div>
+</div>
+
+<div id="modal-attraction-rodina" class="modal">
+  <div class="modal__content">
+    <span class="modal__close">&times;</span>
+    <div class="modal__image" style="background-image: url('assets/images/park.jpg');"></div>
+    <div class="modal__body">
+      <h2 class="modal__title">Парк имени Д.К. Родина: по следам природы и истории</h2>
+      <p class="modal__text">Этот маршрут познакомит вас с одним из старейших парков региона. Вас ждут тенистые аллеи, старинные деревья и атмосфера спокойствия. Парк имени Дмитрия Родина хранит историю города и остаётся любимым местом прогулок жителей и гостей Приднестровья.</p>
+      <p class="modal__text">Парк был основан в начале XX века и с тех пор является важной частью культурной жизни города. Здесь проводятся различные мероприятия и праздники, а также можно просто насладиться тишиной и природой.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Модальные окна для маршрутов -->
+<div id="modal-route-kamenka" class="modal">
+  <div class="modal__content">
+    <span class="modal__close">&times;</span>
+    <div class="modal__image" style="background-image: url('assets/images/northPMR.png');"></div>
+    <div class="modal__body">
+      <h2 class="modal__title">Север Приднестровья – «Террасы над Днестром»</h2>
+      <div class="modal__info">
+        <div class="modal__info-item"><i class="fa-solid fa-person-hiking"></i> 10–30 км</div>
+        <div class="modal__info-item"><i class="fa-regular fa-clock"></i> 3–8 часов</div>
+        <div class="modal__info-item"><i class="fa-solid fa-signal"></i> Лёгкая–Сложная</div>
+      </div>
+      <p class="modal__text">Путешествие по виноградным холмам Каменки откроет перед вами красоту северного Приднестровья. Вдоль извилистых склонов Днестра тянутся старинные лозы и можжевеловые рощи.</p>
+      <p class="modal__text">Маршрут предлагает несколько вариантов сложности: от лёгкой прогулки до террас до полноценного похода до Рашкова. Каждый участок открывает новые виды на долину Днестра и уникальную природу региона.</p>
+      <a href="pages/routes-page/kamenka-terassi/kamenka-routes.html" class="modal__btn">Подробнее о маршруте →</a>
+    </div>
+  </div>
+</div>
+
+<div id="modal-route-bender" class="modal">
+  <div class="modal__content">
+    <span class="modal__close">&times;</span>
+    <div class="modal__image" style="background-image: url('assets/images/DnesterBender.png');"></div>
+    <div class="modal__body">
+      <h2 class="modal__title">Южный Регион - «Днестр в Тени Парка»</h2>
+      <div class="modal__info">
+        <div class="modal__info-item"><i class="fa-solid fa-person-hiking"></i> 7–8 км</div>
+        <div class="modal__info-item"><i class="fa-regular fa-clock"></i> 2.5–3.5 часа</div>
+        <div class="modal__info-item"><i class="fa-solid fa-signal"></i> Лёгкая</div>
+      </div>
+      <p class="modal__text">Прогулка вдоль южного Днестра подарит вам встречу с живой рекой. Парк, набережная и пойменные луга — это пространство, где вода, ивы и птицы сливаются в единый природный ритм.</p>
+      <p class="modal__text">Маршрут проходит по самым живописным природным локациям южной части Тирасполя, открывая путешественнику разные настроения реки: от городской набережной до тихой лесополосы и уютного Парка 40 лет Победы.</p>
+      <a href="pages/routes-page/benderDnestr/bender.html" class="modal__btn">Подробнее о маршруте →</a>
+    </div>
+  </div>
+</div>
+
+<div id="modal-route-turunchuck" class="modal">
+  <div class="modal__content">
+    <span class="modal__close">&times;</span>
+    <div class="modal__image" style="background-image: url('assets/images/Turunchuk.png');"></div>
+    <div class="modal__body">
+      <h2 class="modal__title">Слободзейский Район - «Гроты и Рукав Турунчук»</h2>
+      <div class="modal__info">
+        <div class="modal__info-item"><i class="fa-solid fa-person-hiking"></i> ~5 км</div>
+        <div class="modal__info-item"><i class="fa-regular fa-clock"></i> 4–6 часов</div>
+        <div class="modal__info-item"><i class="fa-solid fa-signal"></i> Лёгкая</div>
+      </div>
+      <p class="modal__text">Маршрут по берегам Турунчука уводит в мир тишины и прозрачных вод. Гроты, покрытые мхом, и речные пороги открывают тайну древнего русла, где природа говорит голосом камня и ветра.</p>
+      <p class="modal__text">Путешествие начинается в Парке им. Дмитрия Родина с его гротами и водопадами, затем ведёт к рукаву Турунчук — спокойному и чистому водному участку Днестровской системы, идеальному для пикника и наблюдения за птицами.</p>
+      <a href="pages/routes-page/parkTurunchik/parkTuruncuk.html" class="modal__btn">Подробнее о маршруте →</a>
+    </div>
+  </div>
+</div>
+
+<!-- Модальное окно избранного -->
+<div id="modal-favorites" class="modal">
+  <div class="modal__content modal__content--favorites">
+    <span class="modal__close">&times;</span>
+    <h2 class="modal__title">Мои избранные</h2>
+    <div id="favorites-content" class="favorites-content">
+      <p class="favorites-empty">У вас пока нет избранных элементов</p>
+    </div>
+  </div>
+</div>
+
+<!-- Модальное окно "Правила поведения на природе" -->
+<div id="modal-nature-rules" class="modal">
+  <div class="modal__content">
+    <span class="modal__close">&times;</span>
+    <div class="modal__body">
+      <h2 class="modal__title">Правила поведения на природе</h2>
+      <div class="modal__text">
+        <h3>Основные принципы:</h3>
+        <ul style="list-style: disc; padding-left: 20px; line-height: 1.8;">
+          <li><strong>Не мусорить:</strong> Забирайте с собой весь мусор, включая органические отходы. Помните, что даже яблочная кожура разлагается месяцами.</li>
+          <li><strong>Уважать флору и фауну:</strong> Не срывайте растения, не ломайте ветки, не пугайте животных. Наблюдайте за природой на расстоянии.</li>
+          <li><strong>Не разводить костры в неподготовленных местах:</strong> Используйте только специально оборудованные кострища или принесите портативную печь.</li>
+          <li><strong>Соблюдать указатели и ограждения в заповедниках:</strong> Они установлены для защиты природы и вашей безопасности.</li>
+          <li><strong>Не шуметь:</strong> Громкие звуки пугают животных и мешают другим посетителям наслаждаться природой.</li>
+          <li><strong>Не оставлять следов:</strong> Старайтесь ходить по тропам, не создавать новых путей, которые могут привести к эрозии почвы.</li>
+          <li><strong>Беречь воду:</strong> Не загрязняйте водоемы, не используйте мыло и шампуни в природных источниках.</li>
+          <li><strong>Уважать других посетителей:</strong> Делитесь тропами, уступайте дорогу, будьте вежливы.</li>
+        </ul>
+        <p style="margin-top: 20px;"><strong>Помните:</strong> Мы гости в доме природы. Оставляйте его таким же красивым, каким вы его нашли, или даже лучше!</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Модальное окно "Безопасность" -->
+<div id="modal-safety" class="modal">
+  <div class="modal__content">
+    <span class="modal__close">&times;</span>
+    <div class="modal__body">
+      <h2 class="modal__title">Безопасность в походах</h2>
+      <div class="modal__text">
+        <h3>Перед походом:</h3>
+        <ul style="list-style: disc; padding-left: 20px; line-height: 1.8;">
+          <li><strong>Сообщайте близким о маршруте и времени возвращения:</strong> Оставьте подробную информацию о том, куда вы идете и когда планируете вернуться.</li>
+          <li><strong>Проверяйте прогноз погоды:</strong> Не выходите в поход при неблагоприятных условиях без соответствующей подготовки.</li>
+          <li><strong>Изучайте маршрут заранее:</strong> Знайте особенности местности, сложные участки, источники воды.</li>
+        </ul>
+        
+        <h3 style="margin-top: 20px;">Что взять с собой:</h3>
+        <ul style="list-style: disc; padding-left: 20px; line-height: 1.8;">
+          <li><strong>Телефон с полной зарядкой и power bank:</strong> Возьмите запасной аккумулятор для длительных походов.</li>
+          <li><strong>Карта или GPS:</strong> Не полагайтесь только на телефон, возьмите бумажную карту как резерв.</li>
+          <li><strong>Аптечка первой помощи:</strong> Бинты, пластыри, антисептик, обезболивающее.</li>
+          <li><strong>Фонарик или налобный фонарь:</strong> Даже если планируете вернуться до темноты.</li>
+          <li><strong>Вода и еда:</strong> Берите больше, чем думаете, что нужно.</li>
+          <li><strong>Теплая одежда:</strong> Погода может измениться быстро.</li>
+        </ul>
+        
+        <h3 style="margin-top: 20px;">Во время похода:</h3>
+        <ul style="list-style: disc; padding-left: 20px; line-height: 1.8;">
+          <li><strong>Не отклоняйтесь от маршрута:</strong> Особенно в незнакомой местности.</li>
+          <li><strong>Следите за временем:</strong> Начинайте возвращаться заранее, чтобы не идти в темноте.</li>
+          <li><strong>Будьте осторожны на сложных участках:</strong> Не рискуйте без необходимости.</li>
+          <li><strong>Экономьте заряд телефона:</strong> Используйте режим энергосбережения.</li>
+        </ul>
+        
+        <p style="margin-top: 20px;"><strong>В экстренной ситуации:</strong> Оставайтесь на месте, если потерялись. Позвоните в службу спасения (112) и следуйте их инструкциям.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Модальное окно для просмотра больших изображений -->
+<div id="modal-image-viewer" class="modal modal-image-viewer">
+  <div class="modal__content modal__content--image">
+    <span class="modal__close">&times;</span>
+    <img id="modal-image-viewer-img" src="" alt="" class="modal-image-viewer__img">
+  </div>
+</div>
+
+<script src="blocks/modals/modals.js"></script>
+<script src="blocks/favorites/favorites-modal.js"></script>
+<script src="blocks/quick-view/quick-view.js"></script>
+<script src="blocks/modals/tips-modals.js"></script>
+<script src="blocks/image-viewer/image-viewer.js"></script>
+
+<script>
+// Бургер-меню
+function toggleMenu() {
+    const burger = document.querySelector('.burger-menu');
+    const navList = document.querySelector('.nav__list');
+    burger.classList.toggle('active');
+    navList.classList.toggle('active');
+}
+
+// Закрыть меню при клике на ссылку
+document.querySelectorAll('.nav__link').forEach(link => {
+    link.addEventListener('click', () => {
+        const burger = document.querySelector('.burger-menu');
+        const navList = document.querySelector('.nav__list');
+        burger.classList.remove('active');
+        navList.classList.remove('active');
+    });
+});
+</script>
+
+    </body>
+</html>

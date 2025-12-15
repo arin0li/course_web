@@ -1,0 +1,10 @@
+[33m1e1bcdb[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m fix: burger menu with important flags
+[33m85b7ba8[m[33m ([m[1;31morigin/main[m[33m)[m cache bust v3
+[33me536d45[m feat: add burger menu and large mobile cards
+[33m9b62f60[m revert: restore original styling
+[33m7683603[m revert: remove mobile card styling changes
+[33m5f22f69[m fix: add cache busting version to CSS
+[33m373276a[m fix: improve mobile cards - smaller height, larger text, better buttons
+[33me8c5a15[m fix: force single column layout for all devices under 1024px
+[33m72346cc[m fix: single column layout for tablets and mobile, rename image
+[33md277ae8[m fix: correct mobile hero background image path

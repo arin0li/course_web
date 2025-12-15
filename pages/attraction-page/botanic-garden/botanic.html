@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="botanic.css">
+        <link rel="stylesheet" href="../../../blocks/header/header.css">
+        <link rel="stylesheet" href="../../../blocks/footer/footer.css">
+        <link rel="stylesheet" href="../../../blocks/modal/modal-favorutes/modal-favorites.css">
+        <script src="../../../blocks/favorites/favorites.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>   
+      </head>
+
+      <body>
+        <header class="header">
+            <div class="header__container">
+                <div class="logo">
+                  <h1 class="logo__title">EcoTravel<br>Приднестровье</h1>
+                </div>
+           
+                <nav class="nav">
+                  <div class="burger-menu" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <ul class="nav__list">
+                    <li class="nav__item"><a href="../../../index.html#hero" class="nav__link">Главная</a></li>
+                    <li class="nav__item"><a href="../../../pages/routes.html" class="nav__link">Маршруты</a></li>
+                    <li class="nav__item"><a href="../../../pages/region__map/region-map.html" class="nav__link">Карта региона</a></li>
+                    <li class="nav__item"><a href="../../../pages/attraction-page/attractions.html" class="nav__link">Достопримечательности</a></li>
+                    <li class="nav__item"><a href="../../../pages/tips.html" class="nav__link">Советы путешественникам</a></li>
+                    <li class="nav__item"><a href="../../../index.html#about" class="nav__link">О нас</a></li>
+                    <li class="nav__item"><a href="../../../index.html#contact" class="nav__link">Контакты</a></li>
+                    <li class="nav__item">
+                      <a href="#" class="nav__link favorites-link" id="favoritesLink">
+                        <i class="fas fa-heart"></i>
+                        <span class="favorites-count" style="display: none;">0</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </header>
+        <!-- БЛОК-ГЕРОЙ НА СТРАНИЦЕ МАРШРУТОВ -->
+        <section id="botanic-hero" class="botanic-hero">
+            <!-- Фоновое изображение -->
+            <div class="botanic-hero__bg"></div>
+          
+            <!-- Тёмный оверлей — точно как в карточках -->
+            <div class="botanic-hero__overlay"></div>
+          
+            <!-- Заголовок -->
+            <h1 class="botanic-hero__title">
+              БОТАНИЧЕСКИЙ САД ТИРАСПОЛЯ
+            </h1>
+          </section>
+
+
+          <div class="container">
+
+            <div class="content-wrapper">
+        
+                <!-- Левый блок -->
+                <div class="left-block">
+        
+                    <div class="card">
+                        <h2>Описание</h2>
+                        <p>Ботанический сад Тирасполя — уникальный природный комплекс, заложенный в 1959 году. На 20,5 га собраны коллекции деревьев, кустарников, многолетних и однолетних растений, которые используются для озеленения городов и районов Приднестровья.<br><br></p>
+        
+                        <p>Сад разделён на тематические зоны: крупный дендрологический участок с редкими хвойными и лиственными, главный розарий с более чем 200 сортами роз, весеннее поле тюльпанов и летнее поле лаванды. С 2018 года здесь выращивают гранатовые кусты — осенью на них можно увидеть яркие плоды.</p>
+        
+                        <p>Это место, где природа, наука и отдых объединяются: тихие аллеи, разнообразие растений, множество птиц и цветущие поля делают сад идеальным для прогулок, семейного отдыха, фотосессий и наблюдения за сезонными изменениями природы.</p>
+        
+                        <h2>Интересные факты:</h2>
+                        <ul>
+                            <li>Сад был основан как зелёная научная зона для изучения флоры региона.</li>
+                            <li>В коллекциях есть местные и интродуцированные породы деревьев.</li>
+                            <li>Есть участки с лекарственными растениями и декоративными культурами.</li>
+                            <li>В старых деревьях гнездятся синицы, зяблики и воробьи.</li>
+                            <li>Одна из самых больших зелёных зон города — прохладно даже в жару.</li>
+                        </ul>
+        
+                        <h2>Ботанический сад:</h2>
+                        <p><strong>Регион:</strong> г. Тирасполь</p>
+                        <p><strong>Расположение:</strong> восточная часть города, рядом с жилыми кварталами и учебными учреждениями</p>
+                        <p><strong>Точные координаты:</strong> 46.83085235234159, 29.642495671164205</p>
+                        <p><strong>Сезон посещения:</strong> весна – осень (летом — тенисто и прохладно)</p>
+                        <p><strong>Доступность:</strong> автомобиль, общественный транспорт, пешие маршруты</p>
+                        <p><strong>Продолжительность прогулки:</strong> 1–2 часа</p>
+                        <p><strong>Сложность:</strong> лёгкая, подходит для всех возрастов</p>
+                    </div>
+        
+                </div>
+        
+                <!-- Правая колонка -->
+                <div class="right-column">
+        
+                    <!-- Галерея -->
+                    <div class="gallery-container">
+                        <div class="gallery">
+                            <div class="gallery-track" id="galleryTrack">
+                                <div class="gallery-image"><img src="images/botanic.jpg" alt=""></div>
+                                <div class="gallery-image"><img src="images/botanic01.jpg"></div>
+                                <div class="gallery-image"><img src="images/botanic2.jpg"></div>
+                                <div class="gallery-image"><img src="images/botanic3.jpg"></div> 
+                                <div class="gallery-image"><img src="images/botanic4.jpeg"></div>    
+                            </div>                            
+                        </div>
+                        <button class="nav-btn prev" onclick="moveSlide(-1)"><img src="images/back.png" alt="back"></button>
+                            <button class="nav-btn next" onclick="moveSlide(1)"><img src="images/next.png" alt="next"></button>
+                    </div>
+        
+                    <!-- Блок под галереей -->
+                    <div class="card tips-block">
+                        <h2>Советы<br>путешественникам:</h2>
+        
+                        <p><strong>Лучшее время для посещения:</strong> весна — цветение кустарников и тюльпанов; лето — тенистые дорожки спасают от жары; осень — мягкие золотые оттенки.</p>
+        
+                        <p><strong><br>Возьмите с собой:</strong> воду (0.5–1 л), головной убор летом, удобную обувь (часть маршрутов по грунту), фотокамеру, репеллент в конце весны и начале лета.</p>
+        
+                        <p><strong><br>Правила поведения:</strong> не ломайте ветки коллекционных растений; не выкапывайте цветы и семена; не кормите птиц хлебом — только семечки/зёрна; мусор забирайте с собой.</strong></p>
+                    </div>
+        
+                </div>
+            </div>
+        
+            <!-- Нижний горизонтальный блок -->
+            <div class="bottom-block">
+        
+                <div class="card">
+        
+                    <h2 class="bottom-title">Как добраться:</h2>
+        
+                    <p><strong>Автомобилем:</strong> Сад в восточной части Тирасполя. Двигайтесь по ул. 25 Октября или Одесской дороге в сторону учебных и спортивных учреждений. У входа есть небольшие бесплатные карманы для парковки.</p>
+        
+                    <p><strong>Общественным транспортом:</strong> Троллейбусы №19, №2; маршрутки №9, №12, №7, №4, №14, №21. Остановка «Учебный центр» или «Спортшкола» — 3–7 минут пешком до входа.</p>
+        
+                    <p><strong>Пешком:</strong> Из центра города 20–30 минут по тенистым улицам с удобными тротуарами.</p>
+                    <button class="nature-button" onclick="location.href='#nature-handbook'">Ознакомиться с природой</button>
+                </div>
+        
+        
+            </div>
+        
+        </div>
+
+
+        <!-- СПРАВОЧНИК ПРИРОДЫ -->
+        <section class="nature-handbook" id="nature-handbook">
+          <div class="handbook-header">
+              <h2 class="handbook-title">Справочник природы</h2>
+          </div>
+      
+          <div class="handbook-content">
+      
+              <!-- РАСТЕНИЯ -->
+              <div class="category">
+                  <div class="category-header">
+                      <h3 class="category-title">РАСТЕНИЯ</h3>
+                      <!-- Кнопка подробнее для всего ряда растений -->
+                      <span class="category-details" onclick="openModal('plants')">
+                        Подробнее
+                    </span>
+                  </div>
+                  <div class="cards-grid">
+                      <div class="nature-card">
+                          <img src="images/gikgo biloba.jpg" alt="Гинкго билоба">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Гинкго билоба</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/katalpa.webp" alt="Катальпа бигнониевидная">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Катальпа бигнониевидная</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/el.jpg" alt="Ель голубая">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Ель голубая</div>
+                      </div>
+                  </div>
+              </div>
+      
+              <!-- ЖИВОТНЫЕ -->
+              <div class="category">
+                  <div class="category-header">
+                      <h3 class="category-title animal-title">ЖИВОТНЫЕ</h3>
+                      <!-- Кнопка подробнее для всего ряда животных -->
+                      <span class="category-details" onclick="openModal('animals')">
+                        Подробнее
+                    </span>
+                  </div>
+                  <div class="cards-grid">
+                      <div class="nature-card">
+                          <img src="images/sinica.jpg" alt="Синица большая">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Синица большая</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/dyatel.jpeg" alt="Дятел пёстрый">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Дятел пёстрый</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/belka.jpg" alt="Белка обыкновенная">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Белка обыкновенная</div>
+                      </div>
+                  </div>
+              </div>
+      
+              <!-- ГРИБЫ -->
+              <div class="category mushrooms">
+                  <div class="mushrooms-header">
+                      <h3 class="mushrooms-main-title">ГРИБЫ</h3>
+                      <div class="mushrooms-subtitles">
+                          <span class="poisonous">ЯДОВИТЫЕ</span>
+                          <span class="edible">СЪЕДОБНЫЕ</span>
+                      </div>
+                      <!-- Кнопка подробнее для грибов -->
+                      <span class="category-details" onclick="openModal('mushrooms')">
+                        Подробнее
+                    </span>
+                  </div>
+                  <!-- Сетка грибов с кастомными gap -->
+                  <div class="mushrooms-grid">
+                      <!-- Ядовитые -->
+                      <div class="nature-card">
+                          <img src="images/poganka.jpg" alt="Бледная поганка">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Бледная поганка</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/muhomor.jpg" alt="Мухомор красный">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Мухомор красный</div>
+                      </div>
+      
+                      <!-- Съедобные -->
+                      <div class="nature-card">
+                          <img src="images/podber.jpg" alt="Подберёзовик">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Подберёзовик</div>
+                      </div>
+                      <div class="nature-card">
+                          <img src="images/podosinovik.jpg" alt="Подосиновик">
+                          <div class="card-overlay"></div>
+                          <div class="card-text">Подосиновик</div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+      
+      <!-- Модальные окна -->
+      <!-- Модальное окно для растений -->
+      <div id="plantsModal" class="modal">
+          <div class="modal-content">
+              <span class="close-button" onclick="closeModal('plantsModal')">&times;</span>
+              <h3>Растения Ботанического сада</h3>
+              
+              <div class="modal-item">
+                  <h4>1. Гинкго билоба</h4>
+                  <img src="images/gikgo biloba.jpg" alt="Гинкго билоба">
+                  <p><strong>Описание:</strong> Реликтовое дерево с веерообразными листьями и высокой устойчивостью к загрязнению.</p>
+                  <p><strong>Место обитания:</strong> Дендрарий, северо-западная часть сада.</p>
+                  <p><strong>Интересный факт:</strong> Единственный сохранившийся вид древней группы, существовавшей 270 млн лет назад.</p>
+              </div>
+              
+              <div class="modal-item">
+                  <h4>2. Катальпа бигнониевидная</h4>
+                  <img src="images/katalpa.webp" alt="Катальпа бигнониевидная">
+                  <p><strong>Описание:</strong> Декоративное дерево с крупными листьями и белыми «орхидеевидными» цветами.</p>
+                  <p><strong>Место обитания:</strong> Возле розария и центральных дорожек.</p>
+                  <p><strong>Интересный факт:</strong> Длинные стручки-плоды напоминают ванильные палочки.</p>
+              </div>
+              
+              <div class="modal-item">
+                  <h4>3. Ель голубая</h4>
+                  <img src="images/el.jpg" alt="Ель голубая">
+                  <p><strong>Описание:</strong> Хвойное дерево с серебристо-голубой хвоей.</p>
+                  <p><strong>Место обитания:</strong> Хвойная коллекция сада.</p>
+                  <p><strong>Интересный факт:</strong> Голубой оттенок даёт восковой налёт на хвое.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>4. Туя западная</h4>
+                  <img src="images/tya.webp" alt="Туя западная">
+                  <p><strong>Описание:</strong> Вечнозелёный кустарник с плотной ароматной кроной.</p>
+                  <p><strong>Место обитания:</strong> Хвойный сектор и декоративные посадки.</p>
+                  <p><strong>Интересный факт:</strong> Может жить более 150 лет.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>5. Бархат амурский</h4>
+                  <img src="images/barhat.webp" alt="Бархат амурский">
+                  <p><strong>Описание:</strong> Дерево с резной листвой и потрескавшейся корой.</p>
+                  <p><strong>Место обитания:</strong> Коллекция редких пород деревьев.</p>
+                  <p><strong>Интересный факт:</strong> Кора содержит природные антисептики.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>6. Скумпия кожевенная</h4>
+                  <img src="images/skubpia9.jpeg" alt="Скумпия кожевенная">
+                  <p><strong>Описание:</strong> Декоративный кустарник, образующий «дымчатые» облака из прицветников.</p>
+                  <p><strong>Место обитания:</strong> Южные декоративные участки.</p>
+                  <p><strong>Интересный факт:</strong> Листья использовали в кожевенном производстве.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>7. Пион молочноцветковый</h4>
+                  <img src="images/pion.jpg" alt="Пион молочноцветковый">
+                  <p><strong>Описание:</strong> Многолетник с крупными ароматными цветами.</p>
+                  <p><strong>Место обитания:</strong> Участок многолетников.</p>
+                  <p><strong>Интересный факт:</strong> Цветёт всего 10–14 дней в году.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>8. Лаванда узколистная</h4>
+                  <img src="images/lavanda-uzkolistnaja-hidkote-hidcote.jpg" alt="Лаванда узколистная">
+                  <p><strong>Описание:</strong> Ароматное кустовое растение с фиолетовыми колосками.</p>
+                  <p><strong>Место обитания:</strong> Лавандовое поле в южной части.</p>
+                  <p><strong>Интересный факт:</strong> Привлекает сотни бабочек и пчёл во время цветения.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>9. Тюльпан садовый</h4>
+                  <img src="images/tulpan.jpg" alt="Тюльпан">
+                  <p><strong>Описание:</strong> Яркое весеннее растение, множество сортов.</p>
+                  <p><strong>Место обитания:</strong> Весеннее тюльпановое поле.</p>
+                  <p><strong>Интересный факт:</strong> Коллекция обновляется каждый год.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>10. Шалфей лекарственный</h4>
+                  <img src="images/shalfey.jpg" alt="Шалфей лекарственный">
+                  <p><strong>Описание:</strong> Ароматное растение с лечебными свойствами.</p>
+                  <p><strong>Место обитания:</strong> Пряно-вкусовой участок.</p>
+                  <p><strong>Интересный факт:</strong> Древние греки считали шалфей «священной травой здоровья».</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>11. Сирень обыкновенная</h4>
+                  <img src="images/siren).jpg" alt="Сирень обыкновенная">
+                  <p><strong>Описание:</strong> Кустарник с густыми белыми, фиолетовыми и розовыми соцветиями.</p>
+                  <p><strong>Место обитания:</strong> Центральные аллеи и декоративные зоны.</p>
+                  <p><strong>Интересный факт:</strong> Аромат усиливается вечером из-за активности эфирных масел.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>12. Гранат обыкновенный</h4>
+                  <img src="images/granat.jpg" alt="Гранат">
+                  <p><strong>Описание:</strong> Невысокий кустарник с яркими съедобными плодами.</p>
+                  <p><strong>Место обитания:</strong> Южная часть сада.</p>
+                  <p><strong>Интересный факт:</strong> Кусты, посаженные в 2018 году, хорошо прижились и плодоносят.</p>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Модальное окно для животных -->
+      <div id="animalsModal" class="modal">
+          <div class="modal-content">
+              <span class="close-button" onclick="closeModal('animalsModal')">&times;</span>
+              <h3>Животные Ботанического сада</h3>
+              
+              <div class="modal-item">
+                  <h4>1. Синица большая</h4>
+                  <img src="images/sinica.jpg" alt="Синица большая">
+                  <p><strong>Описание:</strong> Маленькая подвижная птица с жёлтой грудкой и чёрной «шапкой».</p>
+                  <p><strong>Место обитания:</strong> Кроны лип и клёнов.</p>
+                  <p><strong>Интересный факт:</strong> Может запоминать более 30 мест кормления.</p>
+              </div>
+              
+              <div class="modal-item">
+                  <h4>2. Дятел пёстрый</h4>
+                  <img src="images/dyatel.jpeg" alt="Дятел пёстрый">
+                  <p><strong>Описание:</strong> Птица, «простукивающая» деревья в поисках насекомых.</p>
+                  <p><strong>Место обитания:</strong> Старые деревья дендрария.</p>
+                  <p><strong>Интересный факт:</strong> Язык длиннее головы почти в 2 раза.</p>
+              </div>
+              
+              <div class="modal-item">
+                  <h4>3. Малиновка (зарянка)</h4>
+                  <img src="images/malynovka.jpg" alt="Малиновка">
+                  <p><strong>Описание:</strong> Маленькая птица с ярко-рыжей грудкой.</p>
+                  <p><strong>Место обитания:</strong> Тенистые участки сада.</p>
+                  <p><strong>Интересный факт:</strong> Поёт даже зимой.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>4. Зяблик</h4>
+                  <img src="images/zyablik.jpeg" alt="Зяблик">
+                  <p><strong>Описание:</strong> Певчая птица с яркой окраской самцов.</p>
+                  <p><strong>Место обитания:</strong> Лиственные аллеи.</p>
+                  <p><strong>Интересный факт:</strong> У зябликов более 300 вариантов песен.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>5. Ворона серая</h4>
+                  <img src="images/seraya-vorona-kak-oxotnichij-vid-01.jpg" alt="Ворона серая">
+                  <p><strong>Описание:</strong> Крупная и очень умная птица.</p>
+                  <p><strong>Место обитания:</strong> Открытые газоны.</p>
+                  <p><strong>Интересный факт:</strong> Использует камни как инструменты.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>6. Сорока</h4>
+                  <img src="images/soroka.jpg" alt="Сорока">
+                  <p><strong>Описание:</strong> Птица с длинным хвостом и чёрно-белым оперением.</p>
+                  <p><strong>Место обитания:</strong> Окраины сада.</p>
+                  <p><strong>Интересный факт:</strong> Обладает отличной памятью.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>7. Белка обыкновенная</h4>
+                  <img src="images/belka.jpg" alt="Белка обыкновенная">
+                  <p><strong>Описание:</strong> Пушистый грызун с длинным хвостом.</p>
+                  <p><strong>Место обитания:</strong> Хвойные участки.</p>
+                  <p><strong>Интересный факт:</strong> Делает десятки тайников, помнит не все.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>8. Ёж обыкновенный</h4>
+                  <img src="images/ej.jpg" alt="Ёж обыкновенный">
+                  <p><strong>Описание:</strong> Ночной житель с игольчатой защитой.</p>
+                  <p><strong>Место обитания:</strong> Кустарниковые заросли.</p>
+                  <p><strong>Интересный факт:</strong> Может питаться ядовитыми насекомыми.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>9. Лягушка озёрная</h4>
+                  <img src="images/lyagushka.jpg" alt="Лягушка озёрная">
+                  <p><strong>Описание:</strong> Зелёная земноводная.</p>
+                  <p><strong>Место обитания:</strong> Пруды и влажные участки.</p>
+                  <p><strong>Интересный факт:</strong> Прыгает на расстояние в 10 раз больше длины тела.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>10. Бабочка махаон</h4>
+                  <img src="images/Papilio-mahaon.jpg" alt="Махаон">
+                  <p><strong>Описание:</strong> Крупная яркая дневная бабочка.</p>
+                  <p><strong>Место обитания:</strong> Солнечные лужайки.</p>
+                  <p><strong>Интересный факт:</strong> Внесён в Красную книгу ПМР.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>11. Стрекоза обыкновенная</h4>
+                  <img src="images/strekoza.jpg" alt="Стрекоза">
+                  <p><strong>Описание:</strong> Хищное насекомое с прозрачными крыльями.</p>
+                  <p><strong>Место обитания:</strong> Влажные участки и пруды.</p>
+                  <p><strong>Интересный факт:</strong> Ловит добычу в полёте с точностью до 95%.</p>
+              </div>
+
+              <div class="modal-item">
+                  <h4>12. Полёвка лесная</h4>
+                  <img src="images/polevka.jfif" alt="Полёвка">
+                  <p><strong>Описание:</strong> Небольшой грызун с коротким хвостом.</p>
+                  <p><strong>Место обитания:</strong> Травянистые зоны.</p>
+                  <p><strong>Интересный факт:</strong> Вырывает сложные системы ходов.</p>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Модальное окно для грибов -->
+      <div id="mushroomsModal" class="modal">
+          <div class="modal-content">
+              <span class="close-button" onclick="closeModal('mushroomsModal')">&times;</span>
+              <h3>Грибы Ботанического сада</h3>
+              
+              <div class="modal-section">
+                  <h4 class="edible-title">СЪЕДОБНЫЕ ГРИБЫ</h4>
+                  
+                  <div class="modal-item">
+                      <h5>1. Подберёзовик</h5>
+                      <img src="images/podber.jpg" alt="Подберёзовик">
+                      <p><strong>Описание:</strong> Гриб с коричневой шляпкой, растущий возле берёз.</p>
+                      <p><strong>Место обитания:</strong> Берёзовая аллея.</p>
+                      <p><strong>Интересный факт:</strong> Появляется уже в конце мая.</p>
+                  </div>
+                  
+                  <div class="modal-item">
+                      <h5>2. Подосиновик</h5>
+                      <img src="images/podosinovik.jpg" alt="Подосиновик">
+                      <p><strong>Описание:</strong> Крупный гриб с ярко-оранжевой шляпкой.</p>
+                      <p><strong>Место обитания:</strong> Осиновые посадки.</p>
+                      <p><strong>Интересный факт:</strong> Один из самых ароматных лесных грибов.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>3. Опёнок осенний</h5>
+                      <img src="images/openok.jpg" alt="Опёнок осенний">
+                      <p><strong>Описание:</strong> Растёт большими группами на пнях.</p>
+                      <p><strong>Место обитания:</strong> Старые брёвна и коряги.</p>
+                      <p><strong>Интересный факт:</strong> Может образовывать «грибные кольца».</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>4. Шампиньон луговой</h5>
+                      <img src="images/shampinion.jpg" alt="Шампиньон">
+                      <p><strong>Описание:</strong> Белый гриб с приятным ароматом.</p>
+                      <p><strong>Место обитания:</strong> Солнечные лужайки.</p>
+                      <p><strong>Интересный факт:</strong> Пахнет анисом в молодом возрасте.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>5. Маслёнок зернистый</h5>
+                      <img src="images/malynovka.jpg" alt="Маслёнок зернистый">
+                      <p><strong>Описание:</strong> Гриб со скользкой шляпкой.</p>
+                      <p><strong>Место обитания:</strong> Хвойная зона.</p>
+                      <p><strong>Интересный факт:</strong> Слизь на шляпке защищает от пересыхания.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>6. Дождевик гигантский</h5>
+                      <img src="images/dojdevik.jpg" alt="Дождевик гигантский">
+                      <p><strong>Описание:</strong> Крупный шарообразный гриб.</p>
+                      <p><strong>Место обитания:</strong> Открытые травяные зоны.</p>
+                      <p><strong>Интересный факт:</strong> Съедобен только в молодом виде.</p>
+                  </div>
+              </div>
+              
+              <div class="modal-section">
+                  <h4 class="poisonous-title">ЯДОВИТЫЕ ГРИБЫ</h4>
+                  
+                  <div class="modal-item">
+                      <h5>7. Бледная поганка</h5>
+                      <img src="images/poganka.jpg" alt="Бледная поганка">
+                      <p><strong>Описание:</strong> Самый опасный гриб Европы.</p>
+                      <p><strong>Место обитания:</strong> Влажные лиственные участки.</p>
+                      <p><strong>Интересный факт:</strong> Токсин не разрушается при варке.</p>
+                  </div>
+                  
+                  <div class="modal-item">
+                      <h5>8. Мухомор красный</h5>
+                      <img src="images/muhomor.jpg" alt="Мухомор красный">
+                      <p><strong>Описание:</strong> Ярко-красная шляпка с белыми пятнами.</p>
+                      <p><strong>Место обитания:</strong> Под хвойными деревьями.</p>
+                      <p><strong>Интересный факт:</strong> Частый персонаж сказок.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>9. Мухомор пантерный</h5>
+                      <img src="images/pantera.jpg" alt="Мухомор пантерный">
+                      <p><strong>Описание:</strong> Похож на маслёнок, но ядовит.</p>
+                      <p><strong>Место обитания:</strong> Тенистые участки.</p>
+                      <p><strong>Интересный факт:</strong> Яд действует медленно, но сильно.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>10. Ложный опёнок</h5>
+                      <img src="images/lojniy.jpg" alt="Ложный опёнок">
+                      <p><strong>Описание:</strong> Ядовитый двойник настоящего опёнка.</p>
+                      <p><strong>Место обитания:</strong> Пни и поваленные деревья.</p>
+                      <p><strong>Интересный факт:</strong> Имеет запах плесени.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>11. Говорушка беловатая</h5>
+                      <img src="images/govorushka.jpg" alt="Говорушка беловатая">
+                      <p><strong>Описание:</strong> Гриб с тонкой шляпкой молочного цвета.</p>
+                      <p><strong>Место обитания:</strong> Газоны и травяные поляны.</p>
+                      <p><strong>Интересный факт:</strong> Ядовит даже в малых количествах.</p>
+                  </div>
+
+                  <div class="modal-item">
+                      <h5>12. Паутинник оранжево-красный</h5>
+                      <img src="images/pautinik.jpg" alt="Паутинник оранжево-красный">
+                      <p><strong>Описание:</strong> Гриб с паутинистым покрытием под шляпкой.</p>
+                      <p><strong>Место обитания:</strong> Влажные углубления.</p>
+                      <p><strong>Интересный факт:</strong> Яд действует спустя несколько дней.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  <section id="botanic-map-section">
+    <div id="botanicMap"></div>
+  </section>
+
+  <div class="routespage__header-outer">
+    <div class="routespage__header">
+      <h2 class="routespage__title">Приднестровье - это край, где плещется Днестр и молчат древние холмы</h2>
+    </div>
+  </div>
+  
+  <footer id="footer" class="footer">
+    <div class="footer__container">
+      
+      <!-- Колонка 1: Логотип -->
+      <div class="footer__column-logo">
+        <div class="footer__logo">EcoTravel</div>
+      </div>
+
+      <!-- Колонка 2: Навигация -->
+      <div class="footer__column-nav">
+        <h3 class="footer__nav-title">НАВИГАЦИЯ</h3>
+        <nav class="footer__nav">
+          <a href="../../../index.html" class="footer__link">Главная</a>
+          <a href="../../../pages/routes.html" class="footer__link">Маршруты</a>
+          <a href="../../../pages/region__map/region-map.html" class="footer__link">Карта региона</a>
+          <a href="../../../pages/attraction-page/attractions.html" class="footer__link">Достопримечательности</a>
+          <a href="../../../pages/tips.html" class="footer__link">Советы путешественникам</a>
+          <a href="../../../index.html#about" class="footer__link">О нас</a>
+          <a href="../../../index.html#contact" class="footer__link">Контакты</a>
+        </nav>
+      </div>
+
+      <!-- Колонка 3: Контакты (адрес и режим работы) -->
+      <div class="footer__column-contacts">
+        <h3 class="footer__contacts-title">КОНТАКТЫ</h3>
+        <div class="footer__address-block">
+          <p class="footer__address-label">Наш адрес</p>
+          <p class="footer__address-text">Приднестровье, г. Тирасполь</p>
+        </div>
+        <div class="footer__hours-block">
+          <p class="footer__hours-label">Режим работы</p>
+          <p class="footer__hours-item">ПН-ВС: 09:00-18:00</p>
+        </div>
+      </div>
+
+      <!-- Колонка 4: Телефон + Почта + Соцсети -->
+      <div class="footer__column-right">
+        <div class="footer__phone-block">
+          <p class="footer__phone">77993307</p>
+          <a href="mailto:ecotravel_forever228@mail.ru" class="footer__email">ecotravel_forever228@mail.ru</a>
+        </div>
+        <div>
+          <p class="footer__socials-label">Мы в соц сетях</p>
+          <div class="footer__socials">
+            <a href="#"><img src="../../../assets/images/vk.png" alt="VK" class="footer__icon"></a>
+            <a href="#"><img src="../../../assets/images/inst.png" alt="Instagram" class="footer__icon"></a>
+            <a href="#"><img src="../../../assets/images/facebook.png" alt="Facebook" class="footer__icon"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Модальное окно избранного -->
+  <div id="modal-favorites" class="modal">
+    <div class="modal__content modal__content--favorites">
+      <span class="modal__close">&times;</span>
+      <h2 class="modal__title">Мои избранные</h2>
+      <div id="favorites-content" class="favorites-content">
+        <p class="favorites-empty">У вас пока нет избранных элементов</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модальное окно для просмотра больших изображений -->
+  <div id="modal-image-viewer" class="modal modal-image-viewer">
+    <div class="modal__content modal__content--image">
+      <span class="modal__close">&times;</span>
+      <img id="modal-image-viewer-img" src="" alt="" class="modal-image-viewer__img">
+    </div>
+  </div>
+
+  <script src="../../blocks/favorites/favorites.js"></script>
+  <script src="../../../blocks/favorites/favorites-modal.js"></script>
+  <script src="../../../blocks/image-viewer/image-viewer.js"></script>
+  <script src="botanic.js"></script>
+  <script>
+  function toggleMenu() {
+      document.querySelector('.burger-menu').classList.toggle('active');
+      document.querySelector('.nav__list').classList.toggle('active');
+  }
+  document.querySelectorAll('.nav__link').forEach(link => {
+      link.addEventListener('click', () => {
+          document.querySelector('.burger-menu').classList.remove('active');
+          document.querySelector('.nav__list').classList.remove('active');
+      });
+  });
+  </script>
+      </body>
+</html>
